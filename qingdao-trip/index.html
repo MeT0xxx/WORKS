@@ -1,0 +1,700 @@
+Exit code: 0
+Wall time: 7 seconds
+Total output lines: 825
+Output:
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#e7f7f5" />
+  <title>闈掑矝涓嶈刀娴凤綔2026.08.10鈥?8.14</title>
+  <style>
+    :root {
+      --ink: #173b3c;
+      --muted: #668082;
+      --sea: #0d8f91;
+      --sea-deep: #076b70;
+      --foam: #e7f7f5;
+      --sand: #fff7e8;
+      --coral: #ff816d;
+      --coral-soft: #fff0ed;
+      --rain: #526fa7;
+      --line: rgba(23, 59, 60, .12);
+      --card: rgba(255,255,255,.92);
+      --shadow: 0 14px 40px rgba(20, 76, 77, .10);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 92% 2%, rgba(255, 196, 120, .28), transparent 23rem),
+        radial-gradient(circle at 5% 16%, rgba(62, 183, 186, .15), transparent 30rem),
+        #f7fbfa;
+      line-height: 1.55;
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    button { color: inherit; }
+
+    .shell { width: min(1160px, 100%); margin: 0 auto; padding: 16px 14px 90px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 390px;
+      padding: 28px 22px 22px;
+      border-radius: 32px;
+      color: white;
+      background:
+        linear-gradient(145deg, rgba(5,103,108,.98), rgba(14,150,151,.90)),
+        #087f83;
+      box-shadow: 0 22px 55px rgba(4, 88, 92, .22);
+    }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      transform: rotate(-8deg);
+    }
+    .hero::before { width: 470px; height: 80px; left: -90px; bottom: 62px; }
+    .hero::after { width: 380px; height: 58px; right: -120px; top: 38px; }
+    .hero-content { position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+    .hero h1 {
+      margin: 18px 0 9px;
+      max-width: 760px;
+      font-size: clamp(38px, 9vw, 76px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 900;
+    }
+    .hero h1 span { color: #ffd791; }
+    .hero-lead { max-width: 700px; margin: 0; color: rgba(255,255,255,.86); font-size: 15px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 24px; }
+    .hero-stat {
+      padding: 14px 15px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 18px;
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(8px);
+    }
+    .hero-stat b { display: block; font-size: 15px; }
+    .hero-stat small { color: rgba(255,255,255,.70); }
+    .weather-alert {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      color: #17444a;
+      background: #eef7ff;
+      box-shadow: inset 0 0 0 1px rgba(30,91,105,.10);
+    }
+    .weather-alert .icon { font-size: 23px; }
+    .weather-alert b { display: block; margin-bottom: 2px; }
+    .weather-alert p { margin: 0; color: #4f6c72; font-size: 13px; }
+
+    .quickbar {
+      position: sticky;
+      top: 8px;
+      z-index: 30;
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+      padding: 8px;
+      overflow-x: auto;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 19px;
+      background: rgba(247,251,250,.82);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 28px rgba(19,65,66,.08);
+      scrollbar-width: none;
+    }
+    .quickbar::-webkit-scrollbar { display: none; }
+    .quickbar a { flex: 0 0 auto; padding: 9px 12px; border-radius: 12px; text-decoration: none; font-size: 13px; font-weight: 750; }
+    .quickbar a:hover { background: white; }
+
+    .section { margin-top: 24px; }
+    .section-head { display: flex; gap: 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 13px; }
+    .section h2 { margin: 0; font-size: clamp(25px, 6vw, 38px); letter-spacing: -.035em; }
+    .section-kicker { margin: 0 0 3px; color: var(--sea); font-size: 12px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .section-note { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .day-tabs {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(112px, 1fr);
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 1px 8px;
+      scrollbar-width: none;
+    }
+    .day-tabs::-webkit-scrollbar { display: none; }
+    .day-tab {
+      cursor: pointer;
+      min-height: 70px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      text-align: left;
+      background: white;
+      transition: .2s ease;
+    }
+    .day-tab span { display: block; color: var(--muted); font-size: 11px; }
+    .day-tab b { display: block; margin-top: 3px; font-size: 14px; }
+    .day-tab.active { color: white; border-color: transparent; background: var(--sea); box-shadow: 0 10px 24px rgba(13,143,145,.22); transform: translateY(-2px); }
+    .day-tab.active span { color: rgba(255,255,255,.72); }
+
+    .filter-row { display: flex; gap: 8px; overflow-x: auto; padding: 7px 1px 4px; scrollbar-width: none; }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      cursor: pointer;
+      flex: 0 0 auto;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.85);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .filter-btn.active { color: var(--sea-deep); border-color: rgba(13,143,145,.38); background: #def4f1; }
+
+    .day-summary {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 12px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--sand);
+    }
+    .day-summary h3 { margin: 0 0 4px; font-size: 18px; }
+    .day-summary p { margin: 0; color: #6e665b; font-size: 13px; }
+    .sunset-pill { align-self: start; justify-self: start; padding: 7px 10px; border-radius: 999px; color: #7d5017; background: #ffe5b6; font-size: 12px; font-weight: 800; }
+
+    .itinerary-layout { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+    .timeline { position: relative; display: grid; gap: 12px; }
+    .empty { display: none; padding: 26px; text-align: center; border: 1px dashed rgba(23,59,60,.22); border-radius: 22px; color: var(--muted); }
+    .trip-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 12px;
+      padding: 15px;
+      border: 1px solid rgba(23,59,60,.10);
+      border-radius: 22px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, border .2s ease, opacity .2s ease;
+    }
+    .trip-card:hover { transform: translateY(-2px); border-color: rgba(13,143,145,.25); }
+    .trip-card.hidden { display: none; }
+    .trip-card.completed { opacity: .62; }
+    .trip-card.completed .card-title { text-decoration: line-through; }
+    .timebox { padding-top: 3px; text-align: center; }
+    .timebox b { display: block; font-size: 13px; line-height: 1.2; }
+    .timebox small { color: var(--muted); font-size: 10px; }
+    .route-dot { width: 13px; height: 13px; margin: 10px auto 0; border: 3px solid #dff6f3; border-radius: 99px; background: var(--sea); box-shadow: 0 0 0 1px rgba(13,143,145,.20); }
+    .card-top { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; }
+    .card-title { margin: 0; font-size: 18px; line-height: 1.25; letter-spacing: -.015em; }
+    .optional { color: var(--coral); font-size: 11px; font-weight: 850; }
+    .check-wrap { position: relative; flex: 0 0 auto; width: 30px; height: 30px; }
+    .check-wrap input { position: absolute; opacity: 0; }
+    .checkmark { display: grid; place-items: center; width: 30px; height: 30px; cursor: pointer; border: 1.5px solid rgba(23,59,60,.22); border-radius: 50%; background: white; }
+    .check-wrap input:checked + .checkmark { color: white; border-color: var(--sea); background: var(--sea); }
+    .check-wrap input:checked + .checkmark::after { content: "鉁?; font-weight: 900; }
+    .card-desc { margin: 7px 0 9px; color: #557174; font-size: 13px; }
+    .meta-row, .tag-row, .action-row, .saved-links { display: flex; flex-wrap: wrap; gap: 7px; }
+    .meta { padding: 5px 8px; border-radius: 9px; color: #526b6e; background: #f1f6f5; font-size: 11px; font-weight: 700; }
+    .tag { padding: 4px 7px; border-radius: 999px; color: #687b7d; border: 1px solid rgba(23,59,60,.10); font-size: 10px; }
+    .tag-row { margin-top: 9px; }
+    .tip {
+      margin-top: 10px;
+      padding: 9px 10px;
+      border-left: 3px solid var(--coral);
+      border-radius: 0 10px 10px 0;
+      color: #6d615f;
+      background: var(--coral-soft);
+      font-size: 12px;
+    }
+    .action-row { margin-top: 11px; }
+    .action {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 34px;
+      padding: 7px 10px;
+      border: 0;
+      border-radius: 11px;
+      color: white;
+      background: var(--sea);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .action.secondary { color: var(--ink); background: #f0f5f4; }
+    .action.xhs { color: #7a2a23; background: #ffe9e5; }
+    .saved-links { margin-top: 8px; }
+    .saved-link { display: inline-flex; gap: 5px; align-items: center; max-width: 100%; padding: 5px 8px; border-radius: 9px; color: #796260; background: #fff5f2; font-size: 11px; text-decoration: none; }
+    .saved-link span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .map-panel {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 25px;
+      background: #dff3f1;
+      box-shadow: var(--shadow);
+    }
+    #map { position: absolute; inset: 0; }
+    #fallbackMap { width: 100%; height: 100%; min-height: 420px; display: block; }
+    .map-note {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 500;
+      padding: 10px 12px;
+      border-radius: 15px;
+      color: #395c5f;
+      background: rgba(255,255,255,.90);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(23,59,60,.10);
+      font-size: 11px;
+    }
+    .map-note b { color: var(--ink); }
+    .leaflet-control-attribution { font-size: 8px !important; }
+    .map-pin { display: grid; place-items: center; width: 28px; height: 28px; border: 3px solid white; border-radius: 50% 50% 50% 10%; color: white; background: var(--sea); box-shadow: 0 5px 12px rgba(0,0,0,.20); transform: rotate(-45deg); font-weight: 900; font-size: 11px; }
+    .map-pin span { transform: rotate(45deg); }
+    .map-pin.hotel { background: var(--coral); }
+
+    .weather-grid { display: grid; grid-template-columns: repeat(5, minmax(118px, 1fr)); gap: 9px; overflow-x: auto; padding-bottom: 6px; }
+    .weather-card { min-height: 142px; padding: 14px; border: 1px solid var(--line); border-radius: 20px; background: white; }
+    .weather-card.active { border-color: rgba(13,143,145,.42); box-shadow: 0 8px 24px rgba(13,143,145,.10); }
+    .weather-card .date { color: var(--muted); font-size: 11px; }
+    .weather-card .weather-icon { margin: 8px 0 4px; font-size: 27px; }
+    .weather-card b { display: block; }
+    .weather-card p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
+
+    .tool-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .tool-card { padding: 18px; border: 1px solid var(--line); border-radius: 24px; background: white; box-shadow: var(--shadow); }
+    .tool-card h3 { margin: 0 0 5px; font-size: 19px; }
+    .tool-card > p { margin: 0 0 13px; color: var(--muted); font-size: 12px; }
+    .field-label { display: block; margin: 11px 0 5px; color: #4b6669; font-size: 12px; font-weight: 800; }
+    textarea, select, input[type="time"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgba(23,59,60,.16);
+      border-radius: 14px;
+      color: var(--ink);
+      outline: none;
+      background: #f8fbfa;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    textarea:focus, select:focus, input[type="time"]:focus { border-color: var(--sea); box-shadow: 0 0 0 3px rgba(13,143,145,.10); }
+    .tool-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .primary-btn, .soft-btn {
+      cursor: pointer;
+      padding: 10px 13px;
+      border: 0;
+      border-radius: 12px;
+      font-weight: 850;
+      font-size: 13px;
+    }
+    .primary-btn { color: white; background: var(--sea); }
+    .soft-btn { color: var(--ink); background: #edf4f3; }
+    .recognize-result, .departure-result { min-height: 46px; margin-top: 10px; padding: 11px; border-radius: 13px; color: #557174; background: #f4f8f7; font-size: 12px; }
+    .recognize-result.success { color: #146a56; background: #e8f7ef; }
+    .recognize-result.warn { color: #8a5c18; background: #fff4d8; }
+    .manual-save { display: none; margin-top: 10px; }
+    .manual-save.visible { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+
+    .principles { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .principle { padding: 15px; border: 1px solid var(--line); border-radius: 19px; background: white; }
+    .principle b { display: block; margin-bottom: 3px; }
+    .principle p { margin: 0; color: var(--muted); font-size: 12px; }
+    details { border: 1px solid var(--line); border-radius: 16px; background: white; }
+    details + details { margin-top: 8px; }
+    summary { cursor: pointer; padding: 13px 14px; font-weight: 800; }
+    details p, details ul { margin: 0; padding: 0 14px 14px; color: var(--muted); font-size: 12px; }
+    details ul { padding-left: 31px; }
+    .source-list { display: grid; gap: 8px; }
+    .source-list a { padding: 11px 13px; border: 1px solid var(--line); border-radius: 14px; background: white; text-decoration: none; font-size: 12px; }
+    footer { margin-top: 30px; padding: 22px 8px; text-align: center; color: var(--muted); font-size: 11px; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(20px + env(safe-area-inset-bottom));
+      z-index: 1000;
+      max-width: calc(100% - 30px);
+      padding: 11px 15px;
+      border-radius: 999px;
+      color: white;
+      background: rgba(23,59,60,.94);
+      box-shadow: 0 12px 30px rgba(0,0,0,.16);
+      font-size: 12px;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (min-width: 620px) {
+      .shell { padding: 22px 22px 100px; }
+      .hero { padding: 38px 36px 28px; }
+      .hero-grid { grid-template-columns: repeat(3, 1fr); }
+      .day-summary { grid-template-columns: 1fr auto; align-items: center; }
+      .sunset-pill { justify-self: end; }
+      .tool-grid, .principles { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 920px) {
+      .itinerary-layout { grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr); }
+      .map-panel { position: sticky; top: 94px; min-height: 580px; }
+      #fallbackMap { min-height: 580px; }
+      .tool-grid { grid-template-columns: 1.15fr .85fr; }
+      .principles { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">馃寠 涓や釜浜?路 5 澶?路 鏉惧紱閬挎殤鐗?/div>
+        <h1>闈掑矝锛?span>涓嶈刀娴枫€?/span></h1>
+        <p class="hero-lead">2026/8/10鈥?/14锝滀綇鑾遍槼璺?19 鍙蜂笢妤笺€傛妸姝ｅ崍鐣欑粰绌鸿皟銆佸崍鐫″拰鍜栧暋锛屾妸娴烽銆佽惤鏃ヤ笌鑰佸煄鐣欑粰鍌嶆櫄銆?/p>
+        <div class="hero-grid">
+          <div class="hero-stat"><b>姣忔棩涓讳换鍔?1 涓?/b><small>鍏朵綑閮芥槸椤鸿矾锛屼笉涓烘墦鍗¤刀璺?/small></div>
+          <div class="hero-stat"><b>16:30 鍚庡啀鍑洪棬</b><small>12鈥?5 鐐瑰師鍒欎笂涓嶅畨鎺掓毚鏅?/small></div>
+          <div class="hero-stat"><b>閰掑簵灏辨槸娴疯竟鍩哄湴</b><small>姝ヨ绾?5鈥?0 鍒嗛挓鍒伴瞾杩呭叕鍥?/small></div>
+        </div>
+        <div class="weather-alert">
+          <div class="icon">馃對锔?/div>
+          <div><b>鍏堢湅澶╂皵锛氳繖鍑犲ぉ涓嶆槸鈥滅函鏅村ぉ鍓ф湰鈥?/b><p>鎴嚦 2026/8/7 鐨勯鎶ワ紝10鈥?4 鏃ユ箍鐑€佸闃甸洦锛?2鈥?4 鏃ラ洦鎰忔洿鏄庢樉銆傜綉椤靛凡鎶婇洦澶╂浛浠ｅ啓杩涙瘡涓€澶╋紱闆烽洦鏃朵笉瑕侀潬杩戠鐭炽€佹捣鍫ゅ拰瀛ょ珛鏍戞湪銆?/p></div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="quickbar" aria-label="椤甸潰瀵艰埅">
+      <a href="#plan">琛岀▼</a><a href="#weather">澶╂皵</a><a href="#tools">灏忕孩涔︽敹钘?/a><a href="#departure">杩旂▼璁＄畻</a>
+    </nav>
+
+    <section class="section" id="plan">
+      <div class="section-head">
+        <div><p class="section-kicker">The easy route</p><h2>浠婂ぉ锛屽彧鐜╄繖涓€灏忕墖</h2></div>
+        <p class="section-note" id="progressText">宸插畬鎴?0 / 0</p>
+      </div>
+      <div class="day-tabs" id="dayTabs" role="tablist"></div>
+      <div class="filter-row" id="filters" aria-label="琛岀▼绛涢€?></div>
+      <div class="day-summary" id="daySummary"></div>
+      <div class="itinerary-layout">
+        <div>
+          <div class="timeline" id="timeline"></div>
+          <div class="empty" id="emptyState">杩欎釜绛涢€変笅娌℃湁椤圭洰锛屾崲涓爣绛剧湅鐪嬨€?/div>
+        </div>
+        <aside class="map-panel" aria-label="琛岀▼鍦板浘">
+          <div id="map"><svg id="fallbackMap" viewBox="0 0 600 620" role="img" aria-label="闈掑矝琛岀▼绀烘剰鍦板浘"></svg></div>
+          <div class="map-note" id="mapNote"><b>鍦板浘璇存槑</b>锛氳繛绾夸负褰撳ぉ娓哥帺椤哄簭锛涚偣浣嶅彲鐐瑰嚮銆傝仈缃戞椂灏濊瘯鍔犺浇鐪熷疄搴曞浘锛屽け璐ユ椂鑷姩淇濈暀绀烘剰绾胯矾銆?/div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="weather">
+      <div class="section-head"><div><p class="section-kicker">Weather switch</p><h2>鍏堢湅浜戯紝鍐嶅喅瀹氬嚑鐐硅蛋</h2></div></div>
+      <div class="weather-grid" id="weatherGrid"></div>
+      <div class="tool-card" style="margin-top:10px; box-shadow:none; background:#eef7ff;">
+        <h3 style="font-size:16px;">姣忓ぉ 15:30 鍋氫竴娆″喅瀹?/h3>
+        <p style="margin-bottom:0;">闆疯揪鍥炬樉绀洪浄闆細鐣欏湪瀹ゅ唴锛涘仠闆ㄤ絾鍦伴潰婀匡細鑰佸煄鍜栧暋/涓北璺紱杩炵画 1 灏忔椂鏃犻浄鐢碉細鍐嶅幓娴疯竟銆傛捣杈归澶ф椂浣撴劅鏇村噳锛屽甫涓€浠惰杽澶栧鍜屽彲鎶樺彔闆ㄨ。銆?/p>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="section-head"><div><p class="section-kicker">Save your finds</p><h2>鎶婂皬绾功鏀惰棌鏀惧洖琛岀▼</h2></div></div>
+      <div class="tool-grid">
+        <div class…6637 tokens truncated…矾锝滆姳鐭虫ゼ澶栬锛嬫捣杈规爲褰?,
+      desc:'鏃╀笂鍏堣蛋涓€娈垫爲鑽鐨勫叓澶у叧锛屼笉瀹夋帓灞曢锛涚浜屾捣姘存荡鍦哄彧鐪嬫捣銆佷笉涓嬫按涔熷彲浠ャ€?,
+      transport:'閰掑簵鎵撹溅绾?8鈥?2 鍒?, walk:'绾?1.5 km', tags:['鎷嶇収','娴疯竟','鎬曟檼'],
+      tip:'鍙蛋鏋楄崼涓昏矾鍜屾捣杈逛笂灞傛閬擄紝鎰熻鏅掑氨鎻愬墠鍥為厭搴楀崍楗€?, lat:36.05098, lon:120.35018,
+      xhs:'闈掑矝 鍏ぇ鍏?鑺辩煶妤?绗簩娴锋按娴村満 鏃╀笂 鎷嶇収', amap:'鍏ぇ鍏抽鏅尯 闈掑矝'
+    });
+    places.push({
+      id:'noonbreak', day:'0811', time:'12:00', end:'15:40', title:'鍗堥キ锛嬬┖璋冧紤鎭綔鎶婁綋鍔涚暀缁欏皬楸煎北',
+      desc:'鍥為厭搴楅檮杩戝悆楗€佸崍鐫°€佹暣鐞嗙収鐗囷紱15:40 鐪嬩簯閲忓悗鍐嶅幓澶у璺€傚畠鏄鍒掑唴鐨勪紤鎭紝涓嶆槸绌虹櫧銆?,
+      transport:'鎵撹溅绾?8鈥?2 鍒嗗洖閰掑簵', walk:'0鈥?.5 km', tags:['鎬曟檼','鍚冮キ'], tip:'濡傛灉涓嬮洦锛屽ぇ瀛﹁矾鎹㈡垚鍜栧暋搴楋紱濡傛灉闆烽洦锛屽皬楸煎北椤哄欢鍒扮浜屽ぉ銆?, lat:HOTEL.lat, lon:HOTEL.lon,
+      xhs:'闈掑矝 甯傚崡鍖?鍗堥 鍜栧暋 閰掑簵闄勮繎', amap:'闈掑矝甯傚競鍗楀尯鑾遍槼璺?9鍙?
+    });
+    places.push({
+      id:'midday12', day:'0812', time:'11:00', end:'15:30', title:'娴蜂俊骞垮満 / 涓囪薄鍩庯綔闆ㄥぉ瀹ゅ唴閫?,
+      desc:'鎶婁笅闆ㄧ殑鐧藉ぉ鐢ㄥ湪鍟嗗満銆佸挅鍟″拰鍗堥キ锛屼笉鐪嬪崥鐗╅锛涘ぉ姘旇浆濂藉啀鍘诲叓澶у场锛岃浆宸氨鐩存帴涓北璺閫涖€?,
+      transport:'鎵撹溅绾?20鈥?0 鍒?, walk:'鍟嗗満鍐呴殢鎰?, tags:['鎬曟檼','鍚冮キ'], tip:'涓嶉渶瑕佷拱涓滆タ锛屾壘涓€澶勫潗涓嬫潵鍚圭┖璋冨嵆鍙€?, lat:36.0644243, lon:120.3754398,
+      xhs:'闈掑矝 娴蜂俊骞垮満 涓囪薄鍩?闆ㄥぉ 鏀荤暐', amap:'娴蜂俊骞垮満 闈掑矝'
+    });
+    Object.assign(byId('lateleave'), {
+      day:'0813', time:'11:00', end:'15:20', title:'棣欐腐涓矾瀹ゅ唴鎱㈤€涳綔鍗堥キ锛嬪挅鍟?,
+      desc:'灏忛害宀涘墠鍏堝畨鎺掍竴娈电櫧澶╃殑瀹ゅ唴娲诲姩锛岄€涘晢鍦恒€佸悆鍗堥キ銆佽ˉ姘达紝涓嶅湪澶уお闃充笅鑰椾綋鍔涖€?,
+      transport:'閰掑簵鎵撹溅绾?20鈥?0 鍒?, walk:'鍟嗗満鍐呴殢鎰?, tags:['鎬曟檼','鍚冮キ'], tip:'15:20 鐪嬮浄杈撅紝鍙湁鏃犻浄鐢点€侀娴皬鎵嶅幓灏忛害宀涖€?, lat:36.0644243, lon:120.3754398,
+      xhs:'闈掑矝 棣欐腐涓矾 娴蜂俊骞垮満 鍗堥 鍜栧暋', amap:'娴蜂俊骞垮満 闈掑矝'
+    });
+    const aliases = {
+      arrival:['鑳朵笢鏈哄満','鏈哄満'], rest:['鑾遍槼璺?9鍙?,'閰掑簵','姘戝'], luxun:['椴佽繀鍏洯'], qinyu:['鐞村笨璺?,'鐞村矝璺?], xiaoqingdao:['灏忛潚宀?], huangxian:['榛勫幙璺?,'榫欐睙璺?],
+      slowmorning:['鑾遍槼璺?,'閰掑簵'], daxue:['澶у璺?,'缃戠孩澧?], xiaoyushan:['灏忛奔灞?], longjiangdinner:['楸煎北璺?,'榫欐睙璺?], aquarium:['娴峰簳涓栫晫','姘存棌棣?],
+      badaxia:['鍏ぇ宄?,'鍏ぇ宄″箍鍦?], xilingxia:['瑗块櫟宄?,'瑗块櫟宄¤矾'], zhongshan:['閾堕奔宸?,'涓北璺?,'澶╀富鏁欏爞'], lateleave:['閰掑簵'], maidaomeal:['楹﹀矝璺?],
+      xiaomaidao:['灏忛害宀?,'楹﹀矝鍏洯'], olympic:['濂ュ竼涓績','浜斿洓骞垮満','娴北婀?,'鐏厜绉€'], breakfast:['鏃╅'], lastsea:['鐞村笨璺?], depart:['鏈哄満','闈掑矝绔?,'闈掑矝鍖楃珯']
+    };
+    const tagIcons = { '鎬曟檼':'鈽傦笍 鎬曟檼', '鎷嶇収':'馃摲 鎷嶇収', '娴疯竟':'馃寠 娴疯竟', '澶滄櫙':'鉁?澶滄櫙', '鍚冮キ':'馃 鍚冮キ' };
+    let activeDay = '0810';
+    let activeTags = new Set();
+    let leafletMap = null;
+    let markerLayer = null;
+    let routeLine = null;
+    let lastPastedUrl = '';
+    const state = {
+      completed: JSON.parse(localStorage.getItem('qd_trip_completed') || '{}'),
+      links: JSON.parse(localStorage.getItem('qd_trip_links') || '{}')
+    };
+
+    const $ = (s) => document.querySelector(s);
+    const escapeHTML = (s='') => String(s).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const xhsUrl = q => 'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent(q) + '&source=web_search_result_notes';
+    const amapUrl = q => 'https://uri.amap.com/search?keyword=' + encodeURIComponent(q) + '&city=' + encodeURIComponent('闈掑矝') + '&src=qingdao_trip&callnative=1';
+    const activeItems = () => places.filter(p => p.day === activeDay && (!activeTags.size || p.tags.some(t => activeTags.has(t))));
+
+    function renderTabs() {
+      $('#dayTabs').innerHTML = days.map(d => `<button class="day-tab ${d.id===activeDay?'active':''}" data-day="${d.id}" role="tab" aria-selected="${d.id===activeDay}"><span>${d.short}</span><b>${d.plan}</b></button>`).join('');
+      document.querySelectorAll('.day-tab').forEach(btn => btn.addEventListener('click', () => { activeDay = btn.dataset.day; renderAll(); }));
+    }
+
+    function renderFilters() {
+      $('#filters').innerHTML = `<button class="filter-btn ${activeTags.size===0?'active':''}" data-tag="all">鍏ㄩ儴</button>` + Object.entries(tagIcons).map(([tag,label]) => `<button class="filter-btn ${activeTags.has(tag)?'active':''}" data-tag="${tag}">${label}</button>`).join('');
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+        const tag = btn.dataset.tag;
+        if (tag === 'all') activeTags.clear(); else activeTags.has(tag) ? activeTags.delete(tag) : activeTags.add(tag);
+        renderAll(false);
+      }));
+    }
+
+    function renderSummary() {
+      const d = days.find(x => x.id === activeDay);
+      $('#daySummary').innerHTML = `<div><h3>${d.title}</h3><p>${d.subtitle}锝?{d.weather}</p></div><div class="sunset-pill">馃寘 鏃ヨ惤 ${d.sunset}</div>`;
+    }
+
+    function renderTimeline() {
+      const filtered = activeItems();
+      const allDay = places.filter(p => p.day === activeDay);
+      $('#timeline').innerHTML = allDay.map((p, idx) => {
+        const hidden = activeTags.size && !p.tags.some(t => activeTags.has(t));
+        const saved = state.links[p.id] || [];
+        return `<article class="trip-card ${hidden?'hidden':''} ${state.completed[p.id]?'completed':''}" data-id="${p.id}">
+          <div class="timebox"><b>${escapeHTML(p.time)}</b><small>${escapeHTML(p.end)}</small><div class="route-dot"></div></div>
+          <div>
+            <div class="card-top"><div><h3 class="card-title">${idx+1}. ${escapeHTML(p.title)}</h3>${p.optional?'<span class="optional">鍙€?路 绱簡灏卞垹</span>':''}</div><label class="check-wrap" aria-label="鏍囪瀹屾垚"><input type="checkbox" data-check="${p.id}" ${state.completed[p.id]?'checked':''}><span class="checkmark"></span></label></div>
+            <p class="card-desc">${escapeHTML(p.desc)}</p>
+            <div class="meta-row"><span class="meta">馃毝 ${escapeHTML(p.walk)}</span><span class="meta">馃殨 ${escapeHTML(p.transport)}</span></div>
+            <div class="tag-row">${p.tags.map(t => `<span class="tag">${tagIcons[t]}</span>`).join('')}</div>
+            <div class="tip">${escapeHTML(p.tip)}</div>
+            <div class="action-row">
+              <a class="action" href="${amapUrl(p.amap)}" target="_blank" rel="noopener">鈫?楂樺痉瀵艰埅</a>
+              <a class="action xhs" href="${xhsUrl(p.xhs)}" target="_blank" rel="noopener">馃摃 灏忕孩涔︽敾鐣?/a>
+              ${p.lat?`<button class="action secondary locate-btn" data-locate="${p.id}">鈼?鍦板浘瀹氫綅</button>`:''}
+            </div>
+            <div class="saved-links">${saved.map((u,i) => `<a class="saved-link" href="${escapeHTML(u)}" target="_blank" rel="noopener">馃搶 <span>鑷瓨鏀荤暐 ${i+1}</span></a>`).join('')}</div>
+          </div>
+        </article>`;
+      }).join('');
+      $('#emptyState').style.display = filtered.length ? 'none' : 'block';
+      document.querySelectorAll('[data-check]').forEach(cb => cb.addEventListener('change', () => {
+        state.completed[cb.dataset.check] = cb.checked;
+        localStorage.setItem('qd_trip_completed', JSON.stringify(state.completed));
+        renderTimeline(); updateProgress();
+      }));
+      document.querySelectorAll('.locate-btn').forEach(btn => btn.addEventListener('click', () => locatePlace(btn.dataset.locate)));
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const dayItems = places.filter(p => p.day === activeDay);
+      const done = dayItems.filter(p => state.completed[p.id]).length;
+      $('#progressText').textContent = `浠婃棩宸插畬鎴?${done} / ${dayItems.length}`;
+    }
+
+    function loadLeaflet() {
+      if (!window.L || leafletMap) return;
+      try {
+        leafletMap = L.map('map', { zoomControl:true, attributionControl:true }).setView([36.06,120.34], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'漏 OpenStreetMap' }).addTo(leafletMap);
+        markerLayer = L.layerGroup().addTo(leafletMap);
+        renderLeaflet();
+      } catch (e) { leafletMap = null; renderFallbackMap(); }
+    }
+
+    function iconHTML(n, hotel=false) {
+      return L.divIcon({ className:'', html:`<div class="map-pin ${hotel?'hotel':''}"><span>${n}</span></div>`, iconSize:[30,30], iconAnchor:[15,28] });
+    }
+
+    function renderLeaflet() {
+      if (!leafletMap) return;
+      markerLayer.clearLayers();
+      if (routeLine) routeLine.remove();
+      const list = activeItems().filter(p => p.lat);
+      const coords = [];
+      L.marker([HOTEL.lat,HOTEL.lon], {icon:iconHTML('鈱?,true)}).bindPopup(`<b>${HOTEL.title}</b><br>褰撳ぉ璺嚎浠庤繖閲岀悊瑙).addTo(markerLayer);
+      const allDay = places.filter(p => p.day === activeDay);
+      list.forEach((p) => {
+        const n = allDay.findIndex(x => x.id === p.id) + 1;
+        coords.push([p.lat,p.lon]);
+        L.marker([p.lat,p.lon], {icon:iconHTML(n)}).bindPopup(`<b>${escapeHTML(p.title)}</b><br>${escapeHTML(p.time)}鈥?{escapeHTML(p.end)}`).addTo(markerLayer);
+      });
+      if (coords.length > 1) routeLine = L.polyline(coords, {color:'#0d8f91', weight:4, opacity:.75, dashArray:'8 9'}).addTo(leafletMap);
+      const bounds = L.latLngBounds([[HOTEL.lat,HOTEL.lon], ...coords]);
+      if (bounds.isValid()) leafletMap.fitBounds(bounds.pad(.22), {maxZoom:14});
+      setTimeout(() => leafletMap.invalidateSize(), 60);
+    }
+
+    function renderFallbackMap() {
+      const svg = $('#fallbackMap');
+      if (!svg) return;
+      const list = activeItems().filter(p => p.lat);
+      const all = [HOTEL, ...list];
+      let minLon = Math.min(...all.map(p=>p.lon)), maxLon = Math.max(...all.map(p=>p.lon));
+      let minLat = Math.min(...all.map(p=>p.lat)), maxLat = Math.max(...all.map(p=>p.lat));
+      if (maxLon-minLon < .02) { minLon-=.01; maxLon+=.01; }
+      if (maxLat-minLat < .015) { minLat-=.008; maxLat+=.008; }
+      const pad=70, W=600, H=620;
+      const xy = p => [pad+(p.lon-minLon)/(maxLon-minLon)*(W-pad*2), H-pad-(p.lat-minLat)/(maxLat-minLat)*(H-pad*2)];
+      const pts = list.map(p => xy(p).join(',')).join(' ');
+      svg.innerHTML = `<defs><linearGradient id="seaBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9f8f5"/><stop offset="1" stop-color="#bfe7e4"/></linearGradient><filter id="pinShadow"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-opacity=".16"/></filter></defs>
+        <rect width="600" height="620" fill="url(#seaBg)"/>
+        <path d="M-20 390 C120 330 165 470 305 405 S475 305 640 355 L640 660 L-20 660 Z" fill="#8fd2d1" opacity=".72"/>
+        <path d="M-20 432 C130 350 185 510 325 430 S500 344 640 390" fill="none" stroke="#f8ffff" stroke-width="4" opacity=".8"/>
+        <g opacity=".13" stroke="#477c7f">${[100,200,300,400,500].map(x=>`<line x1="${x}" x2="${x}" y1="0" y2="620"/>`).join('')}${[100,200,300,400,500].map(y=>`<line y1="${y}" y2="${y}" x1="0" x2="600"/>`).join('')}</g>
+        ${list.length>1?`<polyline points="${pts}" fill="none" stroke="#0d8f91" stroke-width="6" stroke-dasharray="10 12" stroke-linecap="round" opacity=".82"/>`:''}
+        ${(() => { const [x,y]=xy(HOTEL); return `<g transform="translate(${x} ${y})" filter="url(#pinShadow)"><circle r="18" fill="#ff816d" stroke="white" stroke-width="4"/><text x="0" y="5" text-anchor="middle" font-size="16">鈱?/text><text x="0" y="34" text-anchor="middle" font-size="11" fill="#173b3c">閰掑簵</text></g>`; })()}
+        ${list.map((p)=>{const [x,y]=xy(p); const n=places.filter(x=>x.day===activeDay).findIndex(x=>x.id===p.id)+1; return `<g class="svg-place" data-svg-id="${p.id}" transform="translate(${x} ${y})" style="cursor:pointer" filter="url(#pinShadow)"><circle r="17" fill="#0d8f91" stroke="white" stroke-width="4"/><text x="0" y="5" text-anchor="middle" font-size="12" font-weight="900" fill="white">${n}</text><rect x="-55" y="24" width="110" height="24" rx="12" fill="white" opacity=".92"/><text x="0" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#173b3c">${escapeHTML(p.title.split('锝?)[0].slice(0,8))}</text></g>`;}).join('')}
+        <text x="38" y="45" fill="#356568" font-size="13" font-weight="800">N 鈫戙€€${days.find(d=>d.id===activeDay).short} 琛岀▼绀烘剰</text>
+        <text x="38" y="65" fill="#668082" font-size="10">姣斾緥闅忓綋澶╄寖鍥村彉鍖?路 鐐逛綅涓庨『搴忓彲浜や簰</text>`;
+      svg.querySelectorAll('.svg-place').forEach(g => g.addEventListener('click', () => locatePlace(g.dataset.svgId)));
+    }
+
+    function locatePlace(id) {
+      const p = places.find(x=>x.id===id);
+      if (!p || !p.lat) return;
+      $('#mapNote').innerHTML = `<b>${escapeHTML(p.title)}</b> 路 ${escapeHTML(p.time)}鈥?{escapeHTML(p.end)} 路 ${escapeHTML(p.transport)}`;
+      if (leafletMap) { leafletMap.setView([p.lat,p.lon], 15, {animate:true}); markerLayer.eachLayer(m => { const ll=m.getLatLng && m.getLatLng(); if(ll && Math.abs(ll.lat-p.lat)<.00001 && Math.abs(ll.lng-p.lon)<.00001) m.openPopup(); }); }
+      document.querySelector('.map-panel').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    function renderWeather() {
+      $('#weatherGrid').innerHTML = days.map(d => `<div class="weather-card ${d.id===activeDay?'active':''}"><div class="date">${d.short}</div><div class="weather-icon">${d.icon}</div><b>${d.weather.split(' 路 ')[0]}</b><p>${d.weather.split(' 路 ')[1]}<br>${d.subtitle}</p></div>`).join('');
+    }
+
+    function renderPlaceOptions() {
+      $('#manualPlace').innerHTML = places.filter((p,i,a)=>a.findIndex(x=>x.id===p.id)===i).map(p=>`<option value="${p.id}">${days.find(d=>d.id===p.day).short} 路 ${escapeHTML(p.title)}</option>`).join('');
+    }
+
+    function recognizeShare() {
+      const text = $('#shareInput').value.trim();
+      const result = $('#recognizeResult');
+      $('#manualSave').classList.remove('visible');
+      if (!text) { result.className='recognize-result warn'; result.textContent='鍏堢矘璐翠竴娈靛垎浜枃鏈垨閾炬帴銆?; return; }
+      const urlMatch = text.match(/https?:\/\/[^\s锛屻€?锛塢+/i);
+      lastPastedUrl = urlMatch ? urlMatch[0] : '';
+      const candidates = [];
+      Object.entries(aliases).forEach(([id,words]) => words.forEach(w => { if (text.includes(w)) candidates.push({id,word:w,len:w.length}); }));
+      candidates.sort((a,b)=>b.len-a.len);
+      const hit = candidates[0];
+      if (hit) {
+        const p = places.find(x=>x.id===hit.id);
+        const url = lastPastedUrl || xhsUrl(p.xhs);
+        saveLink(p.id,url);
+        result.className='recognize-result success';
+        result.innerHTML=`宸茶瘑鍒负 <b>${escapeHTML(p.title)}</b>锛屽苟淇濆瓨鍒板搴旇绋嬪崱銆?{lastPastedUrl?'':'锛堟湭鎵惧埌閾炬帴锛屽凡淇濆瓨鍦扮偣鎼滅储椤碉級'}`;
+        activeDay=p.day; renderAll();
+      } else {
+        result.className='recognize-result warn';
+        result.textContent = lastPastedUrl ? '璇嗗埆鍒伴摼鎺ワ紝浣嗗垎浜枃鏈噷娌℃湁鍦扮偣璇嶃€傝閫夋嫨瑕佸綊妗ｅ埌鍝紶鍗°€? : '娌℃湁鎵惧埌鍦扮偣鎴栭摼鎺ャ€傝绮樿创瀹屾暣鍒嗕韩鏂囨锛屾垨鎵嬪姩閫夋嫨鍦扮偣銆?;
+        $('#manualSave').classList.add('visible');
+      }
+    }
+
+    function saveLink(id,url) {
+      state.links[id] = state.links[id] || [];
+      if (!state.links[id].includes(url)) state.links[id].push(url);
+      localStorage.setItem('qd_trip_links', JSON.stringify(state.links));
+      showToast('宸蹭繚瀛樺埌琛岀▼鍗?);
+    }
+
+    function manualSave() {
+      const id=$('#manualPlace').value;
+      const p=places.find(x=>x.id===id);
+      saveLink(id,lastPastedUrl || xhsUrl(p.xhs));
+      $('#recognizeResult').className='recognize-result success';
+      $('#recognizeResult').innerHTML=`宸叉墜鍔ㄤ繚瀛樺埌 <b>${escapeHTML(p.title)}</b>銆俙;
+      $('#manualSave').classList.remove('visible');
+      activeDay=p.day; renderAll();
+    }
+
+    function calcDeparture() {
+      const type=$('#transportType').value;
+      const [h,m]=($('#departureTime').value || '14:00').split(':').map(Number);
+      const total=h*60+m;
+      const cfg={
+        flight:{lead:180,travel:90,name:'鑳朵笢鏈哄満',note:'寤鸿鑷冲皯鎻愬墠 3 灏忔椂鍒版満鍦猴紝甯傚尯鍒版満鍦烘寜 90 鍒嗛挓鍚洦澶╃紦鍐蹭及绠椼€?},
+        qingdao:{lead:60,travel:20,name:'闈掑矝绔?,note:'闈掑矝绔欑閰掑簵杈冭繎锛屼絾鏆戞湡杩涚珯涓庢墦杞︿粛闇€缂撳啿銆?},
+        north:{lead:75,travel:60,name:'闈掑矝鍖楃珯',note:'璺ㄥ煄璺瀹规槗鍫碉紝鎸?60 鍒嗛挓璺▼骞舵彁鍓?75 鍒嗛挓鍒扮珯浼扮畻銆?}
+      }[type];
+      let leave=total-cfg.lead-cfg.travel; if(leave<0) leave+=1440;
+      const hh=String(Math.floor(leave/60)).padStart(2,'0'), mm=String(leave%60).padStart(2,'0');
+      $('#departureResult').innerHTML=`寤鸿鏈€鏅?<b style="font-size:20px;color:#076b70">${hh}:${mm}</b> 浠庨厭搴楀嚭鍙戝幓 ${cfg.name}銆?{cfg.note} 鑻ュ綋鏃ユ毚闆?閬撹矾绠″埗锛屽啀鎻愬墠 20鈥?0 鍒嗛挓銆俙;
+    }
+
+    let toastTimer;
+    function showToast(msg) { const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1800); }
+
+    function renderAll(scroll=false) {
+      renderTabs(); renderFilters(); renderSummary(); renderTimeline(); renderWeather();
+      if (leafletMap) renderLeaflet(); else renderFallbackMap();
+      if (scroll) $('#plan').scrollIntoView({behavior:'smooth'});
+    }
+
+    $('#recognizeBtn').addEventListener('click', recognizeShare);
+    $('#clearInputBtn').addEventListener('click', () => { $('#shareInput').value=''; $('#recognizeResult').className='recognize-result'; $('#recognizeResult').textContent='宸叉竻绌恒€傚唴瀹瑰彧淇濆瓨鍦ㄦ湰鏈烘祻瑙堝櫒锛屼笉浼氫笂浼犮€?; $('#manualSave').classList.remove('visible'); });
+    $('#manualSaveBtn').addEventListener('click', manualSave);
+    $('#clearSavedBtn').addEventListener('click', () => { state.links={}; localStorage.removeItem('qd_trip_links'); renderTimeline(); showToast('宸叉竻闄よ嚜瀛橀摼鎺?); });
+    $('#transportType').addEventListener('change', calcDeparture);
+    $('#departureTime').addEventListener('input', calcDeparture);
+
+    renderPlaceOptions(); renderAll(); calcDeparture();
+    setTimeout(loadLeaflet, 250);
+  </script>
+</body>
+</html>
+
