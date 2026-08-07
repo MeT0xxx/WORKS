@@ -108,8 +108,8 @@
 </main>
 <div class="toast" id="toast"></div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 const HOTEL={id:'hotel',title:'酒店｜莱阳路19号东楼',lat:36.05552,lon:120.32758,amap:'青岛市市南区莱阳路19号东楼'};
 const DAYS=[
@@ -163,6 +163,12 @@ function place(id){return allPlaces().find(p=>p.id===id)}
 function day(id){return DAYS.find(d=>d.id===id)}
 function save(){localStorage.setItem(STORAGE,JSON.stringify(state))}
 function dist(a,b){const r=6371,p=Math.PI/180,dLat=(b.lat-a.lat)*p,dLon=(b.lon-a.lon)*p;const x=Math.sin(dLat/2)**2+Math.cos(a.lat*p)*Math.cos(b.lat*p)*Math.sin(dLon/2)**2;return 2*r*Math.asin(Math.sqrt(x))}
+function outOfChina(lat,lon){return lon<72.004||lon>137.8347||lat<0.8293||lat>55.8271}
+function transformLat(x,y){let r=-100+2*x+3*y+.2*y*y+.1*x*y+.2*Math.sqrt(Math.abs(x));r+=(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3;r+=(20*Math.sin(y*Math.PI)+40*Math.sin(y/3*Math.PI))*2/3;r+=(160*Math.sin(y/12*Math.PI)+320*Math.sin(y*Math.PI/30))*2/3;return r}
+function transformLon(x,y){let r=300+x+2*y+.1*x*x+.1*x*y+.1*Math.sqrt(Math.abs(x));r+=(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3;r+=(20*Math.sin(x*Math.PI)+40*Math.sin(x/3*Math.PI))*2/3;r+=(150*Math.sin(x/12*Math.PI)+300*Math.sin(x/30*Math.PI))*2/3;return r}
+function wgsToGcj(lat,lon){if(outOfChina(lat,lon))return{lat,lon};let dLat=transformLat(lon-105,lat-35),dLon=transformLon(lon-105,lat-35),rad=lat/180*Math.PI,magic=Math.sin(rad);magic=1-.00669342162296594323*magic*magic;const sqrt=Math.sqrt(magic);dLat=dLat*180/((6378245*(1-.00669342162296594323))/(magic*sqrt)*Math.PI);dLon=dLon*180/(6378245/sqrt*Math.cos(rad)*Math.PI);return{lat:lat+dLat,lon:lon+dLon}}
+function gcjToWgs(lat,lon){const g=wgsToGcj(lat,lon);return{lat:lat*2-g.lat,lon:lon*2-g.lon}}
+function mapPoint(p){const g=wgsToGcj(p.lat,p.lon);return[g.lat,g.lon]}
 function fmt(m){m=(m+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
 function minval(t){const [h,m]=t.split(':').map(Number);return h*60+m}
 function amap(p){return 'https://uri.amap.com/search?keyword='+encodeURIComponent(p.amap||p.title+(p.desc?' '+p.desc:''))+'&city='+encodeURIComponent('青岛')+'&src=qingdao_trip&callnative=1'}
@@ -326,15 +332,15 @@ function icon(n,kind='place'){return L.divIcon({className:'',html:'<div class="m
 function initMap(){
   if(!window.L)return;
   try{
-    map=L.map('map',{zoomControl:true}).setView([36.06,120.34],13);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);routeLayer=L.layerGroup().addTo(map);pickLayer=L.layerGroup().addTo(map);
-    map.on('click',e=>{if(!pickMode)return;pickMode=false;pickLayer.clearLayers();L.marker(e.latlng,{icon:icon('＋','pick')}).addTo(pickLayer);const name=$('#manualName').value.trim()||cleanQuery($('#shareInput').value)||'新增地点';candidates=[{name,address:'地图手动选定位置',lat:e.latlng.lat,lon:e.latlng.lng}];renderCandidates('位置已选好，确认后加入地点库。')});
+    map=L.map('map',{zoomControl:true}).setView(mapPoint(HOTEL),13);L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}',{subdomains:'1234',maxZoom:19,attribution:'© 高德地图'}).addTo(map);routeLayer=L.layerGroup().addTo(map);pickLayer=L.layerGroup().addTo(map);
+    map.on('click',e=>{if(!pickMode)return;pickMode=false;pickLayer.clearLayers();L.marker(e.latlng,{icon:icon('＋','pick')}).addTo(pickLayer);const name=$('#manualName').value.trim()||cleanQuery($('#shareInput').value)||'新增地点',wgs=gcjToWgs(e.latlng.lat,e.latlng.lng);candidates=[{name,address:'地图手动选定位置',lat:wgs.lat,lon:wgs.lon}];renderCandidates('位置已选好，确认后加入地点库。')});
     renderMap();
   }catch{map=null}
 }
 function renderMap(){
-  if(!map)return;routeLayer.clearLayers();const s=buildSchedule(activeDay),coords=[[HOTEL.lat,HOTEL.lon]];L.marker([HOTEL.lat,HOTEL.lon],{icon:icon('⌂','hotel')}).bindPopup('<b>酒店</b><br>莱阳路19号东楼').addTo(routeLayer);
-  let n=0;const seen=new Set();s.segments.forEach((seg,i)=>{const points=seg.points.map(p=>[p.lat,p.lon]);points.forEach(x=>coords.push(x));seg.points.forEach(p=>{if(p.id==='hotel'||seen.has(p.id))return;seen.add(p.id);n++;L.marker([p.lat,p.lon],{icon:icon(n)}).bindPopup('<b>'+esc(p.title)+'</b>').addTo(routeLayer)});if(points.length>1)L.polyline(points,{color:['#0c9293','#ff806d','#5f78c9'][i%3],weight:4,opacity:.82,dashArray:'8 9'}).addTo(routeLayer)});
-  const bounds=L.latLngBounds(coords);if(bounds.isValid())map.fitBounds(bounds.pad(.18),{maxZoom:14});setTimeout(()=>map.invalidateSize(),50);$('#mapNote').textContent='橙色是酒店，蓝色编号是当天地点；不同颜色的线表示当天分段路线。';
+  if(!map)return;routeLayer.clearLayers();const s=buildSchedule(activeDay),hotelMap=mapPoint(HOTEL),coords=[hotelMap];L.marker(hotelMap,{icon:icon('⌂','hotel')}).bindPopup('<b>酒店</b><br>莱阳路19号东楼').addTo(routeLayer);
+  let n=0;const seen=new Set();s.segments.forEach((seg,i)=>{const points=seg.points.map(mapPoint);points.forEach(x=>coords.push(x));seg.points.forEach(p=>{if(p.id==='hotel'||seen.has(p.id))return;seen.add(p.id);n++;L.marker(mapPoint(p),{icon:icon(n)}).bindPopup('<b>'+esc(p.title)+'</b>').addTo(routeLayer)});if(points.length>1)L.polyline(points,{color:['#0c9293','#ff806d','#5f78c9'][i%3],weight:4,opacity:.82,dashArray:'8 9'}).addTo(routeLayer)});
+  const bounds=L.latLngBounds(coords);if(bounds.isValid())map.fitBounds(bounds.pad(.18),{maxZoom:14});setTimeout(()=>map.invalidateSize(),50);$('#mapNote').textContent='高德底图：橙色是酒店，蓝色编号是当天地点；坐标已转换，避免定位偏移。';
 }
 function calcDepart(){
   const [h,m]=($('#departureTime').value||'14:00').split(':').map(Number),type=$('#transportType').value,cfg={flight:{name:'胶东机场',lead:180,road:90},qingdao:{name:'青岛站',lead:60,road:20},north:{name:'青岛北站',lead:75,road:60}}[type];let leave=h*60+m-cfg.lead-cfg.road;if(leave<0)leave+=1440;$('#departureResult').innerHTML='建议最晚 <b style="font-size:19px;color:#08777a">'+fmt(leave)+'</b> 从酒店出发去 '+cfg.name+'。遇到大雨或明显拥堵，再提前 20–30 分钟。';
