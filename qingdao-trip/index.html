@@ -292,6 +292,10 @@ async function requestCandidates(text){
 function cleanQuery(text){return String(text).replace(/https?:\/\/\S+/g,' ').replace(/[#【】\[\]<>]/g,' ').replace(/复制|打开小红书|查看笔记|分享|青岛攻略/g,' ').replace(/\s+/g,' ').trim().slice(0,60)}
 async function browserGeocode(text){
   const q=cleanQuery(text);if(!q)return[];
+  try{
+    const arc=new URL('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates');arc.searchParams.set('f','json');arc.searchParams.set('maxLocations','8');arc.searchParams.set('outFields','Match_addr,PlaceName,Type');arc.searchParams.set('countryCode','CHN');arc.searchParams.set('location','120.32,36.06');arc.searchParams.set('distance','60000');arc.searchParams.set('SingleLine',q.replace(/山东省|青岛市|青岛/g,' ').trim()||q);
+    const ar=await fetch(arc),data=await ar.json(),found=(data.candidates||[]).map(x=>({name:x.attributes?.PlaceName||x.address,address:x.attributes?.Match_addr||x.address,lat:Number(x.location?.y),lon:Number(x.location?.x),type:String(x.attributes?.Type||'')})).filter(x=>x.lat>=35.72&&x.lat<=36.48&&x.lon>=119.75&&x.lon<=120.82&&!/^(青岛|青岛市|山东省)$/.test(x.name)&&!/^(City|State|Country)$/.test(x.type)).map(({type,...x})=>x);if(found.length)return found;
+  }catch{}
   const url='https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&countrycodes=cn&accept-language=zh-CN&viewbox=120.0,36.35,120.65,35.75&bounded=1&q='+encodeURIComponent(q.includes('青岛')?q:'青岛 '+q);
   const r=await fetch(url);if(!r.ok)throw new Error('地图搜索失败');const rows=await r.json();return rows.map(x=>({name:x.name||String(x.display_name).split(',')[0],address:x.display_name,lat:Number(x.lat),lon:Number(x.lon)}));
 }
