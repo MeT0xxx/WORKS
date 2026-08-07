@@ -309,7 +309,7 @@ async function recognize(manual=false){
   pendingSource=$('#shareInput').value.trim()||text;
   if(!manual){const existing=bestLocalMatch(text);if(existing){const url=extractUrl(text);if(url){state.links[existing.id]=state.links[existing.id]||[];if(!state.links[existing.id].includes(url))state.links[existing.id].push(url)}if(!state.wish.includes(existing.id))state.wish.push(existing.id);save();renderAll();box.className='result-box success';box.textContent='识别到已有地点“'+existing.title+'”，已保存帖子并加入想去清单。';return}}
   box.className='result-box';box.textContent='正在识别名称和位置…';$('#candidateList').innerHTML='';
-  try{candidates=await requestCandidates(text)}catch{try{candidates=await browserGeocode(text)}catch{candidates=[]}}
+  try{candidates=await requestCandidates(text);if(!candidates.length)candidates=await browserGeocode(text)}catch{try{candidates=await browserGeocode(text)}catch{candidates=[]}}
   if(candidates.length){renderCandidates('找到 '+candidates.length+' 个位置，请选正确的一个。')}
   else{box.className='result-box warn';box.textContent='没有找到准确位置。可换成更完整的店名搜索，或点“地图上选”。'}
 }
