@@ -1,832 +1,140 @@
+Exit code: 0
+Wall time: 6.4 seconds
+Output:
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#e7f7f5" />
-  <title>青岛不赶海｜2026.08.10–08.14</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eaf7f5">
+  <title>青岛 2026｜轻松避暑路线</title>
   <style>
-    :root {
-      --ink: #173b3c;
-      --muted: #668082;
-      --sea: #0d8f91;
-      --sea-deep: #076b70;
-      --foam: #e7f7f5;
-      --sand: #fff7e8;
-      --coral: #ff816d;
-      --coral-soft: #fff0ed;
-      --rain: #526fa7;
-      --line: rgba(23, 59, 60, .12);
-      --card: rgba(255,255,255,.92);
-      --shadow: 0 14px 40px rgba(20, 76, 77, .10);
-      --radius: 24px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: ui-rounded, "SF Pro Rounded", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-      background:
-        radial-gradient(circle at 92% 2%, rgba(255, 196, 120, .28), transparent 23rem),
-        radial-gradient(circle at 5% 16%, rgba(62, 183, 186, .15), transparent 30rem),
-        #f7fbfa;
-      line-height: 1.55;
-    }
-
-    button, input, textarea, select { font: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    a { color: inherit; }
-    button { color: inherit; }
-
-    .shell { width: min(1160px, 100%); margin: 0 auto; padding: 16px 14px 90px; }
-    .hero {
-      position: relative;
-      overflow: hidden;
-      min-height: 390px;
-      padding: 28px 22px 22px;
-      border-radius: 32px;
-      color: white;
-      background:
-        linear-gradient(145deg, rgba(5,103,108,.98), rgba(14,150,151,.90)),
-        #087f83;
-      box-shadow: 0 22px 55px rgba(4, 88, 92, .22);
-    }
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(255,255,255,.10);
-      transform: rotate(-8deg);
-    }
-    .hero::before { width: 470px; height: 80px; left: -90px; bottom: 62px; }
-    .hero::after { width: 380px; height: 58px; right: -120px; top: 38px; }
-    .hero-content { position: relative; z-index: 1; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 11px;
-      border: 1px solid rgba(255,255,255,.28);
-      border-radius: 999px;
-      background: rgba(255,255,255,.10);
-      font-size: 12px;
-      letter-spacing: .06em;
-    }
-    .hero h1 {
-      margin: 18px 0 9px;
-      max-width: 760px;
-      font-size: clamp(38px, 9vw, 76px);
-      line-height: .98;
-      letter-spacing: -.055em;
-      font-weight: 900;
-    }
-    .hero h1 span { color: #ffd791; }
-    .hero-lead { max-width: 700px; margin: 0; color: rgba(255,255,255,.86); font-size: 15px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 24px; }
-    .hero-stat {
-      padding: 14px 15px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 18px;
-      background: rgba(255,255,255,.10);
-      backdrop-filter: blur(8px);
-    }
-    .hero-stat b { display: block; font-size: 15px; }
-    .hero-stat small { color: rgba(255,255,255,.70); }
-    .weather-alert {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 18px;
-      color: #17444a;
-      background: #eef7ff;
-      box-shadow: inset 0 0 0 1px rgba(30,91,105,.10);
-    }
-    .weather-alert .icon { font-size: 23px; }
-    .weather-alert b { display: block; margin-bottom: 2px; }
-    .weather-alert p { margin: 0; color: #4f6c72; font-size: 13px; }
-
-    .quickbar {
-      position: sticky;
-      top: 8px;
-      z-index: 30;
-      display: flex;
-      gap: 8px;
-      margin: 16px 0;
-      padding: 8px;
-      overflow-x: auto;
-      border: 1px solid rgba(255,255,255,.8);
-      border-radius: 19px;
-      background: rgba(247,251,250,.82);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 10px 28px rgba(19,65,66,.08);
-      scrollbar-width: none;
-    }
-    .quickbar::-webkit-scrollbar { display: none; }
-    .quickbar a { flex: 0 0 auto; padding: 9px 12px; border-radius: 12px; text-decoration: none; font-size: 13px; font-weight: 750; }
-    .quickbar a:hover { background: white; }
-
-    .section { margin-top: 24px; }
-    .section-head { display: flex; gap: 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 13px; }
-    .section h2 { margin: 0; font-size: clamp(25px, 6vw, 38px); letter-spacing: -.035em; }
-    .section-kicker { margin: 0 0 3px; color: var(--sea); font-size: 12px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
-    .section-note { margin: 0; color: var(--muted); font-size: 13px; }
-
-    .day-tabs {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(112px, 1fr);
-      gap: 8px;
-      overflow-x: auto;
-      padding: 2px 1px 8px;
-      scrollbar-width: none;
-    }
-    .day-tabs::-webkit-scrollbar { display: none; }
-    .day-tab {
-      cursor: pointer;
-      min-height: 70px;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      text-align: left;
-      background: white;
-      transition: .2s ease;
-    }
-    .day-tab span { display: block; color: var(--muted); font-size: 11px; }
-    .day-tab b { display: block; margin-top: 3px; font-size: 14px; }
-    .day-tab.active { color: white; border-color: transparent; background: var(--sea); box-shadow: 0 10px 24px rgba(13,143,145,.22); transform: translateY(-2px); }
-    .day-tab.active span { color: rgba(255,255,255,.72); }
-
-    .filter-row { display: flex; gap: 8px; overflow-x: auto; padding: 7px 1px 4px; scrollbar-width: none; }
-    .filter-row::-webkit-scrollbar { display: none; }
-    .filter-btn {
-      cursor: pointer;
-      flex: 0 0 auto;
-      padding: 9px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.85);
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .filter-btn.active { color: var(--sea-deep); border-color: rgba(13,143,145,.38); background: #def4f1; }
-
-    .day-summary {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin: 12px 0;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: var(--sand);
-    }
-    .day-summary h3 { margin: 0 0 4px; font-size: 18px; }
-    .day-summary p { margin: 0; color: #6e665b; font-size: 13px; }
-    .sunset-pill { align-self: start; justify-self: start; padding: 7px 10px; border-radius: 999px; color: #7d5017; background: #ffe5b6; font-size: 12px; font-weight: 800; }
-
-    .itinerary-layout { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
-    .timeline { position: relative; display: grid; gap: 12px; }
-    .empty { display: none; padding: 26px; text-align: center; border: 1px dashed rgba(23,59,60,.22); border-radius: 22px; color: var(--muted); }
-    .trip-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: 52px minmax(0, 1fr);
-      gap: 12px;
-      padding: 15px;
-      border: 1px solid rgba(23,59,60,.10);
-      border-radius: 22px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      transition: transform .2s ease, border .2s ease, opacity .2s ease;
-    }
-    .trip-card:hover { transform: translateY(-2px); border-color: rgba(13,143,145,.25); }
-    .trip-card.hidden { display: none; }
-    .trip-card.completed { opacity: .62; }
-    .trip-card.completed .card-title { text-decoration: line-through; }
-    .timebox { padding-top: 3px; text-align: center; }
-    .timebox b { display: block; font-size: 13px; line-height: 1.2; }
-    .timebox small { color: var(--muted); font-size: 10px; }
-    .route-dot { width: 13px; height: 13px; margin: 10px auto 0; border: 3px solid #dff6f3; border-radius: 99px; background: var(--sea); box-shadow: 0 0 0 1px rgba(13,143,145,.20); }
-    .card-top { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; }
-    .card-title { margin: 0; font-size: 18px; line-height: 1.25; letter-spacing: -.015em; }
-    .optional { color: var(--coral); font-size: 11px; font-weight: 850; }
-    .check-wrap { position: relative; flex: 0 0 auto; width: 30px; height: 30px; }
-    .check-wrap input { position: absolute; opacity: 0; }
-    .checkmark { display: grid; place-items: center; width: 30px; height: 30px; cursor: pointer; border: 1.5px solid rgba(23,59,60,.22); border-radius: 50%; background: white; }
-    .check-wrap input:checked + .checkmark { color: white; border-color: var(--sea); background: var(--sea); }
-    .check-wrap input:checked + .checkmark::after { content: "✓"; font-weight: 900; }
-    .card-desc { margin: 7px 0 9px; color: #557174; font-size: 13px; }
-    .meta-row, .tag-row, .action-row, .saved-links { display: flex; flex-wrap: wrap; gap: 7px; }
-    .meta { padding: 5px 8px; border-radius: 9px; color: #526b6e; background: #f1f6f5; font-size: 11px; font-weight: 700; }
-    .tag { padding: 4px 7px; border-radius: 999px; color: #687b7d; border: 1px solid rgba(23,59,60,.10); font-size: 10px; }
-    .tag-row { margin-top: 9px; }
-    .tip {
-      margin-top: 10px;
-      padding: 9px 10px;
-      border-left: 3px solid var(--coral);
-      border-radius: 0 10px 10px 0;
-      color: #6d615f;
-      background: var(--coral-soft);
-      font-size: 12px;
-    }
-    .action-row { margin-top: 11px; }
-    .action {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      min-height: 34px;
-      padding: 7px 10px;
-      border: 0;
-      border-radius: 11px;
-      color: white;
-      background: var(--sea);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-    }
-    .action.secondary { color: var(--ink); background: #f0f5f4; }
-    .action.xhs { color: #7a2a23; background: #ffe9e5; }
-    .saved-links { margin-top: 8px; }
-    .saved-link { display: inline-flex; gap: 5px; align-items: center; max-width: 100%; padding: 5px 8px; border-radius: 9px; color: #796260; background: #fff5f2; font-size: 11px; text-decoration: none; }
-    .saved-link span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-    .map-panel {
-      position: relative;
-      min-height: 420px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 25px;
-      background: #dff3f1;
-      box-shadow: var(--shadow);
-    }
-    #map { position: absolute; inset: 0; }
-    #fallbackMap { width: 100%; height: 100%; min-height: 420px; display: block; }
-    .map-note {
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      z-index: 500;
-      padding: 10px 12px;
-      border-radius: 15px;
-      color: #395c5f;
-      background: rgba(255,255,255,.90);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 24px rgba(23,59,60,.10);
-      font-size: 11px;
-    }
-    .map-note b { color: var(--ink); }
-    .leaflet-control-attribution { font-size: 8px !important; }
-    .map-pin { display: grid; place-items: center; width: 28px; height: 28px; border: 3px solid white; border-radius: 50% 50% 50% 10%; color: white; background: var(--sea); box-shadow: 0 5px 12px rgba(0,0,0,.20); transform: rotate(-45deg); font-weight: 900; font-size: 11px; }
-    .map-pin span { transform: rotate(45deg); }
-    .map-pin.hotel { background: var(--coral); }
-
-    .weather-grid { display: grid; grid-template-columns: repeat(5, minmax(118px, 1fr)); gap: 9px; overflow-x: auto; padding-bottom: 6px; }
-    .weather-card { min-height: 142px; padding: 14px; border: 1px solid var(--line); border-radius: 20px; background: white; }
-    .weather-card.active { border-color: rgba(13,143,145,.42); box-shadow: 0 8px 24px rgba(13,143,145,.10); }
-    .weather-card .date { color: var(--muted); font-size: 11px; }
-    .weather-card .weather-icon { margin: 8px 0 4px; font-size: 27px; }
-    .weather-card b { display: block; }
-    .weather-card p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
-
-    .tool-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-    .tool-card { padding: 18px; border: 1px solid var(--line); border-radius: 24px; background: white; box-shadow: var(--shadow); }
-    .tool-card h3 { margin: 0 0 5px; font-size: 19px; }
-    .tool-card > p { margin: 0 0 13px; color: var(--muted); font-size: 12px; }
-    .field-label { display: block; margin: 11px 0 5px; color: #4b6669; font-size: 12px; font-weight: 800; }
-    textarea, select, input[type="time"] {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid rgba(23,59,60,.16);
-      border-radius: 14px;
-      color: var(--ink);
-      outline: none;
-      background: #f8fbfa;
-    }
-    textarea { min-height: 110px; resize: vertical; }
-    textarea:focus, select:focus, input[type="time"]:focus { border-color: var(--sea); box-shadow: 0 0 0 3px rgba(13,143,145,.10); }
-    .tool-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .primary-btn, .soft-btn {
-      cursor: pointer;
-      padding: 10px 13px;
-      border: 0;
-      border-radius: 12px;
-      font-weight: 850;
-      font-size: 13px;
-    }
-    .primary-btn { color: white; background: var(--sea); }
-    .soft-btn { color: var(--ink); background: #edf4f3; }
-    .recognize-result, .departure-result { min-height: 46px; margin-top: 10px; padding: 11px; border-radius: 13px; color: #557174; background: #f4f8f7; font-size: 12px; }
-    .recognize-result.success { color: #146a56; background: #e8f7ef; }
-    .recognize-result.warn { color: #8a5c18; background: #fff4d8; }
-    .manual-save { display: none; margin-top: 10px; }
-    .manual-save.visible { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
-
-    .principles { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .principle { padding: 15px; border: 1px solid var(--line); border-radius: 19px; background: white; }
-    .principle b { display: block; margin-bottom: 3px; }
-    .principle p { margin: 0; color: var(--muted); font-size: 12px; }
-    details { border: 1px solid var(--line); border-radius: 16px; background: white; }
-    details + details { margin-top: 8px; }
-    summary { cursor: pointer; padding: 13px 14px; font-weight: 800; }
-    details p, details ul { margin: 0; padding: 0 14px 14px; color: var(--muted); font-size: 12px; }
-    details ul { padding-left: 31px; }
-    .source-list { display: grid; gap: 8px; }
-    .source-list a { padding: 11px 13px; border: 1px solid var(--line); border-radius: 14px; background: white; text-decoration: none; font-size: 12px; }
-    footer { margin-top: 30px; padding: 22px 8px; text-align: center; color: var(--muted); font-size: 11px; }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: calc(20px + env(safe-area-inset-bottom));
-      z-index: 1000;
-      max-width: calc(100% - 30px);
-      padding: 11px 15px;
-      border-radius: 999px;
-      color: white;
-      background: rgba(23,59,60,.94);
-      box-shadow: 0 12px 30px rgba(0,0,0,.16);
-      font-size: 12px;
-      transform: translate(-50%, 20px);
-      opacity: 0;
-      pointer-events: none;
-      transition: .25s ease;
-    }
-    .toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-    @media (min-width: 620px) {
-      .shell { padding: 22px 22px 100px; }
-      .hero { padding: 38px 36px 28px; }
-      .hero-grid { grid-template-columns: repeat(3, 1fr); }
-      .day-summary { grid-template-columns: 1fr auto; align-items: center; }
-      .sunset-pill { justify-self: end; }
-      .tool-grid, .principles { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 920px) {
-      .itinerary-layout { grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr); }
-      .map-panel { position: sticky; top: 94px; min-height: 580px; }
-      #fallbackMap { min-height: 580px; }
-      .tool-grid { grid-template-columns: 1.15fr .85fr; }
-      .principles { grid-template-columns: repeat(4, 1fr); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { scroll-behavior: auto !important; transition: none !important; }
-    }
+    :root{--ink:#173b3c;--muted:#648083;--sea:#0d8f91;--coral:#ff806d;--paper:#f7fbfa;--line:rgba(23,59,60,.12);--shadow:0 14px 36px rgba(24,71,73,.10)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(#e8f6f3 0,#f8fbfa 420px);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    button,input,select,textarea{font:inherit}.shell{width:min(1180px,100%);margin:auto;padding:12px 12px 88px}.hero{overflow:hidden;padding:28px 22px;border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(225,246,242,.96));box-shadow:var(--shadow);position:relative}.hero:after{content:"";position:absolute;right:-55px;top:-60px;width:190px;height:190px;border-radius:50%;background:rgba(13,143,145,.10)}.eyebrow{position:relative;z-index:1;color:#377174;font-size:12px;font-weight:850}.hero h1{position:relative;z-index:1;margin:10px 0 8px;font-size:clamp(34px,9vw,64px);line-height:1}.hero h1 span{color:var(--sea)}.hero-lead{position:relative;z-index:1;max-width:740px;margin:0;color:#527174;font-size:14px;line-height:1.8}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:8px;margin-top:20px}.hero-stat{padding:13px 14px;border:1px solid rgba(13,143,145,.13);border-radius:18px;background:rgba(255,255,255,.74)}.hero-stat b,.hero-stat small{display:block}.hero-stat small{margin-top:3px;color:var(--muted);font-size:11px}
+    .quickbar{position:sticky;top:8px;z-index:800;display:flex;gap:5px;width:max-content;max-width:100%;margin:10px auto;padding:6px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);box-shadow:0 9px 24px rgba(23,59,60,.10)}.quickbar a{padding:8px 12px;border-radius:999px;color:#315f62;text-decoration:none;font-size:12px;font-weight:850}.quickbar a:hover{background:#e7f5f3}
+    .section{margin-top:12px;padding:18px;border:1px solid rgba(255,255,255,.72);border-radius:28px;background:rgba(255,255,255,.82);box-shadow:var(--shadow)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}.section-kicker{margin:0 0 3px;color:var(--sea);font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.section h2{margin:0;font-size:24px}.section-note{margin:0;color:var(--muted);font-size:11px}.day-tabs,.filter-row{display:flex;gap:7px;overflow:auto;padding-bottom:5px;scrollbar-width:none}.day-tabs::-webkit-scrollbar,.filter-row::-webkit-scrollbar{display:none}.day-tab,.filter-btn{flex:0 0 auto;cursor:pointer;border:1px solid var(--line);background:#fff;color:#4d6b6e}.day-tab{min-width:112px;padding:10px 11px;border-radius:15px;text-align:left}.day-tab span,.day-tab b{display:block}.day-tab span{font-size:10px}.day-tab b{margin-top:2px;font-size:12px}.day-tab.active,.filter-btn.active{border-color:transparent;color:white;background:var(--sea);box-shadow:0 6px 16px rgba(13,143,145,.23)}.filter-row{margin-top:9px}.filter-btn{padding:8px 10px;border-radius:999px;font-size:11px;font-weight:800}.day-summary{display:grid;gap:8px;margin:10px 0;padding:15px;border-radius:19px;color:white;background:linear-gradient(135deg,#157f82,#3aa6a3)}.day-summary h3,.day-summary p{margin:0}.day-summary h3{font-size:17px}.day-summary p{margin-top:4px;color:rgba(255,255,255,.84);font-size:11px;line-height:1.55}.sunset-pill{align-self:center;width:max-content;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.15);font-size:10px;font-weight:850}
+    .itinerary-layout{display:grid;grid-template-columns:1fr;gap:14px}.route-head{display:grid;gap:10px;padding:15px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,#effaf8,#fff4ec)}.route-head h3,.route-head p{margin:0}.route-head h3{font-size:17px}.route-head p{margin-top:3px;color:var(--muted);font-size:11px;line-height:1.55}.route-stats,.route-actions,.map-legend{display:flex;flex-wrap:wrap;gap:6px}.route-stats span,.map-legend span{padding:6px 8px;border-radius:999px;background:white;color:#4a6a6d;font-size:10px;font-weight:850}.route-actions a,.route-actions button{padding:8px 10px;border:0;border-radius:11px;text-decoration:none;font-size:11px;font-weight:850;cursor:pointer}.route-actions a{color:white;background:var(--sea)}.route-actions button{color:#5b696a;background:#edf3f2}
+    .timeline{margin-top:10px}.trip-card{display:grid;grid-template-columns:58px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}.trip-card.filtered{display:none}.timebox{text-align:center}.timebox b,.timebox small{display:block}.timebox b{font-size:12px}.timebox small{margin-top:2px;color:var(--muted);font-size:9px}.route-dot{width:12px;height:12px;margin:9px auto 0;border:3px solid #dcf4f1;border-radius:50%;background:var(--sea);box-shadow:0 0 0 1px rgba(13,143,145,.25)}.card-top{display:flex;align-items:start;justify-content:space-between;gap:8px}.card-title{margin:0;font-size:16px;line-height:1.35}.start-end{display:inline-block;margin-top:4px;padding:4px 7px;border-radius:999px;color:#a35043;background:#ffe8e3;font-size:9px;font-weight:900}.card-desc{margin:6px 0;color:var(--muted);font-size:11px;line-height:1.6}.meta-row,.tag-row,.action-row{display:flex;flex-wrap:wrap;gap:6px}.meta,.tag{padding:5px 7px;border-radius:999px;background:#edf6f5;color:#4c6b6e;font-size:9px}.tip{margin-top:7px;padding:8px 9px;border-radius:11px;color:#806633;background:#fff7dc;font-size:10px;line-height:1.55}.action-row{margin-top:8px}.action{padding:7px 8px;border:0;border-radius:10px;color:white;background:var(--sea);text-decoration:none;font-size:10px;font-weight:850;cursor:pointer}.action.xhs{color:#a62545;background:#fff0f4}.action.remove{color:#9e4c40;background:#ffe9e4}.check-wrap input{width:18px;height:18px;accent-color:var(--sea)}.trip-card.completed .card-title,.trip-card.completed .card-desc{opacity:.48;text-decoration:line-through}.saved-note{display:block;margin-top:7px;color:#9c2141;font-size:10px}
+    .chooser{margin-top:17px}.chooser-title{display:flex;align-items:end;justify-content:space-between;gap:8px;margin-bottom:8px}.chooser-title h3{margin:0;font-size:17px}.chooser-title small{color:var(--muted);font-size:10px}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.choice-card{display:flex;flex-direction:column;gap:6px;min-height:148px;padding:12px;border:1px solid var(--line);border-radius:17px;background:white}.choice-card.selected{border-color:rgba(13,143,145,.42);background:#effaf8}.choice-card.filtered{display:none}.choice-card h4,.choice-card p{margin:0}.choice-card h4{font-size:13px;line-height:1.35}.choice-card p{color:var(--muted);font-size:10px;line-height:1.5}.mini-tags{display:flex;flex-wrap:wrap;gap:4px}.mini-tags span{color:#46676a;font-size:9px}.choice-actions{display:flex;gap:5px;margin-top:auto}.choice-actions button,.choice-actions a{flex:1;padding:8px 4px;border:0;border-radius:9px;text-align:center;text-decoration:none;font-size:10px;font-weight:850;cursor:pointer}.toggle-route{color:white;background:var(--sea)}.choice-card.selected .toggle-route{color:#9d4d40;background:#ffe7e2}.choice-xhs{color:#a62545;background:#fff0f4}
+    .map-panel{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:#e7f4f2}.map-panel #map{height:500px;min-height:455px}.map-note{padding:11px 13px;color:#547174;background:white;font-size:10px;line-height:1.55}.map-offline{height:100%;display:grid;place-items:center;padding:35px;text-align:center;color:#587477;background:linear-gradient(145deg,#eef8f6,#d8ece9)}.map-offline b{display:block;margin-bottom:7px;color:var(--ink);font-size:16px}.map-pin{display:grid;place-items:center;width:28px;height:28px;border:3px solid white;border-radius:50% 50% 50% 10%;color:white;background:var(--sea);box-shadow:0 5px 12px rgba(0,0,0,.2);transform:rotate(-45deg);font-size:10px;font-weight:900}.map-pin span{transform:rotate(45deg)}.map-pin.hotel{background:var(--coral)}
+    .tool-grid{display:grid;gap:12px}.tool-card{padding:16px;border:1px solid var(--line);border-radius:21px;background:#fff}.tool-card h3,.tool-card p{margin:0}.tool-card h3{font-size:17px}.tool-card>p{margin-top:5px;color:var(--muted);font-size:11px;line-height:1.6}.field-label{display:block;margin:10px 0 5px;color:#4b6669;font-size:11px;font-weight:850}textarea,select,input[type=time]{width:100%;padding:11px;border:1px solid rgba(23,59,60,.18);border-radius:12px;color:var(--ink);background:#f7faf9;outline:none}textarea{min-height:100px;resize:vertical}.tool-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.primary-btn,.soft-btn{padding:9px 11px;border:0;border-radius:10px;font-size:11px;font-weight:850;cursor:pointer}.primary-btn{color:white;background:var(--sea)}.soft-btn{color:var(--ink);background:#edf3f2}.recognize-result,.departure-result{min-height:42px;margin-top:8px;padding:10px;border-radius:11px;color:#557174;background:#f3f7f6;font-size:11px;line-height:1.55}.recognize-result.success{color:#146a56;background:#e8f7ef}.recognize-result.warn{color:#8a5c18;background:#fff4d8}.manual-save{display:none;grid-template-columns:1fr auto;gap:6px;margin-top:8px}.manual-save.visible{display:grid}footer{padding:24px 8px;text-align:center;color:var(--muted);font-size:10px}.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));z-index:1200;padding:10px 14px;border-radius:999px;color:white;background:rgba(23,59,60,.94);font-size:11px;transform:translate(-50%,18px);opacity:0;pointer-events:none;transition:.22s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(min-width:650px){.shell{padding:22px 22px 100px}.hero{padding:38px 36px}.hero-grid{grid-template-columns:repeat(3,1fr)}.day-summary{grid-template-columns:1fr auto;align-items:center}.choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.tool-grid{grid-template-columns:1.1fr .9fr}}
+    @media(min-width:960px){.itinerary-layout{grid-template-columns:minmax(0,1.08fr) minmax(400px,.92fr)}.map-panel{position:sticky;top:82px}.choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   </style>
 </head>
 <body>
-  <main class="shell">
-    <header class="hero">
-      <div class="hero-content">
-        <div class="eyebrow">🌊 两个人 · 5 天 · 松弛避暑版</div>
-        <h1>青岛，<span>不赶海。</span></h1>
-        <p class="hero-lead">2026/8/10–8/14｜住莱阳路 19 号东楼。把正午留给空调、午睡和咖啡，把海风、落日与老城留给傍晚。</p>
-        <div class="hero-grid">
-          <div class="hero-stat"><b>每日主任务 1 个</b><small>其余都是顺路，不为打卡赶路</small></div>
-          <div class="hero-stat"><b>白天也有轻松安排</b><small>只选空调或林荫，不硬晒</small></div>
-          <div class="hero-stat"><b>酒店就是海边基地</b><small>步行约 5–10 分钟到鲁迅公园</small></div>
-        </div>
-        <div class="weather-alert">
-          <div class="icon">🌦️</div>
-          <div><b>先看天气：这几天不是“纯晴天剧本”</b><p>截至 2026/8/7 的预报，10–14 日湿热、多阵雨，12–14 日雨意更明显。网页已把雨天替代写进每一天；雷雨时不要靠近礁石、海堤和孤立树木。</p></div>
-        </div>
+<main class="shell">
+  <header class="hero">
+    <div class="eyebrow">🌊 两个女生 · 5 天 · 自由选路线</div>
+    <h1>青岛，<span>慢慢逛。</span></h1>
+    <p class="hero-lead">2026/8/10–8/14｜住市南区莱阳路 19 号东楼。白天不排任务，傍晚从酒店出发，想去哪里自己选，路线和时间会自动更新。</p>
+    <div class="hero-grid">
+      <div class="hero-stat"><b>每天酒店往返</b><small>顺着一个方向逛，最后打车回酒店</small></div>
+      <div class="hero-stat"><b>景点随时加减</b><small>栈桥、逛街、海边夜景都可选</small></div>
+      <div class="hero-stat"><b>白天完全留白</b><small>睡觉、外卖、咖啡都随意</small></div>
+    </div>
+  </header>
+  <nav class="quickbar"><a href="#plan">选路线</a><a href="#tools">存攻略</a><a href="#departure">返程</a></nav>
+  <section class="section" id="plan">
+    <div class="section-head"><div><p class="section-kicker">Pick & go</p><h2>想去哪里，自己勾</h2></div><p class="section-note" id="progressText">已完成 0 / 0</p></div>
+    <div class="day-tabs" id="dayTabs"></div>
+    <div class="filter-row" id="filters"></div>
+    <div class="day-summary" id="daySummary"></div>
+    <div class="itinerary-layout">
+      <div>
+        <div class="route-head" id="routeHead"></div>
+        <div class="timeline" id="timeline"></div>
+        <div class="chooser"><div class="chooser-title"><h3>顺路可选</h3><small>加入后自动重排</small></div><div class="choice-grid" id="choiceGrid"></div></div>
       </div>
-    </header>
-
-    <nav class="quickbar" aria-label="页面导航">
-      <a href="#plan">行程</a><a href="#weather">天气</a><a href="#tools">小红书收藏</a><a href="#departure">返程计算</a>
-    </nav>
-
-    <section class="section" id="plan">
-      <div class="section-head">
-        <div><p class="section-kicker">The easy route</p><h2>今天，只玩这一小片</h2></div>
-        <p class="section-note" id="progressText">已完成 0 / 0</p>
-      </div>
-      <div class="day-tabs" id="dayTabs" role="tablist"></div>
-      <div class="filter-row" id="filters" aria-label="行程筛选"></div>
-      <div class="day-summary" id="daySummary"></div>
-      <div class="itinerary-layout">
-        <div>
-          <div class="timeline" id="timeline"></div>
-          <div class="empty" id="emptyState">这个筛选下没有项目，换个标签看看。</div>
-        </div>
-        <aside class="map-panel" aria-label="行程地图">
-          <div id="map"><svg id="fallbackMap" viewBox="0 0 600 620" role="img" aria-label="青岛行程示意地图"></svg></div>
-          <div class="map-note" id="mapNote"><b>按当天顺序连线</b> · 点地点可定位，再点导航即可打开真实地图。</div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="weather">
-      <div class="section-head"><div><p class="section-kicker">Weather switch</p><h2>先看云，再决定几点走</h2></div></div>
-      <div class="weather-grid" id="weatherGrid"></div>
-      <div class="tool-card" style="margin-top:10px; box-shadow:none; background:#eef7ff;">
-        <h3 style="font-size:16px;">每天 15:30 做一次决定</h3>
-        <p style="margin-bottom:0;">雷达图显示雷雨：留在室内；停雨但地面湿：老城咖啡/中山路；连续 1 小时无雷电：再去海边。海边风大时体感更凉，带一件薄外套和可折叠雨衣。</p>
-      </div>
-    </section>
-
-    <section class="section" id="tools">
-      <div class="section-head"><div><p class="section-kicker">Save your finds</p><h2>把小红书收藏放回行程</h2></div></div>
-      <div class="tool-grid">
-        <div class="tool-card explainer" style="display:none">
-          <h3>粘贴分享文本 / 链接</h3>
-          <p>最好粘贴小红书生成的整段分享文案（通常含标题、地点词和链接），地点识别会更准。</p>
-          <label class="field-label" for="shareInput">分享内容</label>
-          <textarea id="shareInput" placeholder="例如：周末去青岛一定要看小鱼山日落… http://xhslink.com/…"></textarea>
-          <div class="tool-actions"><button class="primary-btn" id="recognizeBtn">识别并保存</button><button class="soft-btn" id="clearInputBtn">清空</button></div>
-          <div class="recognize-result" id="recognizeResult">尚未识别。内容只保存在本机浏览器，不会上传。</div>
-          <div class="manual-save" id="manualSave">
-            <select id="manualPlace" aria-label="手动选择地点"></select><button class="soft-btn" id="manualSaveBtn">存到这里</button>
-          </div>
-        </div>
-        <div class="tool-card">
-          <h3>为什么短链接不能自动读地点？</h3>
-          <p>单文件网页直接读取小红书页面时，会遇到跨域、登录与反爬限制。这里采用可用的三级降级：</p>
-          <div class="principles" style="grid-template-columns:1fr;">
-            <div class="principle"><b>① 文案识别</b><p>先从分享标题/正文匹配“小鱼山、琴屿路”等地点与别名。</p></div>
-            <div class="principle"><b>② 手动归档</b><p>若只有 xhslink 短链，选择一个地点即可保存到对应卡片。</p></div>
-            <div class="principle"><b>③ 搜索兜底</b><p>每张卡都带小红书地点搜索入口，不依赖某篇帖子长期有效。</p></div>
-          </div>
-          <div class="tool-actions"><button class="soft-btn" id="clearSavedBtn">清除已保存的小红书链接</button></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="departure">
-      <div class="section-head"><div><p class="section-kicker">Day 5 helper</p><h2>返程别卡点</h2></div></div>
-      <div class="tool-card">
-        <h3>输入 8 月 14 日的出发时间</h3>
-        <p>航班按起飞时间、火车按发车时间估算；遇雨与暑期客流会额外留出缓冲。</p>
-        <div class="tool-grid" style="grid-template-columns:1fr 1fr; gap:9px;">
-          <div><label class="field-label" for="transportType">交通方式</label><select id="transportType"><option value="flight">胶东机场 · 飞机</option><option value="qingdao">青岛站 · 高铁/火车</option><option value="north">青岛北站 · 高铁/火车</option></select></div>
-          <div><label class="field-label" for="departureTime">起飞 / 发车时间</label><input id="departureTime" type="time" value="14:00" /></div>
-        </div>
-        <div class="departure-result" id="departureResult"></div>
-      </div>
-    </section>
-
-    <section class="section" id="notes" style="display:none">
-      <div class="section-head"><div><p class="section-kicker">Keep it breezy</p><h2>这趟旅行的四条规则</h2></div></div>
-      <div class="principles">
-        <div class="principle"><b>☀️ 12–15 点不硬走</b><p>午睡、外卖、咖啡、海底世界雨天备选。防晒不是意志力比赛。</p></div>
-        <div class="principle"><b>🌇 日落前 60–80 分到</b><p>2026/8/10–14 青岛日落约在 18:54–18:59，云层也会提前吞掉夕阳。</p></div>
-        <div class="principle"><b>🚕 跨片区直接打车</b><p>两个人从市南去八大峡、小麦岛，短途打车通常比换乘更省体力。</p></div>
-        <div class="principle"><b>🧯 雷雨不靠海边</b><p>小麦岛、八大峡礁石、琴屿路海堤在雷电或大浪时直接取消。</p></div>
-      </div>
-      <div style="margin-top:14px;">
-        <details open><summary>小鱼山怎么拍更轻松？</summary><p>从大学路/鱼山路一侧慢慢走上去，17:30 左右入园，先看红瓦老城，再等光线变软。入口与停止入园时间可能临时调整，出发前点地图或官方信息确认；如果来不及，山脚大学路—龙江路照样好逛。</p></details>
-        <details><summary>琴屿路为什么放在第一天？</summary><p>它离酒店非常近，落地当天不用跨城。鲁迅公园—琴屿路—小青岛是一条连续海岸线，随时可以缩短：累了就在琴屿路看完落日回酒店。</p></details>
-        <details><summary>小麦岛值不值得专门去？</summary><p>值得，但它是本行程唯一一次明显向东跨区。只在天气稳定时去，主任务就是草地、海风和日落；奥帆中心灯光只是“有电再加”，不要为了灯光秀赶车。</p></details>
-        <details><summary>吃海鲜怎么少踩坑？</summary><p>先问时价和总价、确认加工费、保留点菜单；两个人不必点大份活海鲜。更稳妥的是鲅鱼水饺、锅贴、家常海鲜、啤酒屋的小份菜。未成年人不饮酒。</p></details>
-      </div>
-    </section>
-
-    <section class="section" id="sources" style="display:none">
-      <div class="section-head"><div><p class="section-kicker">Checked 2026.08.07</p><h2>出发前再点一次</h2></div></div>
-      <div class="source-list">
-        <a href="https://weather.cma.cn/web/weather/54857.html" target="_blank" rel="noopener">🌦 中央气象台 · 青岛实时天气与预报</a>
-        <a href="https://www.xiaohongshu.com/search_result?keyword=%E9%9D%92%E5%B2%9B%E9%81%BF%E6%9A%91%E6%97%85%E8%A1%8C%E6%94%BB%E7%95%A5&source=web_search_result_notes" target="_blank" rel="noopener">📕 小红书 · 青岛避暑旅行攻略搜索</a>
-        <a href="https://uri.amap.com/search?keyword=%E9%9D%92%E5%B2%9B%E5%B8%82%E5%B8%82%E5%8D%97%E5%8C%BA%E8%8E%B1%E9%98%B3%E8%B7%AF19%E5%8F%B7&city=%E9%9D%92%E5%B2%9B&src=qingdao_trip&callnative=1" target="_blank" rel="noopener">📍 高德地图 · 酒店地址核对</a>
-        <a href="http://whlyj.qingdao.gov.cn/" target="_blank" rel="noopener">🏛 青岛市文化和旅游局 · 景区临时通知</a>
-      </div>
-    </section>
-
-    <footer>行程版本 2026.08.07 · 天气、开放时间、灯光秀与交通管制可能临时变化。网页会记住打卡与自存链接；换浏览器或清理数据后会重置。</footer>
-  </main>
-
-  <div class="toast" id="toast" role="status"></div>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    const HOTEL = { lat: 36.0553735, lon: 120.3276301, title: '莱阳路19号东楼（青岛幸町德式海景别墅）' };
-    const days = [
-      { id:'0810', short:'8/10 周一', title:'落地后的海风小环线', subtitle:'不跨区、不爬坡，走到哪算哪。主任务：琴屿路日落。', sunset:'约 18:59', weather:'31/26℃ · 湿热阵雨', icon:'🌦️', plan:'落地＋近邻海岸' },
-      { id:'0811', short:'8/11 周二', title:'红瓦老城与小鱼山', subtitle:'下午先在大学路慢逛，等太阳变软再上山。主任务：小鱼山。', sunset:'约 18:58', weather:'30/26℃ · 雷雨转风', icon:'⛈️', plan:'老城＋山顶晚霞' },
-      { id:'0812', short:'8/12 周三', title:'雨天弹性日＋八大峡', subtitle:'白天优先室内；只有停雨且无雷电，傍晚才去八大峡。', sunset:'约 18:57', weather:'29/23℃ · 降雨概率高', icon:'🌧️', plan:'室内备选＋西岸日落' },
-      { id:'0813', short:'8/13 周四', title:'小麦岛的最后一个长傍晚', subtitle:'唯一一次向东跨区。主任务：小麦岛；灯光秀只是加餐。', sunset:'约 18:56', weather:'27/24℃ · 阵雨转阴', icon:'🌦️', plan:'草地海岸＋可选夜景' },
-      { id:'0814', short:'8/14 周五', title:'不塞景点的返程日', subtitle:'收行李、吃早饭；时间与天气都允许，再去附近看一眼海。', sunset:'约 18:54', weather:'27/21℃ · 有雨可能', icon:'🌧️', plan:'早餐＋从容返程' }
-    ];
-
-    const places = [
-      { id:'arrival', day:'0810', time:'12:00', end:'15:20', title:'胶东机场 → 酒店', desc:'落地后不排景点。两人带行李，优先网约车/出租车直达；想省预算再考虑地铁 8 号线转 3 号线。', transport:'车程约 60–90 分', walk:'少走路', tags:['怕晒'], tip:'航班落地后至少留 45–60 分钟给取行李与排队。', map:false, xhs:'青岛胶东机场 到市南区 交通攻略', amap:'青岛市市南区莱阳路19号' },
-      { id:'rest', day:'0810', time:'15:20', end:'17:10', title:'入住、补水、睡一会儿', desc:'酒店就是这趟旅行最重要的“避暑景点”。先洗澡、充电、点一点吃的，17 点后再看云量。', transport:'原地休息', walk:'0 km', tags:['怕晒','吃饭'], tip:'如果航班延误，直接从琴屿路开始，鲁迅公园可以第二天补。', lat:HOTEL.lat, lon:HOTEL.lon, xhs:'青岛 莱阳路 住宿 琴屿路', amap:'青岛市市南区莱阳路19号' },
-      { id:'luxun', day:'0810', time:'17:15', end:'17:50', title:'鲁迅公园｜树荫下醒醒神', desc:'从酒店步行进入海岸线。红礁、松树和海面都很出片，但不用下到湿滑礁石。', transport:'酒店步行约 5–8 分', walk:'园内约 0.8 km', tags:['怕晒','拍照','海边'], tip:'雨后岩石很滑；风浪大就只走上层步道。', lat:36.055246, lon:120.328505, xhs:'青岛 鲁迅公园 琴屿路 拍照路线', amap:'鲁迅公园 青岛' },
-      { id:'qinyu', day:'0810', time:'17:50', end:'18:40', title:'琴屿路｜沿海慢慢走', desc:'第一天的核心段。靠近海边的咖啡店可能排队，不必执着窗边位，海堤本身就很好看。', transport:'鲁迅公园顺路步行', walk:'约 0.7 km', tags:['拍照','海边'], tip:'日落前人最多，拍照时别占自行车与行人通道。', lat:36.0536255, lon:120.3253261, xhs:'青岛 琴屿路 日落 机位 攻略', amap:'琴屿路 青岛' },
-      { id:'xiaoqingdao', day:'0810', time:'18:40', end:'19:20', title:'小青岛西侧｜看落日落进海里', desc:'体力允许就走到小青岛；若入口临近停止入园，留在琴屿路西段同样能看日落。', transport:'琴屿路步行约 8–12 分', walk:'往返约 1 km', tags:['拍照','海边','夜景'], tip:'把“进公园”当可选，不为了关门时间小跑；当日开放时间以现场为准。', lat:36.0530522, lon:120.3186894, xhs:'青岛 小青岛 琴屿路 日落 攻略', amap:'小青岛公园 青岛' },
-      { id:'huangxian', day:'0810', time:'19:40', end:'21:00', title:'黄县路 / 龙江路｜附近吃晚饭', desc:'选有空位、菜单清楚的小店，鲅鱼水饺、锅贴、家常海鲜都可以；不追长队网红店。', transport:'打车约 8–12 分', walk:'街区内少量步行', tags:['怕晒','吃饭','夜景'], tip:'两个人少点一点，吃完还能散步回酒店。', lat:36.061127, lon:120.329358, xhs:'青岛 黄县路 龙江路 美食 不排队', amap:'黄县路 青岛' },
-
-      { id:'slowmorning', day:'0811', time:'上午', end:'16:00', title:'睡到自然醒｜白天不设任务', desc:'早餐、补给、防晒、看天气雷达。需要出门就去附近便利店或咖啡馆，避开正午爬坡。', transport:'酒店周边', walk:'0–0.5 km', tags:['怕晒','吃饭'], tip:'雷雨过后仍要等一段时间，确认没有继续打雷再上山。', lat:HOTEL.lat, lon:HOTEL.lon, xhs:'青岛 市南区 咖啡店 大学路', amap:'青岛市市南区莱阳路19号' },
-      { id:'daxue', day:'0811', time:'16:10', end:'17:20', title:'大学路 × 龙江路｜树影老城', desc:'红墙只拍几张就走，把时间留给支路、书店和小咖啡馆。这里适合边走边休息。', transport:'酒店步行约 15–20 分', walk:'约 1.2 km', tags:['怕晒','拍照','吃饭'], tip:'网红墙排队长时，从斜对面或附近支路取景更轻松。', lat:36.060178, lon:120.331098, xhs:'青岛 大学路 龙江路 拍照 路线', amap:'大学路网红墙 青岛' },
-      { id:'xiaoyushan', day:'0811', time:'17:25', end:'19:05', title:'小鱼山｜红瓦、海与晚霞', desc:'缓坡加台阶不算长，但湿热天要慢。先看老城全景，18:30 后光线最柔。', transport:'大学路步行约 8–12 分', walk:'园内约 0.8 km', tags:['怕晒','拍照','海边'], tip:'通常晚间有停止入园时间；出发前用地图或官方渠道确认，当天不为上山赶路。', lat:36.0586672, lon:120.331275, xhs:'青岛 小鱼山 日落 拍照 机位 2026', amap:'小鱼山公园 青岛' },
-      { id:'longjiangdinner', day:'0811', time:'19:15', end:'21:00', title:'鱼山路 / 龙江路｜山下晚饭', desc:'不再跨片区。找空调足、评价稳定的家常馆，吃完顺坡回酒店。', transport:'小鱼山步行约 8–15 分', walk:'约 1 km', tags:['怕晒','吃饭','夜景'], tip:'今天有爬坡，饭后不额外加栈桥或台东。', lat:36.060155, lon:120.333557, xhs:'青岛 鱼山路 龙江路 本地人美食', amap:'鱼山路 青岛' },
-
-      { id:'aquarium', day:'0812', time:'14:30', end:'17:00', title:'青岛海底世界｜雨天才启用', desc:'它就在酒店旁，适合大雨/高温时补一个轻松的室内项目；若天气干爽，就把这段留给午睡。', transport:'酒店步行约 3–5 分', walk:'室内约 1.5–2 km', tags:['怕晒','拍照'], optional:true, tip:'暑期可能客流大，提前看官方票务与当日入园提示；不想看展馆可直接跳过。', lat:36.0569155, lon:120.3308264, xhs:'青岛海底世界 避坑 游玩时长 2026', amap:'青岛海底世界' },
-      { id:'badaxia', day:'0812', time:'17:30', end:'18:35', title:'八大峡广场｜停雨才去', desc:'开阔海岸、堤坝与城市天际线很适合傍晚。今天唯一判断标准：无雷电、风浪不大、地面不滑。', transport:'酒店打车约 15–25 分', walk:'约 1 km', tags:['拍照','海边'], tip:'雷雨、浪大或能见度差时直接取消，改中山路室内慢逛。', lat:36.052885, lon:120.3048106, xhs:'青岛 八大峡广场 日落 拍照 机位', amap:'八大峡广场 青岛' },
-      { id:'xilingxia', day:'0812', time:'18:35', end:'19:15', title:'西陵峡路｜把日落走完', desc:'沿海边走一小段就好，不追求走完全程。这里比热门浴场更开阔，适合剪影。', transport:'八大峡顺路步行', walk:'约 0.8 km', tags:['拍照','海边'], tip:'礁石与防波堤不是必去机位；穿防滑鞋，天黑前回到主路。', lat:36.056259, lon:120.305653, xhs:'青岛 西陵峡路 八大峡 拍照 路线', amap:'西陵峡一路 青岛' },
-      { id:'zhongshan', day:'0812', time:'19:35', end:'21:30', title:'银鱼巷 × 中山路｜雨夜也能逛', desc:'先吃饭，再看老建筑夜景。街区可随时进店躲雨，是八大峡取消后的完整替代。', transport:'八大峡打车约 10–15 分', walk:'街区约 1–1.5 km', tags:['怕晒','拍照','夜景','吃饭'], tip:'主街商业化较高，把它当作好走、好躲雨的晚饭街区即可。', lat:36.0670095, lon:120.3093943, xhs:'青岛 银鱼巷 中山路 夜游 美食', amap:'银鱼巷 青岛' },
-
-      { id:'lateleave', day:'0813', time:'上午', end:'15:50', title:'上午清空｜把体力留给小麦岛', desc:'睡觉、整理照片、叫外卖。15:30 看雷达和风力，天气不稳就取消跨区。', transport:'酒店休息', walk:'0 km', tags:['怕晒','吃饭'], tip:'小麦岛开阔无遮阴，提前出门并不会更好玩。', lat:HOTEL.lat, lon:HOTEL.lon, xhs:'青岛 小麦岛 天气 日落 攻略', amap:'青岛市市南区莱阳路19号' },
-      { id:'maidaomeal', day:'0813', time:'16:20', end:'17:00', title:'麦岛路附近｜先吃点东西', desc:'先在岛外解决简餐或买水，避免饿着等日落。不要把正餐押在岛内。', transport:'酒店打车约 35–50 分', walk:'少量步行', tags:['怕晒','吃饭'], tip:'晚高峰可能堵车，宁愿少逛一段，也不早到岛上晒。', lat:36.060652, lon:120.421767, xhs:'青岛 麦岛路 小麦岛 附近美食', amap:'麦岛路 青岛' },
-      { id:'xiaomaidao', day:'0813', time:'17:00', end:'19:20', title:'小麦岛｜草地、海风、最后的长日落', desc:'从桥头进岛后不必绕完整圈，选草地与南侧海岸慢待。把日落和蓝调时刻都留在这里。', transport:'岛外步行进入', walk:'约 2–3 km', tags:['拍照','海边','夜景'], tip:'岛上遮阴少、补给少；雷雨和大风直接取消。垃圾随身带走。', lat:36.0542053, lon:120.4259284, xhs:'青岛 小麦岛 日落 草地 拍照 攻略', amap:'小麦岛公园 青岛' },
-      { id:'olympic', day:'0813', time:'20:00', end:'21:10', title:'奥帆中心｜有电再加的夜景', desc:'如果两个人都不累，再打车去浮山湾看城市夜景；灯光秀是否播放、具体时间以当日公告为准。', transport:'小麦岛打车约 15–25 分', walk:'约 1 km', tags:['拍照','海边','夜景'], optional:true, tip:'错过灯光秀也没关系，湾区普通夜景已经足够；累了就直接回酒店。', lat:36.0571141, lon:120.3937671, xhs:'青岛 奥帆中心 五四广场 夜景 灯光秀 2026', amap:'青岛奥帆中心' },
-
-      { id:'breakfast', day:'0814', time:'08:30', end:'10:00', title:'附近早餐＋收行李', desc:'返程日不安排跨区景点。吃清淡一点，检查证件、充电器、雨伞和随身液体。', transport:'酒店周边', walk:'0–0.5 km', tags:['怕晒','吃饭'], tip:'具体退房与出发时间，用下方返程计算器倒推。', lat:HOTEL.lat, lon:HOTEL.lon, xhs:'青岛 市南区 早餐 莱阳路', amap:'青岛市市南区莱阳路19号' },
-      { id:'lastsea', day:'0814', time:'机动', end:'最多 40 分', title:'琴屿路再看一眼海｜完全可删', desc:'只有无雨、行李已收好、距离建议离店时间仍有 2 小时时才去；否则在酒店休息。', transport:'酒店步行往返', walk:'约 1 km', tags:['拍照','海边'], optional:true, tip:'返程日的“留白”比补打卡更重要。', lat:36.0536255, lon:120.3253261, xhs:'青岛 琴屿路 清晨 人少', amap:'琴屿路 青岛' },
-      { id:'depart', day:'0814', time:'按计算器', end:'出发', title:'从酒店去机场 / 车站', desc:'下雨与暑期客流都可能放大路上时间。提前叫车，不把最后一顿饭安排在交通枢纽外。', transport:'见返程计算器', walk:'少走路', tags:['怕晒'], tip:'胶东机场距离市区较远；青岛站很近，但也要给安检与进站留足时间。', lat:HOTEL.lat, lon:HOTEL.lon, xhs:'青岛 胶东机场 返程 提前多久', amap:'青岛市市南区莱阳路19号' }
-    ];
-
-    // Second pass: keep the hottest hours useful without turning the trip into a checklist.
-    // The route follows the recurring public Xiaohongshu themes: hotel-nearby west-coast loop,
-    // Badaguan/Little Fish Hill old-town photo line, rainy-day indoor fallback, and Xiaomaidao sunset.
-    Object.assign(days.find(d=>d.id==='0810'), { title:'落地＋海底世界＋琴屿路日落', subtitle:'先用室内项目缓冲航班，再走酒店旁的鲁迅公园—琴屿路—小青岛。主任务：落日。' });
-    Object.assign(days.find(d=>d.id==='0811'), { title:'八大关林荫路＋小鱼山', subtitle:'上午拍树影和海边，午后休息，傍晚大学路—小鱼山—龙江路。主任务：老城晚霞。' });
-    Object.assign(days.find(d=>d.id==='0812'), { title:'雨天室内＋八大峡弹性线', subtitle:'白天商场和咖啡，停雨无雷电再去八大峡；下雨就留在中山路。主任务：看当天云。' });
-    Object.assign(days.find(d=>d.id==='0813'), { title:'香港中路＋小麦岛日落', subtitle:'白天室内慢逛，傍晚只去小麦岛；奥帆中心夜景看体力。主任务：草地海风。' });
-    const byId = id => places.find(p => p.id === id);
-    Object.assign(byId('rest'), {
-      time:'14:20', end:'15:00', title:'入住、吃点东西、换轻便衣服',
-      desc:'把行李放下、补水、防晒，15 点准时去室内项目；不因为刚落地就急着逛。',
-      transport:'原地休息', walk:'0 km', tags:['怕晒','吃饭'],
-      tip:'航班晚点就删掉室内项目，直接把第一天海岸线缩短成琴屿路日落。', lat:HOTEL.lat, lon:HOTEL.lon
-    });
-    Object.assign(byId('aquarium'), {
-      day:'0810', time:'15:00', end:'17:00', title:'青岛海底世界｜午后避热',
-      desc:'离酒店很近，作为落地日的空调缓冲；看完再去鲁迅公园和琴屿路，动线不会折返。',
-      transport:'酒店步行约 3–5 分', walk:'室内约 1.5–2 km', tags:['怕晒','拍照'],
-      tip:'暑期客流可能较大，现场排队长就缩短参观时间，把落日留给海边。', xhs:'青岛海底世界 避暑 游玩时长 攻略', amap:'青岛海底世界'
-    });
-    Object.assign(byId('slowmorning'), {
-      day:'0811', time:'09:30', end:'12:00', title:'八大关林荫路｜花石楼外观＋海边树影',
-      desc:'早上先走一段树荫多的八大关，不安排展馆；第二海水浴场只看海、不下水也可以。',
-      transport:'酒店打车约 8–12 分', walk:'约 1.5 km', tags:['拍照','海边','怕晒'],
-      tip:'只走林荫主路和海边上层步道，感觉晒就提前回酒店午饭。', lat:36.05098, lon:120.35018,
-      xhs:'青岛 八大关 花石楼 第二海水浴场 早上 拍照', amap:'八大关风景区 青岛'
-    });
-    places.push({
-      id:'noonbreak', day:'0811', time:'12:00', end:'15:40', title:'午饭＋空调休息｜把体力留给小鱼山',
-      desc:'回酒店附近吃饭、午睡、整理照片；15:40 看云量后再去大学路。它是计划内的休息，不是空白。',
-      transport:'打车约 8–12 分回酒店', walk:'0–0.5 km', tags:['怕晒','吃饭'], tip:'如果下雨，大学路换成咖啡店；如果雷雨，小鱼山顺延到第二天。', lat:HOTEL.lat, lon:HOTEL.lon,
-      xhs:'青岛 市南区 午餐 咖啡 酒店附近', amap:'青岛市市南区莱阳路19号'
-    });
-    places.push({
-      id:'midday12', day:'0812', time:'11:00', end:'15:30', title:'海信广场 / 万象城｜雨天室内逛',
-      desc:'把下雨的白天用在商场、咖啡和午饭，不看博物馆；天气转好再去八大峡，转差就直接中山路夜逛。',
-      transport:'打车约 20–30 分', walk:'商场内随意', tags:['怕晒','吃饭'], tip:'不需要买东西，找一处坐下来吹空调即可。', lat:36.0644243, lon:120.3754398,
-      xhs:'青岛 海信广场 万象城 雨天 攻略', amap:'海信广场 青岛'
-    });
-    Object.assign(byId('lateleave'), {
-      day:'0813', time:'11:00', end:'15:20', title:'香港中路室内慢逛｜午饭＋咖啡',
-      desc:'小麦岛前先安排一段白天的室内活动，逛商场、吃午饭、补水，不在大太阳下耗体力。',
-      transport:'酒店打车约 20–30 分', walk:'商场内随意', tags:['怕晒','吃饭'], tip:'15:20 看雷达，只有无雷电、风浪小才去小麦岛。', lat:36.0644243, lon:120.3754398,
-      xhs:'青岛 香港中路 海信广场 午餐 咖啡', amap:'海信广场 青岛'
-    });
-    const aliases = {
-      arrival:['胶东机场','机场'], rest:['莱阳路19号','酒店','民宿'], luxun:['鲁迅公园'], qinyu:['琴屿路','琴岛路'], xiaoqingdao:['小青岛'], huangxian:['黄县路','龙江路'],
-      slowmorning:['莱阳路','酒店'], daxue:['大学路','网红墙'], xiaoyushan:['小鱼山'], longjiangdinner:['鱼山路','龙江路'], aquarium:['海底世界','水族馆'],
-      badaxia:['八大峡','八大峡广场'], xilingxia:['西陵峡','西陵峡路'], zhongshan:['银鱼巷','中山路','天主教堂'], lateleave:['酒店'], maidaomeal:['麦岛路'],
-      xiaomaidao:['小麦岛','麦岛公园'], olympic:['奥帆中心','五四广场','浮山湾','灯光秀'], breakfast:['早餐'], lastsea:['琴屿路'], depart:['机场','青岛站','青岛北站']
-    };
-    const tagIcons = { '怕晒':'☂️ 怕晒', '拍照':'📷 拍照', '海边':'🌊 海边', '夜景':'✨ 夜景', '吃饭':'🥟 吃饭' };
-    let activeDay = '0810';
-    let activeTags = new Set();
-    let leafletMap = null;
-    let markerLayer = null;
-    let routeLine = null;
-    let lastPastedUrl = '';
-    const state = {
-      completed: JSON.parse(localStorage.getItem('qd_trip_completed') || '{}'),
-      links: JSON.parse(localStorage.getItem('qd_trip_links') || '{}')
-    };
-
-    const $ = (s) => document.querySelector(s);
-    const escapeHTML = (s='') => String(s).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-    const xhsUrl = q => 'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent(q) + '&source=web_search_result_notes';
-    const amapUrl = q => 'https://uri.amap.com/search?keyword=' + encodeURIComponent(q) + '&city=' + encodeURIComponent('青岛') + '&src=qingdao_trip&callnative=1';
-    const timeRank = value => {
-      const m = String(value).match(/(\d{1,2}):(\d{2})/);
-      if (m) return Number(m[1]) * 60 + Number(m[2]);
-      if (value === '上午') return 0;
-      if (value === '机动') return 960;
-      return 1500;
-    };
-    const orderedDayItems = day => places.filter(p => p.day === day).sort((a,b) => timeRank(a.time) - timeRank(b.time));
-    const activeItems = () => orderedDayItems(activeDay).filter(p => !activeTags.size || p.tags.some(t => activeTags.has(t)));
-
-    function renderTabs() {
-      $('#dayTabs').innerHTML = days.map(d => `<button class="day-tab ${d.id===activeDay?'active':''}" data-day="${d.id}" role="tab" aria-selected="${d.id===activeDay}"><span>${d.short}</span><b>${d.plan}</b></button>`).join('');
-      document.querySelectorAll('.day-tab').forEach(btn => btn.addEventListener('click', () => { activeDay = btn.dataset.day; renderAll(); }));
-    }
-
-    function renderFilters() {
-      $('#filters').innerHTML = `<button class="filter-btn ${activeTags.size===0?'active':''}" data-tag="all">全部</button>` + Object.entries(tagIcons).map(([tag,label]) => `<button class="filter-btn ${activeTags.has(tag)?'active':''}" data-tag="${tag}">${label}</button>`).join('');
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
-        const tag = btn.dataset.tag;
-        if (tag === 'all') activeTags.clear(); else activeTags.has(tag) ? activeTags.delete(tag) : activeTags.add(tag);
-        renderAll(false);
-      }));
-    }
-
-    function renderSummary() {
-      const d = days.find(x => x.id === activeDay);
-      $('#daySummary').innerHTML = `<div><h3>${d.title}</h3><p>${d.subtitle}｜${d.weather}</p></div><div class="sunset-pill">🌅 日落 ${d.sunset}</div>`;
-    }
-
-    function renderTimeline() {
-      const filtered = activeItems();
-      const allDay = orderedDayItems(activeDay);
-      $('#timeline').innerHTML = allDay.map((p, idx) => {
-        const hidden = activeTags.size && !p.tags.some(t => activeTags.has(t));
-        const saved = state.links[p.id] || [];
-        return `<article class="trip-card ${hidden?'hidden':''} ${state.completed[p.id]?'completed':''}" data-id="${p.id}">
-          <div class="timebox"><b>${escapeHTML(p.time)}</b><small>${escapeHTML(p.end)}</small><div class="route-dot"></div></div>
-          <div>
-            <div class="card-top"><div><h3 class="card-title">${idx+1}. ${escapeHTML(p.title)}</h3>${p.optional?'<span class="optional">可选 · 累了就删</span>':''}</div><label class="check-wrap" aria-label="标记完成"><input type="checkbox" data-check="${p.id}" ${state.completed[p.id]?'checked':''}><span class="checkmark"></span></label></div>
-            <p class="card-desc">${escapeHTML(p.desc)}</p>
-            <div class="meta-row"><span class="meta">🚶 ${escapeHTML(p.walk)}</span><span class="meta">🚕 ${escapeHTML(p.transport)}</span></div>
-            <div class="tag-row">${p.tags.map(t => `<span class="tag">${tagIcons[t]}</span>`).join('')}</div>
-            <div class="tip">${escapeHTML(p.tip)}</div>
-            <div class="action-row">
-              <a class="action" href="${amapUrl(p.amap)}" target="_blank" rel="noopener">↗ 高德导航</a>
-              <a class="action xhs" href="${xhsUrl(p.xhs)}" target="_blank" rel="noopener">📕 小红书攻略</a>
-              ${p.lat?`<button class="action secondary locate-btn" data-locate="${p.id}">◎ 地图定位</button>`:''}
-            </div>
-            <div class="saved-links">${saved.map((u,i) => `<a class="saved-link" href="${escapeHTML(u)}" target="_blank" rel="noopener">📌 <span>自存攻略 ${i+1}</span></a>`).join('')}</div>
-          </div>
-        </article>`;
-      }).join('');
-      $('#emptyState').style.display = filtered.length ? 'none' : 'block';
-      document.querySelectorAll('[data-check]').forEach(cb => cb.addEventListener('change', () => {
-        state.completed[cb.dataset.check] = cb.checked;
-        localStorage.setItem('qd_trip_completed', JSON.stringify(state.completed));
-        renderTimeline(); updateProgress();
-      }));
-      document.querySelectorAll('.locate-btn').forEach(btn => btn.addEventListener('click', () => locatePlace(btn.dataset.locate)));
-      updateProgress();
-    }
-
-    function updateProgress() {
-      const dayItems = places.filter(p => p.day === activeDay);
-      const done = dayItems.filter(p => state.completed[p.id]).length;
-      $('#progressText').textContent = `今日已完成 ${done} / ${dayItems.length}`;
-    }
-
-    function loadLeaflet() {
-      if (!window.L || leafletMap) return;
-      try {
-        leafletMap = L.map('map', { zoomControl:true, attributionControl:true }).setView([36.06,120.34], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'© OpenStreetMap' }).addTo(leafletMap);
-        markerLayer = L.layerGroup().addTo(leafletMap);
-        renderLeaflet();
-      } catch (e) { leafletMap = null; renderFallbackMap(); }
-    }
-
-    function iconHTML(n, hotel=false) {
-      return L.divIcon({ className:'', html:`<div class="map-pin ${hotel?'hotel':''}"><span>${n}</span></div>`, iconSize:[30,30], iconAnchor:[15,28] });
-    }
-
-    function renderLeaflet() {
-      if (!leafletMap) return;
-      markerLayer.clearLayers();
-      if (routeLine) routeLine.remove();
-      const list = activeItems().filter(p => p.lat);
-      const coords = [];
-      L.marker([HOTEL.lat,HOTEL.lon], {icon:iconHTML('⌂',true)}).bindPopup(`<b>${HOTEL.title}</b><br>当天路线从这里理解`).addTo(markerLayer);
-      const allDay = orderedDayItems(activeDay);
-      list.forEach((p) => {
-        const n = allDay.findIndex(x => x.id === p.id) + 1;
-        coords.push([p.lat,p.lon]);
-        L.marker([p.lat,p.lon], {icon:iconHTML(n)}).bindPopup(`<b>${escapeHTML(p.title)}</b><br>${escapeHTML(p.time)}–${escapeHTML(p.end)}`).addTo(markerLayer);
-      });
-      if (coords.length > 1) routeLine = L.polyline(coords, {color:'#0d8f91', weight:4, opacity:.75, dashArray:'8 9'}).addTo(leafletMap);
-      const bounds = L.latLngBounds([[HOTEL.lat,HOTEL.lon], ...coords]);
-      if (bounds.isValid()) leafletMap.fitBounds(bounds.pad(.22), {maxZoom:14});
-      setTimeout(() => leafletMap.invalidateSize(), 60);
-    }
-
-    function renderFallbackMap() {
-      const svg = $('#fallbackMap');
-      if (!svg) return;
-      const list = activeItems().filter(p => p.lat);
-      const all = [HOTEL, ...list];
-      let minLon = Math.min(...all.map(p=>p.lon)), maxLon = Math.max(...all.map(p=>p.lon));
-      let minLat = Math.min(...all.map(p=>p.lat)), maxLat = Math.max(...all.map(p=>p.lat));
-      if (maxLon-minLon < .02) { minLon-=.01; maxLon+=.01; }
-      if (maxLat-minLat < .015) { minLat-=.008; maxLat+=.008; }
-      const pad=70, W=600, H=620;
-      const xy = p => [pad+(p.lon-minLon)/(maxLon-minLon)*(W-pad*2), H-pad-(p.lat-minLat)/(maxLat-minLat)*(H-pad*2)];
-      const pts = list.map(p => xy(p).join(',')).join(' ');
-      svg.innerHTML = `<defs><linearGradient id="seaBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9f8f5"/><stop offset="1" stop-color="#bfe7e4"/></linearGradient><filter id="pinShadow"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-opacity=".16"/></filter></defs>
-        <rect width="600" height="620" fill="url(#seaBg)"/>
-        <path d="M-20 390 C120 330 165 470 305 405 S475 305 640 355 L640 660 L-20 660 Z" fill="#8fd2d1" opacity=".72"/>
-        <path d="M-20 432 C130 350 185 510 325 430 S500 344 640 390" fill="none" stroke="#f8ffff" stroke-width="4" opacity=".8"/>
-        <g opacity=".13" stroke="#477c7f">${[100,200,300,400,500].map(x=>`<line x1="${x}" x2="${x}" y1="0" y2="620"/>`).join('')}${[100,200,300,400,500].map(y=>`<line y1="${y}" y2="${y}" x1="0" x2="600"/>`).join('')}</g>
-        ${list.length>1?`<polyline points="${pts}" fill="none" stroke="#0d8f91" stroke-width="6" stroke-dasharray="10 12" stroke-linecap="round" opacity=".82"/>`:''}
-        ${(() => { const [x,y]=xy(HOTEL); return `<g transform="translate(${x} ${y})" filter="url(#pinShadow)"><circle r="18" fill="#ff816d" stroke="white" stroke-width="4"/><text x="0" y="5" text-anchor="middle" font-size="16">⌂</text><text x="0" y="34" text-anchor="middle" font-size="11" fill="#173b3c">酒店</text></g>`; })()}
-        ${list.map((p)=>{const [x,y]=xy(p); const n=orderedDayItems(activeDay).findIndex(x=>x.id===p.id)+1; return `<g class="svg-place" data-svg-id="${p.id}" transform="translate(${x} ${y})" style="cursor:pointer" filter="url(#pinShadow)"><circle r="17" fill="#0d8f91" stroke="white" stroke-width="4"/><text x="0" y="5" text-anchor="middle" font-size="12" font-weight="900" fill="white">${n}</text><rect x="-55" y="24" width="110" height="24" rx="12" fill="white" opacity=".92"/><text x="0" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#173b3c">${escapeHTML(p.title.split('｜')[0].slice(0,8))}</text></g>`;}).join('')}
-        <text x="38" y="45" fill="#356568" font-size="13" font-weight="800">N ↑　${days.find(d=>d.id===activeDay).short} 行程示意</text>
-        <text x="38" y="65" fill="#668082" font-size="10">比例随当天范围变化 · 点位与顺序可交互</text>`;
-      svg.querySelectorAll('.svg-place').forEach(g => g.addEventListener('click', () => locatePlace(g.dataset.svgId)));
-    }
-
-    function locatePlace(id) {
-      const p = places.find(x=>x.id===id);
-      if (!p || !p.lat) return;
-      $('#mapNote').innerHTML = `<b>${escapeHTML(p.title)}</b> · ${escapeHTML(p.time)}–${escapeHTML(p.end)} · ${escapeHTML(p.transport)}`;
-      if (leafletMap) { leafletMap.setView([p.lat,p.lon], 15, {animate:true}); markerLayer.eachLayer(m => { const ll=m.getLatLng && m.getLatLng(); if(ll && Math.abs(ll.lat-p.lat)<.00001 && Math.abs(ll.lng-p.lon)<.00001) m.openPopup(); }); }
-      document.querySelector('.map-panel').scrollIntoView({behavior:'smooth', block:'center'});
-    }
-
-    function renderWeather() {
-      $('#weatherGrid').innerHTML = days.map(d => `<div class="weather-card ${d.id===activeDay?'active':''}"><div class="date">${d.short}</div><div class="weather-icon">${d.icon}</div><b>${d.weather.split(' · ')[0]}</b><p>${d.weather.split(' · ')[1]}<br>${d.subtitle}</p></div>`).join('');
-    }
-
-    function renderPlaceOptions() {
-      $('#manualPlace').innerHTML = places.filter((p,i,a)=>a.findIndex(x=>x.id===p.id)===i).map(p=>`<option value="${p.id}">${days.find(d=>d.id===p.day).short} · ${escapeHTML(p.title)}</option>`).join('');
-    }
-
-    function recognizeShare() {
-      const text = $('#shareInput').value.trim();
-      const result = $('#recognizeResult');
-      $('#manualSave').classList.remove('visible');
-      if (!text) { result.className='recognize-result warn'; result.textContent='先粘贴一段分享文本或链接。'; return; }
-      const urlMatch = text.match(/https?:\/\/[^\s，。)）]+/i);
-      lastPastedUrl = urlMatch ? urlMatch[0] : '';
-      const candidates = [];
-      Object.entries(aliases).forEach(([id,words]) => words.forEach(w => { if (text.includes(w)) candidates.push({id,word:w,len:w.length}); }));
-      candidates.sort((a,b)=>b.len-a.len);
-      const hit = candidates[0];
-      if (hit) {
-        const p = places.find(x=>x.id===hit.id);
-        const url = lastPastedUrl || xhsUrl(p.xhs);
-        saveLink(p.id,url);
-        result.className='recognize-result success';
-        result.innerHTML=`已识别为 <b>${escapeHTML(p.title)}</b>，并保存到对应行程卡。${lastPastedUrl?'':'（未找到链接，已保存地点搜索页）'}`;
-        activeDay=p.day; renderAll();
-      } else {
-        result.className='recognize-result warn';
-        result.textContent = lastPastedUrl ? '识别到链接，但分享文本里没有地点词。请选择要归档到哪张卡。' : '没有找到地点或链接。请粘贴完整分享文案，或手动选择地点。';
-        $('#manualSave').classList.add('visible');
-      }
-    }
-
-    function saveLink(id,url) {
-      state.links[id] = state.links[id] || [];
-      if (!state.links[id].includes(url)) state.links[id].push(url);
-      localStorage.setItem('qd_trip_links', JSON.stringify(state.links));
-      showToast('已保存到行程卡');
-    }
-
-    function manualSave() {
-      const id=$('#manualPlace').value;
-      const p=places.find(x=>x.id===id);
-      saveLink(id,lastPastedUrl || xhsUrl(p.xhs));
-      $('#recognizeResult').className='recognize-result success';
-      $('#recognizeResult').innerHTML=`已手动保存到 <b>${escapeHTML(p.title)}</b>。`;
-      $('#manualSave').classList.remove('visible');
-      activeDay=p.day; renderAll();
-    }
-
-    function calcDeparture() {
-      const type=$('#transportType').value;
-      const [h,m]=($('#departureTime').value || '14:00').split(':').map(Number);
-      const total=h*60+m;
-      const cfg={
-        flight:{lead:180,travel:90,name:'胶东机场',note:'建议至少提前 3 小时到机场，市区到机场按 90 分钟含雨天缓冲估算。'},
-        qingdao:{lead:60,travel:20,name:'青岛站',note:'青岛站离酒店较近，但暑期进站与打车仍需缓冲。'},
-        north:{lead:75,travel:60,name:'青岛北站',note:'跨城路段容易堵，按 60 分钟路程并提前 75 分钟到站估算。'}
-      }[type];
-      let leave=total-cfg.lead-cfg.travel; if(leave<0) leave+=1440;
-      const hh=String(Math.floor(leave/60)).padStart(2,'0'), mm=String(leave%60).padStart(2,'0');
-      $('#departureResult').innerHTML=`建议最晚 <b style="font-size:20px;color:#076b70">${hh}:${mm}</b> 从酒店出发去 ${cfg.name}。${cfg.note} 若当日暴雨/道路管制，再提前 20–30 分钟。`;
-    }
-
-    let toastTimer;
-    function showToast(msg) { const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1800); }
-
-    function renderAll(scroll=false) {
-      renderTabs(); renderFilters(); renderSummary(); renderTimeline(); renderWeather();
-      if (leafletMap) renderLeaflet(); else renderFallbackMap();
-      if (scroll) $('#plan').scrollIntoView({behavior:'smooth'});
-    }
-
-    $('#recognizeBtn').addEventListener('click', recognizeShare);
-    $('#clearInputBtn').addEventListener('click', () => { $('#shareInput').value=''; $('#recognizeResult').className='recognize-result'; $('#recognizeResult').textContent='已清空。内容只保存在本机浏览器，不会上传。'; $('#manualSave').classList.remove('visible'); });
-    $('#manualSaveBtn').addEventListener('click', manualSave);
-    $('#clearSavedBtn').addEventListener('click', () => { state.links={}; localStorage.removeItem('qd_trip_links'); renderTimeline(); showToast('已清除自存链接'); });
-    $('#transportType').addEventListener('change', calcDeparture);
-    $('#departureTime').addEventListener('input', calcDeparture);
-
-    renderPlaceOptions(); renderAll(); calcDeparture();
-    setTimeout(loadLeaflet, 250);
-  </script>
+      <aside class="map-panel"><div id="map"><div class="map-offline"><div><b>正在加载真实地图</b><span>若底图未显示，请点卡片里的高德导航；不再使用容易误导位置的示意海岸图。</span></div></div></div><div class="map-note" id="mapNote"><b>酒店点位</b>：莱阳路 19 号陆地一侧。连线只表示游玩顺序，实际道路以高德导航为准。</div></aside>
+    </div>
+  </section>
+  <section class="section" id="tools">
+    <div class="section-head"><div><p class="section-kicker">Save a note</p><h2>把小红书链接存到地点</h2></div></div>
+    <div class="tool-grid">
+      <div class="tool-card"><h3>粘贴整段分享文案</h3><p>文案里有地点名时会自动识别；只有短链接时，手动选地点即可。</p><label class="field-label" for="shareInput">分享内容</label><textarea id="shareInput" placeholder="例如：青岛小鱼山日落机位…… http://xhslink.com/……"></textarea><div class="tool-actions"><button class="primary-btn" id="recognizeBtn">识别并保存</button><button class="soft-btn" id="clearInputBtn">清空</button></div><div class="recognize-result" id="recognizeResult">尚未识别。内容只保存在本机浏览器。</div><div class="manual-save" id="manualSave"><select id="manualPlace"></select><button class="soft-btn" id="manualSaveBtn">存到这里</button></div></div>
+      <div class="tool-card"><h3>只有短链接怎么办？</h3><p>浏览器无法直接读取小红书页面内容，手动选一个地点保存就行。每个地点都带小红书搜索入口。</p><div class="tool-actions"><button class="soft-btn" id="clearSavedBtn">清除已保存链接</button></div></div>
+    </div>
+  </section>
+  <section class="section" id="departure">
+    <div class="section-head"><div><p class="section-kicker">Day 5</p><h2>8 月 14 日从酒店出发</h2></div></div>
+    <div class="tool-card"><p>返程日不再塞景点。输入起飞或发车时间，直接倒推离开酒店的时间。</p><div class="tool-grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div><label class="field-label" for="transportType">目的地</label><select id="transportType"><option value="flight">胶东机场</option><option value="qingdao">青岛站</option><option value="north">青岛北站</option></select></div><div><label class="field-label" for="departureTime">起飞 / 发车</label><input id="departureTime" type="time" value="14:00"></div></div><div class="departure-result" id="departureResult"></div></div>
+  </section>
+  <footer>路线选择、打卡和保存的小红书链接会留在这台手机的浏览器里。</footer>
+</main>
+<div class="toast" id="toast"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const HOTEL={id:'hotel',title:'酒店｜莱阳路19号东楼',lat:36.05552,lon:120.32758,amap:'青岛市市南区莱阳路19号东楼'};
+const TAGS={'怕晒':'☂️ 怕晒','拍照':'📷 拍照','海边':'🌊 海边','夜景':'✨ 夜景','吃饭':'🥟 吃饭'};
+const days=[
+ {id:'0810',short:'8/10 周一',tab:'落地＋近海',title:'落地后只逛酒店旁边',note:'12:00 落地，先到酒店入住、休息、吃点东西。17:25 才从酒店出发。',start:'17:25',sunset:'约 18:59',defaults:['luxun','qinyu']},
+ {id:'0811',short:'8/11 周二',tab:'小鱼山老城',title:'小鱼山＋大学路的小范围老城线',note:'白天完全不排任务。16:35 从酒店出发，爬坡只安排一次。',start:'16:35',sunset:'约 18:58',defaults:['xiaoyushan','daxue','longjiang']},
+ {id:'0812',short:'8/12 周三',tab:'八大峡栈桥',title:'八大峡一路向东走到栈桥和中山路',note:'白天完全留白。16:20 打车去八大峡，之后朝栈桥方向走，不折返。',start:'16:20',sunset:'约 18:57',defaults:['badaxia','xilingxia','zhanqiao','zhongshan']},
+ {id:'0813',short:'8/13 周四',tab:'小麦岛夜景',title:'先到最东边的小麦岛，再一路向西回城',note:'白天不安排商场或景点。16:10 从酒店打车去小麦岛，日落后往奥帆方向回。',start:'16:10',sunset:'约 18:56',defaults:['xiaomaidao','yaner','olympic']},
+ {id:'0814',short:'8/14 周五',tab:'从容返程',title:'酒店收行李，直接去机场或车站',note:'返程日不安排打卡。若时间特别宽裕，琴屿路只作为可选短走。',start:'09:30',sunset:'—',defaults:[]}
+];
+const P=[
+ {id:'luxun',day:'0810',order:10,title:'鲁迅公园',desc:'酒店出来先走松树和红礁的上层步道，近、好看，也方便随时回酒店。',mins:35,tags:['怕晒','拍照','海边'],lat:36.055246,lon:120.328505,xhs:'青岛 鲁迅公园 琴屿路 拍照 路线',amap:'鲁迅公园 青岛'},
+ {id:'qinyu',day:'0810',order:20,title:'琴屿路',desc:'落地日的核心。沿海慢走等日落，不必排网红咖啡店。',mins:55,tags:['拍照','海边'],lat:36.0536255,lon:120.3253261,xhs:'青岛 琴屿路 日落 机位 避坑',amap:'琴屿路 青岛'},
+ {id:'xiaoqingdao',day:'0810',order:30,title:'小青岛外沿｜体力好再加',desc:'不赶关门时间，能进就进；来不及就在外侧看海。',mins:40,tags:['拍照','海边','夜景'],lat:36.0530522,lon:120.3186894,xhs:'青岛 小青岛 琴屿路 日落 路线',amap:'小青岛公园 青岛'},
+ {id:'zhanqiao10',day:'0810',order:40,title:'栈桥｜第一天加长版',desc:'若航班准点且两人都不累，可从小青岛打车到栈桥看蓝调时刻。8/12 已有默认栈桥，不必重复。',mins:45,tags:['拍照','海边','夜景'],lat:36.06062,lon:120.32055,xhs:'青岛 栈桥 晚上 人少 拍照 攻略',amap:'栈桥 青岛'},
+ {id:'silver10',day:'0810',order:50,title:'银鱼巷 / 中山路吃饭',desc:'适合把加长路线收在晚饭和逛街上，再直接打车回酒店。',mins:70,tags:['怕晒','夜景','吃饭'],lat:36.06692,lon:120.30955,xhs:'青岛 银鱼巷 中山路 女生 逛街 美食',amap:'银鱼巷 青岛'},
+ {id:'xiaoyushan',day:'0811',order:10,title:'小鱼山',desc:'先上山看红瓦老城，等光线变软再下山；今天唯一一次爬坡。',mins:65,tags:['怕晒','拍照','海边'],lat:36.0586672,lon:120.331275,xhs:'青岛 小鱼山 日落 拍照 机位 攻略',amap:'小鱼山公园 青岛'},
+ {id:'daxue',day:'0811',order:20,title:'大学路 × 鱼山路',desc:'从小鱼山下山顺着逛，红墙拍几张就走，支路比排队更松弛。',mins:45,tags:['怕晒','拍照'],lat:36.060178,lon:120.331098,xhs:'青岛 大学路 鱼山路 女生 拍照 路线',amap:'大学路网红墙 青岛'},
+ {id:'longjiang',day:'0811',order:30,title:'龙江路 / 黄县路晚饭',desc:'老城小店、咖啡和家常饭集中，吃完打车回酒店。',mins:75,tags:['怕晒','拍照','夜景','吃饭'],lat:36.061127,lon:120.329358,xhs:'青岛 龙江路 黄县路 美食 咖啡 逛街',amap:'龙江路 青岛'},
+ {id:'signal',day:'0811',order:35,title:'信号山｜不建议和小鱼山都爬',desc:'如果更想看城市全景，可用它替换小鱼山；同时选会明显增加体力。',mins:55,tags:['怕晒','拍照','夜景'],lat:36.06339,lon:120.33371,xhs:'青岛 信号山 日落 小鱼山 对比 攻略',amap:'信号山公园 青岛'},
+ {id:'yinyu11',day:'0811',order:50,title:'银鱼巷夜逛｜还有体力再加',desc:'从老城打车过去，适合逛小店和吃甜品；累了就不要跨片区。',mins:70,tags:['怕晒','拍照','夜景','吃饭'],lat:36.0670095,lon:120.3093943,xhs:'青岛 银鱼巷 女生 逛街 小店 美食',amap:'银鱼巷 青岛'},
+ {id:'badaxia',day:'0812',order:10,title:'八大峡广场',desc:'开阔海岸和城市天际线，傍晚去比白天舒服。天气差就取消。',mins:55,tags:['拍照','海边'],lat:36.052885,lon:120.3048106,xhs:'青岛 八大峡广场 日落 拍照 机位',amap:'八大峡广场 青岛'},
+ {id:'xilingxia',day:'0812',order:20,title:'西陵峡路',desc:'从八大峡顺路沿海走一段，不下湿滑礁石，不追求走完全程。',mins:35,tags:['拍照','海边'],lat:36.056259,lon:120.305653,xhs:'青岛 西陵峡路 八大峡 拍照 路线',amap:'西陵峡一路 青岛'},
+ {id:'zhanqiao',day:'0812',order:30,title:'栈桥',desc:'经典地标放在这条西海岸线里最顺：八大峡 → 栈桥 → 中山路。',mins:55,tags:['拍照','海边','夜景'],lat:36.06062,lon:120.32055,xhs:'青岛 栈桥 避坑 人少 拍照 时间',amap:'栈桥 青岛'},
+ {id:'cathedral',day:'0812',order:40,title:'圣弥厄尔教堂外观',desc:'从栈桥往中山路走时顺路看外观，不专门排队进馆。',mins:25,tags:['怕晒','拍照','夜景'],lat:36.06657,lon:120.31921,xhs:'青岛 天主教堂 中山路 夜景 拍照',amap:'圣弥厄尔教堂 青岛'},
+ {id:'zhongshan',day:'0812',order:50,title:'中山路 × 银鱼巷',desc:'晚饭、甜品、小店和夜景都在这一片，适合女生慢逛，最后打车回酒店。',mins:85,tags:['怕晒','拍照','夜景','吃饭'],lat:36.0670095,lon:120.3093943,xhs:'青岛 中山路 银鱼巷 女生 逛街 美食',amap:'银鱼巷 青岛'},
+ {id:'sifang',day:'0812',order:55,title:'四方路市场街区｜想吃再加',desc:'小吃选择多但人也多，把它当中山路附近的晚饭备选。',mins:55,tags:['怕晒','夜景','吃饭'],lat:36.07048,lon:120.31618,xhs:'青岛 四方路 市场 美食 避坑',amap:'四方路市场 青岛'},
+ {id:'xiaomaidao',day:'0813',order:10,title:'小麦岛',desc:'直接打车到最东边，草地和南侧海岸慢待，不必绕完整圈。',mins:115,tags:['拍照','海边'],lat:36.0542053,lon:120.4259284,xhs:'青岛 小麦岛 日落 草地 拍照 攻略',amap:'小麦岛公园 青岛'},
+ {id:'yaner',day:'0813',order:20,title:'燕儿岛路海边',desc:'从小麦岛离开后向西回城，走一小段海边或直接打车，不重复绕路。',mins:40,tags:['拍照','海边','夜景'],lat:36.05629,lon:120.40163,xhs:'青岛 燕儿岛路 海边 日落 夜景',amap:'燕儿岛山公园 青岛'},
+ {id:'olympic',day:'0813',order:30,title:'奥帆中心 × 情人坝',desc:'城市海边夜景主线，适合散步拍照，再从这里打车回酒店。',mins:65,tags:['拍照','海边','夜景'],lat:36.0571141,lon:120.3937671,xhs:'青岛 奥帆中心 情人坝 夜景 女生 拍照',amap:'青岛奥帆中心'},
+ {id:'wusi',day:'0813',order:40,title:'五四广场｜还有体力再加',desc:'继续向西靠近酒店方向。灯光是否播放不影响普通夜景。',mins:45,tags:['拍照','海边','夜景'],lat:36.06264,lon:120.38022,xhs:'青岛 五四广场 夜景 灯光秀 攻略',amap:'五四广场 青岛'},
+ {id:'mixc',day:'0813',order:50,title:'万象城｜雨天才替换',desc:'若傍晚仍在下雨，就不去小麦岛，改成吃饭、逛店和拍贴机。',mins:100,tags:['怕晒','拍照','吃饭'],lat:36.06717,lon:120.38291,xhs:'青岛 万象城 女生 逛街 吃饭 拍贴机',amap:'青岛万象城'},
+ {id:'lastqinyu',day:'0814',order:10,title:'琴屿路短走｜完全可删',desc:'只有行李收好且时间宽裕才去，最多 40 分钟后回酒店取行李。',mins:40,tags:['拍照','海边'],lat:36.0536255,lon:120.3253261,xhs:'青岛 琴屿路 清晨 人少',amap:'琴屿路 青岛'}
+];
+const aliases={luxun:['鲁迅公园'],qinyu:['琴屿路','琴岛路'],xiaoqingdao:['小青岛'],zhanqiao:['栈桥'],zhanqiao10:['栈桥'],silver10:['银鱼巷','中山路'],xiaoyushan:['小鱼山'],daxue:['大学路','鱼山路','网红墙'],longjiang:['龙江路','黄县路'],signal:['信号山'],yinyu11:['银鱼巷'],badaxia:['八大峡'],xilingxia:['西陵峡'],cathedral:['天主教堂','圣弥厄尔'],zhongshan:['中山路','银鱼巷'],sifang:['四方路'],xiaomaidao:['小麦岛'],yaner:['燕儿岛'],olympic:['奥帆','情人坝'],wusi:['五四广场'],mixc:['万象城'],lastqinyu:['琴屿路']};
+const $=s=>document.querySelector(s), esc=(s='')=>String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const xhs=q=>'https://www.xiaohongshu.com/search_result?keyword='+encodeURIComponent(q)+'&source=web_search_result_notes';
+const amap=q=>'https://uri.amap.com/search?keyword='+encodeURIComponent(q)+'&city='+encodeURIComponent('青岛')+'&src=qingdao_trip&callnative=1';
+let activeDay='0810',activeTags=new Set(),map=null,layer=null,line=null,lastUrl='';
+const state={selected:JSON.parse(localStorage.getItem('qd_sel_v2')||'null')||Object.fromEntries(days.map(d=>[d.id,[...d.defaults]])),completed:JSON.parse(localStorage.getItem('qd_done_v2')||'{}'),links:JSON.parse(localStorage.getItem('qd_links_v2')||'{}')};
+days.forEach(d=>{if(!state.selected[d.id])state.selected[d.id]=[...d.defaults]});
+function dist(a,b){const r=6371,p=Math.PI/180,dLat=(b.lat-a.lat)*p,dLon=(b.lon-a.lon)*p;const x=Math.sin(dLat/2)**2+Math.cos(a.lat*p)*Math.cos(b.lat*p)*Math.sin(dLon/2)**2;return 2*r*Math.asin(Math.sqrt(x))}
+function fmt(m){m=(m+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+function minval(t){let [h,m]=t.split(':').map(Number);return h*60+m}
+function chosen(day=activeDay){return P.filter(p=>p.day===day&&state.selected[day].includes(p.id)).sort((a,b)=>a.order-b.order)}
+function leg(a,b,isReturn=false){const km=dist(a,b);if(!isReturn&&km<=1.55)return{mode:'步行',mins:Math.max(5,Math.round(km*14)),km};return{mode:'打车',mins:Math.max(10,Math.round(7+km*3.2)),km}}
+function schedule(){const d=days.find(x=>x.id===activeDay),list=chosen(),out=[];let t=minval(d.start),prev=HOTEL,totalWalk=0;list.forEach((p,i)=>{const l=leg(prev,p);t+=l.mins;if(l.mode==='步行')totalWalk+=l.km;out.push({...p,arrive:fmt(t),leave:fmt(t+p.mins),leg:l,index:i+1});t+=p.mins;prev=p});if(list.length){const back=leg(prev,HOTEL,true);t+=back.mins;out.push({...HOTEL,arrive:fmt(t),leave:'到店',leg:back,index:list.length+1,back:true})}return{items:out,end:fmt(t),walk:totalWalk,list}}
+function renderTabs(){$('#dayTabs').innerHTML=days.map(d=>`<button class="day-tab ${d.id===activeDay?'active':''}" data-day="${d.id}"><span>${d.short}</span><b>${d.tab}</b></button>`).join('');document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{activeDay=b.dataset.day;renderAll()})}
+function renderFilters(){$('#filters').innerHTML=`<button class="filter-btn ${!activeTags.size?'active':''}" data-tag="all">全部</button>`+Object.entries(TAGS).map(([k,v])=>`<button class="filter-btn ${activeTags.has(k)?'active':''}" data-tag="${k}">${v}</button>`).join('');document.querySelectorAll('[data-tag]').forEach(b=>b.onclick=()=>{const t=b.dataset.tag;t==='all'?activeTags.clear():activeTags.has(t)?activeTags.delete(t):activeTags.add(t);renderAll()})}
+function renderSummary(){const d=days.find(x=>x.id===activeDay);$('#daySummary').innerHTML=`<div><h3>${d.title}</h3><p>${d.note}</p></div><div class="sunset-pill">🌇 日落 ${d.sunset}</div>`}
+function renderHead(){const s=schedule(),d=days.find(x=>x.id===activeDay);if(activeDay==='0814'){$('#routeHead').innerHTML='<div><h3>酒店 → 机场 / 车站</h3><p>返程日只保留一个可选的琴屿路短走；正式出发时间用下方返程计算。</p></div>';return}const names=s.list.length?s.list.map(p=>p.title.split('｜')[0]).join(' → '):'今天不选景点，留在酒店休息';$('#routeHead').innerHTML=`<div><h3>酒店 → ${esc(names)} → 酒店</h3><p>选中的点按这条片区的前进方向排序；最后一段默认打车回酒店，不走原路。</p></div><div class="route-stats"><span>酒店出发 ${d.start}</span><span>预计回店 ${s.list.length?s.end:'—'}</span><span>步行约 ${s.walk.toFixed(1)} km</span><span>已选 ${s.list.length} 个</span></div><div class="route-actions"><a href="${amap(HOTEL.amap)}" target="_blank" rel="noopener">酒店准确导航</a><button id="resetDay">恢复推荐路线</button></div>`;$('#resetDay').onclick=()=>{state.selected[activeDay]=[...d.defaults];saveSel();renderAll()}}
+function tagPass(p){return !activeTags.size||p.tags.some(t=>activeTags.has(t))}
+function renderTimeline(){const s=schedule();$('#timeline').innerHTML=s.items.map(p=>{const isHotel=p.id==='hotel';const links=state.links[p.id]||[];return `<article class="trip-card ${!isHotel&&!tagPass(p)?'filtered':''} ${state.completed[p.id]?'completed':''}"><div class="timebox"><b>${p.arrive}</b><small>${p.leave}</small><div class="route-dot"></div></div><div><div class="card-top"><div><h3 class="card-title">${p.index}. ${esc(p.title)}</h3>${isHotel?'<span class="start-end">回到酒店</span>':''}</div>${isHotel?'':`<label class="check-wrap"><input type="checkbox" data-check="${p.id}" ${state.completed[p.id]?'checked':''}></label>`}</div><p class="card-desc">${isHotel?'当天结束，直接回莱阳路 19 号东楼。':esc(p.desc)}</p><div class="meta-row"><span class="meta">${p.leg.mode}约 ${p.leg.mins} 分</span>${isHotel?'':`<span class="meta">停留约 ${p.mins} 分</span>`}</div>${isHotel?'':`<div class="tag-row">${p.tags.map(t=>`<span class="tag">${TAGS[t]}</span>`).join('')}</div><div class="action-row"><a class="action" href="${amap(p.amap)}" target="_blank" rel="noopener">高德导航</a><a class="action xhs" href="${xhs(p.xhs)}" target="_blank" rel="noopener">小红书攻略</a><button class="action remove" data-toggle="${p.id}">移出路线</button></div>${links.map((u,i)=>`<a class="saved-note" href="${esc(u)}" target="_blank" rel="noopener">已保存攻略 ${i+1}</a>`).join('')}`}</div></article>`}).join('');document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{state.completed[c.dataset.check]=c.checked;localStorage.setItem('qd_done_v2',JSON.stringify(state.completed));renderTimeline();updateProgress()});document.querySelectorAll('[data-toggle]').forEach(b=>b.onclick=()=>toggle(b.dataset.toggle));updateProgress()}
+function renderChoices(){const all=P.filter(p=>p.day===activeDay);$('#choiceGrid').innerHTML=all.map(p=>{const sel=state.selected[activeDay].includes(p.id),links=state.links[p.id]||[];return `<article class="choice-card ${sel?'selected':''} ${!tagPass(p)?'filtered':''}"><h4>${esc(p.title)}</h4><p>${esc(p.desc)}</p><div class="mini-tags">${p.tags.map(t=>`<span>${TAGS[t]}</span>`).join('')}</div><div class="choice-actions"><button class="toggle-route" data-choice="${p.id}">${sel?'移出路线':'加入路线'}</button><a class="choice-xhs" href="${xhs(p.xhs)}" target="_blank" rel="noopener">小红书</a></div>${links.length?`<span class="saved-note">已存 ${links.length} 条攻略</span>`:''}</article>`}).join('');document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>toggle(b.dataset.choice))}
+function toggle(id){const a=state.selected[activeDay],i=a.indexOf(id);i>=0?a.splice(i,1):a.push(id);saveSel();renderAll();show(i>=0?'已移出路线':'已加入并重排')}
+function saveSel(){localStorage.setItem('qd_sel_v2',JSON.stringify(state.selected))}
+function updateProgress(){const ids=state.selected[activeDay],n=ids.filter(id=>state.completed[id]).length;$('#progressText').textContent=`今日已完成 ${n} / ${ids.length}`}
+function icon(n,hotel=false){return L.divIcon({className:'',html:`<div class="map-pin ${hotel?'hotel':''}"><span>${n}</span></div>`,iconSize:[30,30],iconAnchor:[15,28]})}
+function initMap(){if(!window.L)return;try{map=L.map('map',{zoomControl:true}).setView([36.06,120.33],13);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);layer=L.layerGroup().addTo(map);renderMap()}catch(e){map=null}}
+function renderMap(){if(!map)return;layer.clearLayers();if(line)line.remove();const list=chosen(),coords=[[HOTEL.lat,HOTEL.lon],...list.map(p=>[p.lat,p.lon]),...(list.length?[[HOTEL.lat,HOTEL.lon]]:[])];L.marker([HOTEL.lat,HOTEL.lon],{icon:icon('⌂',true)}).bindPopup('<b>酒店</b><br>青岛市市南区莱阳路19号东楼').addTo(layer);list.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:icon(i+1)}).bindPopup(`<b>${esc(p.title)}</b>`).addTo(layer));if(coords.length>1)line=L.polyline(coords,{color:'#0d8f91',weight:4,opacity:.78,dashArray:'8 9'}).addTo(map);const bounds=L.latLngBounds(coords);if(bounds.isValid())map.fitBounds(bounds.pad(.18),{maxZoom:14});setTimeout(()=>map.invalidateSize(),50);$('#mapNote').innerHTML=`<div class="map-legend"><span>橙色＝酒店</span><span>蓝色＝游玩顺序</span><span>末段＝打车回酒店</span></div>`}
+function renderOptions(){$('#manualPlace').innerHTML=P.map(p=>`<option value="${p.id}">${days.find(d=>d.id===p.day).short} · ${esc(p.title)}</option>`).join('')}
+function saveLink(id,url){state.links[id]=state.links[id]||[];if(!state.links[id].includes(url))state.links[id].push(url);localStorage.setItem('qd_links_v2',JSON.stringify(state.links));show('已存到地点')}
+function recognize(){const text=$('#shareInput').value.trim(),box=$('#recognizeResult');$('#manualSave').classList.remove('visible');if(!text){box.className='recognize-result warn';box.textContent='先粘贴分享文案或链接。';return}const m=text.match(/https?:\/\/[^\s，。；]+/i);lastUrl=m?m[0]:'';let hits=[];Object.entries(aliases).forEach(([id,ws])=>ws.forEach(w=>{if(text.includes(w))hits.push({id,w})}));hits.sort((a,b)=>b.w.length-a.w.length);if(hits[0]){const p=P.find(x=>x.id===hits[0].id);saveLink(p.id,lastUrl||xhs(p.xhs));box.className='recognize-result success';box.innerHTML=`已识别为 <b>${esc(p.title)}</b>，已保存。`;activeDay=p.day;renderAll()}else{box.className='recognize-result warn';box.textContent='没识别出地点，请在下面手动选择。';$('#manualSave').classList.add('visible')}}
+function calcDepart(){const [h,m]=($('#departureTime').value||'14:00').split(':').map(Number),type=$('#transportType').value,cfg={flight:{name:'胶东机场',lead:180,road:90},qingdao:{name:'青岛站',lead:60,road:20},north:{name:'青岛北站',lead:75,road:60}}[type];let leave=h*60+m-cfg.lead-cfg.road;if(leave<0)leave+=1440;$('#departureResult').innerHTML=`建议最晚 <b style="font-size:19px;color:#08777a">${fmt(leave)}</b> 从酒店出发去 ${cfg.name}。遇到大雨或明显拥堵，再提前 20–30 分钟。`}
+let tt;function show(s){const t=$('#toast');t.textContent=s;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1600)}
+function renderAll(){renderTabs();renderFilters();renderSummary();renderHead();renderTimeline();renderChoices();if(map)renderMap()}
+$('#recognizeBtn').onclick=recognize;$('#clearInputBtn').onclick=()=>{$('#shareInput').value='';$('#recognizeResult').className='recognize-result';$('#recognizeResult').textContent='已清空。';$('#manualSave').classList.remove('visible')};$('#manualSaveBtn').onclick=()=>{const id=$('#manualPlace').value,p=P.find(x=>x.id===id);saveLink(id,lastUrl||xhs(p.xhs));$('#recognizeResult').className='recognize-result success';$('#recognizeResult').textContent='已手动保存到 '+p.title;activeDay=p.day;renderAll()};$('#clearSavedBtn').onclick=()=>{state.links={};localStorage.removeItem('qd_links_v2');renderAll();show('已清除')};$('#transportType').onchange=calcDepart;$('#departureTime').oninput=calcDepart;
+renderOptions();renderAll();calcDepart();setTimeout(initMap,180);
+</script>
 </body>
 </html>
+
