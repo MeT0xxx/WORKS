@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eaf7f5">
+  <title>青岛 2026｜自由规划旅行</title>
+  <style>
+    :root{--ink:#173b3c;--muted:#678184;--sea:#0c9293;--sea-dark:#087174;--coral:#ff806d;--paper:#f7fbfa;--line:rgba(23,59,60,.13);--shadow:0 14px 34px rgba(25,74,76,.10)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(#e8f6f3 0,#f8fbfa 480px);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    button,input,select,textarea{font:inherit}.shell{width:min(1180px,100%);margin:auto;padding:8px 8px 92px}
+    .hero{overflow:hidden;padding:22px 17px;border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(223,246,242,.96));box-shadow:var(--shadow);position:relative}.hero:after{content:"";position:absolute;right:-55px;top:-60px;width:190px;height:190px;border-radius:50%;background:rgba(12,146,147,.10)}
+    .eyebrow{position:relative;z-index:1;color:#377174;font-size:12px;font-weight:850}.hero h1{position:relative;z-index:1;margin:10px 0 8px;font-size:clamp(34px,10vw,64px);line-height:1}.hero h1 span{color:var(--sea)}.hero p{position:relative;z-index:1;margin:0;color:#527174;font-size:14px;line-height:1.75}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:8px;margin-top:18px}.hero-stat{padding:13px 14px;border:1px solid rgba(12,146,147,.14);border-radius:18px;background:rgba(255,255,255,.78)}.hero-stat b,.hero-stat small{display:block}.hero-stat small{margin-top:3px;color:var(--muted);font-size:11px}
+    .quickbar{position:sticky;top:8px;z-index:800;display:flex;gap:4px;width:max-content;max-width:100%;margin:10px auto;padding:6px;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);box-shadow:0 9px 24px rgba(23,59,60,.10)}.quickbar a{padding:9px 11px;border-radius:999px;color:#315f62;text-decoration:none;font-size:12px;font-weight:850}
+    .section{margin-top:9px;padding:14px 12px;border:1px solid rgba(255,255,255,.74);border-radius:22px;background:rgba(255,255,255,.88);box-shadow:var(--shadow)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:11px}.section-kicker{margin:0 0 3px;color:var(--sea);font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.section h2{margin:0;font-size:24px}.section-note{margin:0;color:var(--muted);font-size:10px;text-align:right}
+    .planner-bar{display:grid;gap:9px;margin-bottom:11px;padding:14px;border-radius:19px;color:white;background:linear-gradient(135deg,#167f82,#31a5a2)}.planner-bar h3,.planner-bar p{margin:0}.planner-bar h3{font-size:17px}.planner-bar p{margin-top:4px;color:rgba(255,255,255,.84);font-size:11px;line-height:1.55}.planner-actions{display:flex;flex-wrap:wrap;gap:7px}.planner-actions button{min-height:44px;padding:10px 13px;border:0;border-radius:12px;font-size:12px;font-weight:900;cursor:pointer}.generate-btn{color:var(--sea-dark);background:white}.soft-white{color:white;background:rgba(255,255,255,.15)}
+    .day-tabs{display:flex;gap:7px;overflow:auto;padding-bottom:5px;scrollbar-width:none}.day-tabs::-webkit-scrollbar{display:none}.day-tab{flex:0 0 auto;min-width:112px;min-height:62px;padding:10px 11px;cursor:pointer;border:1px solid var(--line);border-radius:15px;color:#4d6b6e;background:#fff;text-align:left}.day-tab span,.day-tab b{display:block}.day-tab span{font-size:10px}.day-tab b{margin-top:2px;font-size:12px}.day-tab.active{border-color:transparent;color:white;background:var(--sea);box-shadow:0 6px 16px rgba(12,146,147,.23)}
+    .day-summary{display:grid;gap:7px;margin:9px 0;padding:14px;border-radius:18px;background:#eff9f7}.day-summary h3,.day-summary p{margin:0}.day-summary h3{font-size:17px}.day-summary p{color:var(--muted);font-size:11px;line-height:1.6}.summary-pills{display:flex;flex-wrap:wrap;gap:6px}.summary-pills span{padding:6px 8px;border-radius:999px;color:#3f6668;background:white;font-size:10px;font-weight:850}
+    .itinerary-layout{display:grid;grid-template-columns:1fr;gap:12px}.map-panel{order:-1;overflow:hidden;border:1px solid var(--line);border-radius:19px;background:#e7f4f2}.map-panel #map{height:320px;min-height:300px}.map-note{padding:10px 12px;color:#547174;background:white;font-size:10px;line-height:1.5}.map-offline{height:100%;display:grid;place-items:center;padding:35px;text-align:center;color:#587477;background:linear-gradient(145deg,#eef8f6,#d8ece9)}.map-offline b{display:block;margin-bottom:6px;color:var(--ink);font-size:16px}
+    .route-head{display:grid;gap:9px;padding:14px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(135deg,#effaf8,#fff4ec)}.route-head h3,.route-head p{margin:0}.route-head h3{font-size:17px;line-height:1.45}.route-head p{color:var(--muted);font-size:11px;line-height:1.55}.route-stats,.action-row,.badge-row{display:flex;flex-wrap:wrap;gap:6px}.route-stats span{padding:6px 8px;border-radius:999px;color:#4a6a6d;background:white;font-size:10px;font-weight:850}
+    .timeline{margin-top:9px}.session-label{margin:12px 0 2px;padding:7px 10px;border-radius:10px;color:#28696b;background:#eaf7f5;font-size:11px;font-weight:900}.trip-card{display:grid;grid-template-columns:58px 1fr;gap:9px;padding:13px 0;border-bottom:1px solid var(--line)}.timebox{text-align:center}.timebox b,.timebox small{display:block}.timebox b{font-size:12px}.timebox small{margin-top:2px;color:var(--muted);font-size:9px}.route-dot{width:12px;height:12px;margin:9px auto 0;border:3px solid #dcf4f1;border-radius:50%;background:var(--sea);box-shadow:0 0 0 1px rgba(12,146,147,.25)}.route-dot.hotel{background:var(--coral)}.route-dot.break{background:#e9b94d}.card-top{display:flex;align-items:start;justify-content:space-between;gap:8px}.card-title{margin:0;font-size:16px;line-height:1.35}.card-desc{margin:6px 0;color:var(--muted);font-size:11px;line-height:1.6}.mini-meta{display:flex;flex-wrap:wrap;gap:5px}.mini-meta span{padding:5px 7px;border-radius:999px;color:#4c6b6e;background:#edf6f5;font-size:9px}.check-wrap{display:flex;align-items:center;gap:4px;color:#567174;font-size:9px;white-space:nowrap}.check-wrap input{width:19px;height:19px;accent-color:var(--sea)}
+    .action{min-height:38px;padding:8px 10px;border:0;border-radius:10px;color:white;background:var(--sea);text-decoration:none;font-size:10px;font-weight:850;cursor:pointer}.action.xhs{color:#a62545;background:#fff0f4}.action.soft{color:#536f72;background:#edf3f2}
+    .library-tools{display:grid;gap:8px;margin-bottom:10px}.search-input,textarea,input[type=text],input[type=time],select{width:100%;padding:12px;border:1px solid rgba(23,59,60,.17);border-radius:13px;color:var(--ink);background:#f8fbfa;outline:none}.search-input:focus,textarea:focus,input:focus{border-color:rgba(12,146,147,.55);box-shadow:0 0 0 3px rgba(12,146,147,.08)}
+    .choice-grid{display:grid;grid-template-columns:1fr;gap:8px}.choice-card{display:flex;flex-direction:column;gap:7px;padding:13px;border:1px solid var(--line);border-radius:17px;background:white}.choice-card.recommended{border-color:rgba(12,146,147,.43);background:#f0faf8}.choice-card.visited{opacity:.67}.choice-card h3,.choice-card p{margin:0}.choice-card h3{font-size:15px;line-height:1.35}.choice-card p{color:var(--muted);font-size:10px;line-height:1.55}.badge{padding:5px 7px;border-radius:999px;font-size:9px;font-weight:900}.badge.rec{color:#087174;background:#dff4f0}.badge.day{color:#8f4f41;background:#ffe8e2}.badge.other{color:#5c5d93;background:#ececff}.badge.wait{color:#8a621d;background:#fff2ce}.badge.done{color:#557174;background:#e8eeee}.badge.custom{color:#8a4162;background:#ffeaf3}.choice-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}.choice-actions button,.choice-actions a{display:grid;place-items:center;min-height:44px;padding:9px 7px;border:0;border-radius:11px;text-align:center;text-decoration:none;font-size:11px;font-weight:900;cursor:pointer}.wish-btn{color:white;background:var(--sea)}.wish-btn.on{color:#9c4e40;background:#ffe8e2}.assign-btn{color:#466669;background:#edf3f2}.assign-btn.today{color:#087174;background:#dff4f0}
+    .choice-actions a{color:#42666a;background:#eef5f4}.choice-actions a:last-child{color:#a62545;background:#fff0f4}
+    .recognizer{display:grid;gap:10px}.tool-card{padding:14px;border:1px solid var(--line);border-radius:19px;background:#fff}.tool-card h3,.tool-card p{margin:0}.tool-card h3{font-size:17px}.tool-card p{margin-top:5px;color:var(--muted);font-size:11px;line-height:1.6}textarea{min-height:104px;resize:vertical}.field-label{display:block;margin:10px 0 5px;color:#4b6669;font-size:11px;font-weight:850}.tool-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.primary-btn,.soft-btn{min-height:44px;padding:10px 12px;border:0;border-radius:11px;font-size:11px;font-weight:900;cursor:pointer}.primary-btn{color:white;background:var(--sea)}.soft-btn{color:var(--ink);background:#edf3f2}.result-box{min-height:48px;margin-top:9px;padding:10px;border-radius:12px;color:#557174;background:#f3f7f6;font-size:11px;line-height:1.55}.result-box.warn{color:#8a5c18;background:#fff4d8}.result-box.success{color:#146a56;background:#e8f7ef}.candidate-list{display:grid;gap:7px;margin-top:8px}.candidate{padding:11px;border:1px solid var(--line);border-radius:13px;background:white}.candidate b,.candidate small{display:block}.candidate small{margin-top:4px;color:var(--muted);line-height:1.45}.candidate button{width:100%;min-height:42px;margin-top:8px;border:0;border-radius:10px;color:white;background:var(--sea);font-weight:900}
+    .manual-row{display:grid;grid-template-columns:1fr;gap:7px;margin-top:9px}.departure-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.departure-result{min-height:44px;margin-top:8px;padding:10px;border-radius:11px;color:#557174;background:#f3f7f6;font-size:11px;line-height:1.55}
+    .map-pin{display:grid;place-items:center;width:29px;height:29px;border:3px solid white;border-radius:50% 50% 50% 10%;color:white;background:var(--sea);box-shadow:0 5px 12px rgba(0,0,0,.2);transform:rotate(-45deg);font-size:10px;font-weight:900}.map-pin span{transform:rotate(45deg)}.map-pin.hotel{background:var(--coral)}.map-pin.pick{background:#e4ad37}
+    footer{padding:24px 8px;text-align:center;color:var(--muted);font-size:10px}.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));z-index:1500;padding:11px 15px;border-radius:999px;color:white;background:rgba(23,59,60,.95);font-size:11px;transform:translate(-50%,18px);opacity:0;pointer-events:none;transition:.22s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .route-head h3{overflow-wrap:anywhere;word-break:break-word}
+    @media(min-width:650px){.shell{padding:22px 22px 100px}.hero{padding:36px}.section{padding:18px;border-radius:28px}.hero-grid{grid-template-columns:repeat(3,1fr)}.planner-bar{grid-template-columns:1fr auto;align-items:center}.choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.recognizer{grid-template-columns:1.15fr .85fr}.manual-row{grid-template-columns:1fr auto auto}.map-panel #map{height:430px}}
+    @media(min-width:960px){.itinerary-layout{grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr)}.map-panel{order:0;position:sticky;top:82px}.map-panel #map{height:520px}.choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header class="hero">
+    <div class="eyebrow">🌊 两个女生 · 5 天 · 地点自由组合</div>
+    <h1>青岛，<span>自己排。</span></h1>
+    <p>2026/8/10–8/14｜住市南区莱阳路 19 号东楼。先勾想去的地方，再一键生成每天的顺路路线。</p>
+    <div class="hero-grid">
+      <div class="hero-stat"><b>全部地点每天可选</b><small>推荐、跨天安排和去过状态都看得见</small></div>
+      <div class="hero-stat"><b>一键重排 5 天</b><small>手动固定的地点不会被自动挪走</small></div>
+      <div class="hero-stat"><b>小红书新增地点</b><small>识别名称和坐标后加入地点库</small></div>
+    </div>
+  </header>
+
+  <nav class="quickbar"><a href="#plan">每天路线</a><a href="#library">地点库</a><a href="#recognize">加地点</a><a href="#departure">返程</a></nav>
+
+  <section class="section" id="plan">
+    <div class="section-head"><div><p class="section-kicker">Flexible plan</p><h2>每天怎么走</h2></div><p class="section-note" id="progressText"></p></div>
+    <div class="planner-bar">
+      <div><h3>勾完想去的地方，就交给它重排</h3><p>已去过的地点自动排除；手动“排到今天”的地点会固定保留。</p></div>
+      <div class="planner-actions"><button class="generate-btn" id="generateBtn">一键生成 5 天规划</button><button class="soft-white" id="releasePinsBtn">取消所有固定</button></div>
+    </div>
+    <div class="day-tabs" id="dayTabs"></div>
+    <div class="day-summary" id="daySummary"></div>
+    <div class="itinerary-layout">
+      <div>
+        <div class="route-head" id="routeHead"></div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+      <aside class="map-panel">
+        <div id="map"><div class="map-offline"><div><b>正在加载地图</b><span>地点和当天路线会显示在这里。</span></div></div></div>
+        <div class="map-note" id="mapNote">橙色是酒店，蓝色是当天地点。地图连线表示游玩顺序。</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="library">
+    <div class="section-head"><div><p class="section-kicker">All places</p><h2>所有地点都能选</h2></div><p class="section-note">当前查看：<span id="libraryDay"></span></p></div>
+    <div class="library-tools"><input class="search-input" id="placeSearch" type="text" placeholder="搜索地点名称"></div>
+    <div class="choice-grid" id="choiceGrid"></div>
+  </section>
+
+  <section class="section" id="recognize">
+    <div class="section-head"><div><p class="section-kicker">Add a place</p><h2>从小红书新增地点</h2></div></div>
+    <div class="recognizer">
+      <div class="tool-card">
+        <h3>粘贴分享文案或链接</h3>
+        <p>识别后选择正确结果，会作为带坐标的新地点加入上面的地点库。</p>
+        <label class="field-label" for="shareInput">小红书分享内容</label>
+        <textarea id="shareInput" placeholder="粘贴整段分享文案、地点名或分享链接"></textarea>
+        <div class="tool-actions"><button class="primary-btn" id="recognizeBtn">识别地点</button><button class="soft-btn" id="clearRecognizeBtn">清空</button></div>
+        <div class="result-box" id="recognizeResult">等待识别。</div>
+        <div class="candidate-list" id="candidateList"></div>
+      </div>
+      <div class="tool-card">
+        <h3>没有识别到时</h3>
+        <p>输入店名或地点名重新搜索；也可以在地图上直接点选位置。</p>
+        <label class="field-label" for="manualName">地点名称</label>
+        <div class="manual-row"><input id="manualName" type="text" placeholder="例如：某某咖啡 青岛"><button class="primary-btn" id="searchNameBtn">搜索位置</button><button class="soft-btn" id="pickMapBtn">地图上选</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="departure">
+    <div class="section-head"><div><p class="section-kicker">Day 5</p><h2>8 月 14 日返程</h2></div></div>
+    <div class="tool-card">
+      <p>输入起飞或发车时间，倒推最晚离开酒店的时间。</p>
+      <div class="departure-grid"><div><label class="field-label" for="transportType">目的地</label><select id="transportType"><option value="flight">胶东机场</option><option value="qingdao">青岛站</option><option value="north">青岛北站</option></select></div><div><label class="field-label" for="departureTime">起飞 / 发车</label><input id="departureTime" type="time" value="14:00"></div></div>
+      <div class="departure-result" id="departureResult"></div>
+    </div>
+  </section>
+
+  <footer>想去清单、每天安排、去过状态和新增地点会保存在这台手机的浏览器里。</footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const HOTEL={id:'hotel',title:'酒店｜莱阳路19号东楼',lat:36.05552,lon:120.32758,amap:'青岛市市南区莱阳路19号东楼'};
+const DAYS=[
+  {id:'0810',short:'8/10 周一',tab:'落地近海',title:'落地后先室内缓一缓，再走酒店旁海岸',note:'中午落地后不赶远路。室内、水族馆或咖啡选一两个，傍晚再去鲁迅公园和琴屿路。',sunset:'约 18:59',anchor:{lat:36.055,lon:120.326},capacity:270,sessions:[{id:'main',label:'落地后轻松线',start:'15:00',returnHotel:true}]},
+  {id:'0811',short:'8/11 周二',tab:'树荫老城',title:'上午树荫海边，傍晚老城拍照吃饭',note:'上午八大关林荫路，中午回酒店；傍晚小鱼山—大学路—龙江路，爬坡只集中一次。',sunset:'约 18:58',anchor:{lat:36.060,lon:120.348},capacity:440,sessions:[{id:'day',label:'上午树荫线',start:'09:30',returnHotel:true},{id:'evening',label:'傍晚老城线',start:'16:35',returnHotel:true}]},
+  {id:'0812',short:'8/12 周三',tab:'探店栈桥',title:'上午老城探店，傍晚沿海一路向西',note:'上午教堂—中山路—银鱼巷；傍晚酒店到栈桥，再向西走西陵峡和八大峡，不横穿青岛湾折返。',sunset:'约 18:57',anchor:{lat:36.060,lon:120.312},capacity:430,sessions:[{id:'day',label:'上午老城探店',start:'10:30',returnHotel:true},{id:'evening',label:'傍晚西海岸线',start:'16:20',returnHotel:true}]},
+  {id:'0813',short:'8/13 周四',tab:'逛街小麦岛',title:'室内逛街吃饭，再一路向东去小麦岛',note:'从酒店向东去商场，下午继续到小麦岛；日落后沿燕儿岛—奥帆方向向西回酒店。',sunset:'约 18:56',anchor:{lat:36.059,lon:120.405},capacity:450,sessions:[{id:'day',label:'白天室内逛街',start:'11:00',returnHotel:false},{id:'evening',label:'傍晚海岛夜景',start:'16:20',continueFromPrevious:true,returnHotel:true}]},
+  {id:'0814',short:'8/14 周五',tab:'从容返程',title:'只安排酒店附近的短走',note:'返程日容量很小，只自动接收酒店附近地点；正式出发时间看页面下方。',sunset:'—',anchor:{lat:36.0555,lon:120.3276},capacity:80,sessions:[{id:'morning',label:'返程前短走',start:'09:00',returnHotel:true}]}
+];
+const PLACES=[
+  {id:'aquarium',title:'青岛海底世界',desc:'落地后适合避热的室内选项，离酒店近。',mins:100,lat:36.05583,lon:120.32972,kind:'indoor',recDays:['0810'],sessions:{'0810':'main'},route:{'0810':5},aliases:['海底世界','水族馆'],xhs:'青岛海底世界 避坑 游玩时间',amap:'青岛海底世界'},
+  {id:'laiyangcafe',title:'莱阳路附近咖啡 / 甜品',desc:'航班延误或不想进景点时，找一家坐着休息。',mins:65,lat:36.05630,lon:120.32915,kind:'indoor',recDays:['0810','0814'],sessions:{'0810':'main','0814':'morning'},route:{'0810':7,'0814':10},aliases:['莱阳路咖啡','莱阳路甜品'],xhs:'青岛 莱阳路 咖啡 甜品 探店',amap:'莱阳路 咖啡 青岛'},
+  {id:'luxun',title:'鲁迅公园',desc:'松树、红礁和海边上层步道，离酒店非常近。',mins:40,lat:36.055246,lon:120.328505,kind:'shade',recDays:['0810','0814'],sessions:{'0810':'main','0814':'morning'},route:{'0810':10,'0814':10},aliases:['鲁迅公园'],xhs:'青岛 鲁迅公园 琴屿路 路线',amap:'鲁迅公园 青岛'},
+  {id:'qinyu',title:'琴屿路',desc:'酒店旁的经典海边慢走，日落和清晨都适合。',mins:55,lat:36.0536255,lon:120.3253261,kind:'coast',recDays:['0810','0814'],sessions:{'0810':'main','0814':'morning'},route:{'0810':20,'0814':20},aliases:['琴屿路','琴岛路'],xhs:'青岛 琴屿路 日落 机位 避坑',amap:'琴屿路 青岛'},
+  {id:'xiaoqingdao',title:'小青岛外沿',desc:'有体力再顺着琴屿路继续，来不及进园也能看海。',mins:45,lat:36.0530522,lon:120.3186894,kind:'coast',recDays:['0810'],sessions:{'0810':'main'},route:{'0810':30},aliases:['小青岛'],xhs:'青岛 小青岛 琴屿路 日落 路线',amap:'小青岛公园 青岛'},
+  {id:'badaguan',title:'八大关林荫路',desc:'上午走树荫路，不追求每栋建筑都打卡。',mins:90,lat:36.05247,lon:120.35034,kind:'shade',recDays:['0811'],sessions:{'0811':'day'},route:{'0811':10},aliases:['八大关'],xhs:'青岛 八大关 林荫 路线 拍照',amap:'八大关风景区 青岛'},
+  {id:'secondbeach',title:'第二海水浴场上层步道',desc:'接在八大关后面，只走上层海边，不在正午久晒。',mins:55,lat:36.05109,lon:120.35263,kind:'coast',recDays:['0811'],sessions:{'0811':'day'},route:{'0811':20},aliases:['第二海水浴场','二浴'],xhs:'青岛 第二海水浴场 八大关 路线',amap:'第二海水浴场 青岛'},
+  {id:'xiaoyushan',title:'小鱼山',desc:'看红瓦老城，今天把主要爬坡集中在这里。',mins:65,lat:36.0586672,lon:120.331275,kind:'shade',recDays:['0811'],sessions:{'0811':'evening'},route:{'0811':10},aliases:['小鱼山'],xhs:'青岛 小鱼山 日落 机位 攻略',amap:'小鱼山公园 青岛'},
+  {id:'signal',title:'信号山',desc:'和小鱼山二选一更轻松；同时去会明显增加体力。',mins:60,lat:36.06339,lon:120.33371,kind:'shade',recDays:['0811'],sessions:{'0811':'evening'},route:{'0811':8},aliases:['信号山'],xhs:'青岛 信号山 小鱼山 对比',amap:'信号山公园 青岛'},
+  {id:'daxue',title:'大学路 × 鱼山路',desc:'从小鱼山下来顺着逛，支路比网红墙排队轻松。',mins:50,lat:36.060178,lon:120.331098,kind:'shade',recDays:['0811'],sessions:{'0811':'evening'},route:{'0811':20},aliases:['大学路','鱼山路','网红墙'],xhs:'青岛 大学路 鱼山路 路线',amap:'大学路网红墙 青岛'},
+  {id:'longjiang',title:'龙江路 / 黄县路',desc:'小店、咖啡和晚饭集中，适合作为老城线结尾。',mins:80,lat:36.061127,lon:120.329358,kind:'indoor',recDays:['0811'],sessions:{'0811':'evening'},route:{'0811':30},aliases:['龙江路','黄县路'],xhs:'青岛 龙江路 黄县路 探店 美食',amap:'龙江路 青岛'},
+  {id:'cathedral',title:'圣弥厄尔教堂外观',desc:'上午光线合适时看外观，再往中山路慢逛。',mins:30,lat:36.06657,lon:120.31921,kind:'shade',recDays:['0812'],sessions:{'0812':'day'},route:{'0812':10},aliases:['天主教堂','圣弥厄尔教堂','圣弥厄尔'],xhs:'青岛 天主教堂 中山路 拍照',amap:'圣弥厄尔教堂 青岛'},
+  {id:'zhongshan',title:'中山路 × 银鱼巷',desc:'小店、咖啡、甜品和午饭都集中在这一片。',mins:100,lat:36.06692,lon:120.30955,kind:'indoor',recDays:['0812'],sessions:{'0812':'day'},route:{'0812':20},aliases:['中山路','银鱼巷'],xhs:'青岛 中山路 银鱼巷 女生 探店',amap:'银鱼巷 青岛'},
+  {id:'sifang',title:'四方路市场街区',desc:'想吃小吃时加入，和中山路放在同一段。',mins:60,lat:36.07048,lon:120.31618,kind:'indoor',recDays:['0812'],sessions:{'0812':'day'},route:{'0812':30},aliases:['四方路','四方路市场'],xhs:'青岛 四方路 市场 美食 避坑',amap:'四方路市场 青岛'},
+  {id:'zhanqiao',title:'栈桥',desc:'经典地标放在傍晚西行路线的起点。',mins:50,lat:36.06062,lon:120.32055,kind:'coast',recDays:['0812'],sessions:{'0812':'evening'},route:{'0812':10},aliases:['栈桥'],xhs:'青岛 栈桥 傍晚 人少 拍照',amap:'栈桥 青岛'},
+  {id:'xilingxia',title:'西陵峡路',desc:'从栈桥继续向西，走一段海边即可，不下湿滑礁石。',mins:45,lat:36.056259,lon:120.305653,kind:'coast',recDays:['0812'],sessions:{'0812':'evening'},route:{'0812':20},aliases:['西陵峡','西陵峡路'],xhs:'青岛 栈桥 西陵峡 八大峡 路线',amap:'西陵峡一路 青岛'},
+  {id:'badaxia',title:'八大峡广场',desc:'把傍晚路线收在最西边，看完日落直接打车回酒店。',mins:60,lat:36.052885,lon:120.3048106,kind:'coast',recDays:['0812'],sessions:{'0812':'evening'},route:{'0812':30},aliases:['八大峡','八大峡广场'],xhs:'青岛 八大峡广场 日落 机位',amap:'八大峡广场 青岛'},
+  {id:'mixc',title:'青岛万象城',desc:'午饭、逛店和拍贴都在室内，之后继续向东。',mins:165,lat:36.06717,lon:120.38291,kind:'indoor',recDays:['0813'],sessions:{'0813':'day'},route:{'0813':10},aliases:['万象城','青岛万象城'],xhs:'青岛 万象城 女生 逛街 拍贴',amap:'青岛万象城'},
+  {id:'hisense',title:'海信广场',desc:'想逛品牌店时可替换万象城，不建议两个都久逛。',mins:130,lat:36.0644243,lon:120.39314,kind:'indoor',recDays:['0813'],sessions:{'0813':'day'},route:{'0813':20},aliases:['海信广场'],xhs:'青岛 海信广场 女生 逛街 探店',amap:'海信广场 青岛'},
+  {id:'xiaomaidao',title:'小麦岛',desc:'草地和南侧海岸慢待，不必绕完整圈。',mins:110,lat:36.0542053,lon:120.4259284,kind:'coast',recDays:['0813'],sessions:{'0813':'evening'},route:{'0813':10},aliases:['小麦岛'],xhs:'青岛 小麦岛 日落 草地 攻略',amap:'小麦岛公园 青岛'},
+  {id:'yaner',title:'燕儿岛路海边',desc:'离开小麦岛后向西回城，走一小段或直接打车。',mins:45,lat:36.05629,lon:120.40163,kind:'coast',recDays:['0813'],sessions:{'0813':'evening'},route:{'0813':20},aliases:['燕儿岛','燕儿岛路'],xhs:'青岛 燕儿岛路 海边 夜景',amap:'燕儿岛山公园 青岛'},
+  {id:'olympic',title:'奥帆中心 × 情人坝',desc:'城市海边夜景主线，结束后从这里打车回酒店。',mins:70,lat:36.0571141,lon:120.3937671,kind:'night',recDays:['0813'],sessions:{'0813':'evening'},route:{'0813':30},aliases:['奥帆中心','奥帆','情人坝'],xhs:'青岛 奥帆中心 情人坝 夜景',amap:'青岛奥帆中心'},
+  {id:'wusi',title:'五四广场',desc:'还有体力再继续向西，离回酒店方向更近。',mins:45,lat:36.06264,lon:120.38022,kind:'night',recDays:['0813'],sessions:{'0813':'evening'},route:{'0813':40},aliases:['五四广场'],xhs:'青岛 五四广场 夜景 攻略',amap:'五四广场 青岛'}
+];
+const DEFAULT_ASSIGN={
+  aquarium:'0810',luxun:'0810',qinyu:'0810',
+  badaguan:'0811',secondbeach:'0811',xiaoyushan:'0811',daxue:'0811',longjiang:'0811',
+  cathedral:'0812',zhongshan:'0812',zhanqiao:'0812',xilingxia:'0812',badaxia:'0812',
+  mixc:'0813',xiaomaidao:'0813',yaner:'0813',olympic:'0813'
+};
+const STORAGE='qd_trip_flex_v1';
+const $=s=>document.querySelector(s);
+const esc=(s='')=>String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const initial={wish:Object.keys(DEFAULT_ASSIGN),assignment:{...DEFAULT_ASSIGN},pinned:{},completed:{},custom:[],links:{}};
+let state=(()=>{try{return {...initial,...JSON.parse(localStorage.getItem(STORAGE)||'{}')}}catch{return initial}})();
+state.wish=Array.isArray(state.wish)?state.wish:[];
+state.assignment=state.assignment||{};state.pinned=state.pinned||{};state.completed=state.completed||{};state.custom=Array.isArray(state.custom)?state.custom:[];state.links=state.links||{};
+let activeDay='0810',map=null,routeLayer=null,pickLayer=null,pickMode=false,pendingSource='',candidates=[],toastTimer;
+function allPlaces(){return [...PLACES,...state.custom]}
+function place(id){return allPlaces().find(p=>p.id===id)}
+function day(id){return DAYS.find(d=>d.id===id)}
+function save(){localStorage.setItem(STORAGE,JSON.stringify(state))}
+function dist(a,b){const r=6371,p=Math.PI/180,dLat=(b.lat-a.lat)*p,dLon=(b.lon-a.lon)*p;const x=Math.sin(dLat/2)**2+Math.cos(a.lat*p)*Math.cos(b.lat*p)*Math.sin(dLon/2)**2;return 2*r*Math.asin(Math.sqrt(x))}
+function outOfChina(lat,lon){return lon<72.004||lon>137.8347||lat<0.8293||lat>55.8271}
+function transformLat(x,y){let r=-100+2*x+3*y+.2*y*y+.1*x*y+.2*Math.sqrt(Math.abs(x));r+=(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3;r+=(20*Math.sin(y*Math.PI)+40*Math.sin(y/3*Math.PI))*2/3;r+=(160*Math.sin(y/12*Math.PI)+320*Math.sin(y*Math.PI/30))*2/3;return r}
+function transformLon(x,y){let r=300+x+2*y+.1*x*x+.1*x*y+.1*Math.sqrt(Math.abs(x));r+=(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3;r+=(20*Math.sin(x*Math.PI)+40*Math.sin(x/3*Math.PI))*2/3;r+=(150*Math.sin(x/12*Math.PI)+300*Math.sin(x/30*Math.PI))*2/3;return r}
+function wgsToGcj(lat,lon){if(outOfChina(lat,lon))return{lat,lon};let dLat=transformLat(lon-105,lat-35),dLon=transformLon(lon-105,lat-35),rad=lat/180*Math.PI,magic=Math.sin(rad);magic=1-.00669342162296594323*magic*magic;const sqrt=Math.sqrt(magic);dLat=dLat*180/((6378245*(1-.00669342162296594323))/(magic*sqrt)*Math.PI);dLon=dLon*180/(6378245/sqrt*Math.cos(rad)*Math.PI);return{lat:lat+dLat,lon:lon+dLon}}
+function gcjToWgs(lat,lon){const g=wgsToGcj(lat,lon);return{lat:lat*2-g.lat,lon:lon*2-g.lon}}
+function mapPoint(p){const g=wgsToGcj(p.lat,p.lon);return[g.lat,g.lon]}
+function fmt(m){m=(m+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+function minval(t){const [h,m]=t.split(':').map(Number);return h*60+m}
+function amap(p){return 'https://uri.amap.com/search?keyword='+encodeURIComponent(p.amap||p.title+(p.desc?' '+p.desc:''))+'&city='+encodeURIComponent('青岛')+'&src=qingdao_trip&callnative=1'}
+function xhs(p){const saved=(state.links[p.id]||[])[0];return saved||'https://www.xiaohongshu.com/search_result?keyword='+encodeURIComponent(p.xhs||('青岛 '+p.title))+'&source=web_search_result_notes'}
+function selectedFor(did){return allPlaces().filter(p=>state.assignment[p.id]===did&&!state.completed[p.id])}
+function sessionFor(p,did){const d=day(did);if(p.sessions&&p.sessions[did])return p.sessions[did];if(d.sessions.length===1)return d.sessions[0].id;return p.kind==='indoor'||p.kind==='shade'?d.sessions[0].id:d.sessions[d.sessions.length-1].id}
+function leg(a,b,forceTaxi=false){const km=dist(a,b);if(!forceTaxi&&km<=1.45)return{mode:'步行',mins:Math.max(5,Math.round(km*14)),km};return{mode:'打车',mins:Math.max(10,Math.round(7+km*3.2)),km}}
+function routeRank(p,did){return p.route&&Number.isFinite(p.route[did])?p.route[did]:null}
+function insertBest(route,p,start=HOTEL,end=HOTEL){let best=0,bestCost=Infinity;for(let i=0;i<=route.length;i++){const a=i?route[i-1]:start,b=i<route.length?route[i]:end,c=dist(a,p)+dist(p,b)-dist(a,b);if(c<bestCost){bestCost=c;best=i}}route.splice(best,0,p)}
+function orderPlaces(list,did){const ranked=list.filter(p=>routeRank(p,did)!==null).sort((a,b)=>routeRank(a,did)-routeRank(b,did)),other=list.filter(p=>routeRank(p,did)===null);other.forEach(p=>insertBest(ranked,p));return ranked}
+function buildSchedule(did){
+  const d=day(did),items=[],segments=[];let lastPoint=HOTEL,lastTime=0,totalWalk=0,number=0;
+  d.sessions.forEach(session=>{
+    const list=orderPlaces(selectedFor(did).filter(p=>sessionFor(p,did)===session.id),did);
+    if(!list.length)return;
+    let t=minval(session.start),prev;
+    if(session.continueFromPrevious&&lastPoint.id!=='hotel'){
+      prev=lastPoint;
+      if(lastTime<t)items.push({type:'break',arrive:fmt(lastTime),leave:fmt(t),title:'室内休息 / 吃饭',desc:'这段不赶路，找室内坐着休息，等傍晚再继续。',session:session.label});
+      t=Math.max(t,lastTime);
+    }else{
+      prev=HOTEL;lastPoint=HOTEL;
+      items.push({type:'start',arrive:fmt(t),leave:'出发',title:'从酒店出发',desc:'青岛市市南区莱阳路 19 号东楼。',session:session.label});
+    }
+    const points=[prev],names=[];
+    list.forEach(p=>{
+      const l=leg(prev,p);t+=l.mins;if(l.mode==='步行')totalWalk+=l.km;number++;items.push({type:'place',place:p,arrive:fmt(t),leave:fmt(t+p.mins),leg:l,number,session:session.label});t+=p.mins;prev=p;points.push(p);names.push(p.title);
+    });
+    if(session.returnHotel){
+      const back=leg(prev,HOTEL,true);t+=back.mins;items.push({type:'return',arrive:fmt(t),leave:'到店',title:'回到酒店',desc:'当天这一段结束，直接回莱阳路 19 号东楼。',leg:back,session:session.label});points.push(HOTEL);lastPoint=HOTEL;
+    }else lastPoint=prev;
+    lastTime=t;segments.push({points,names,label:session.label});
+  });
+  return{items,segments,totalWalk,end:lastTime?fmt(lastTime):'—',count:selectedFor(did).length};
+}
+function recommendDay(p,did){return (p.recDays||[]).includes(did)}
+function updateProgress(){const done=Object.values(state.completed).filter(Boolean).length,wish=state.wish.filter(id=>!state.completed[id]).length;$('#progressText').textContent='想去 '+wish+' · 已去过 '+done}
+function renderTabs(){
+  $('#dayTabs').innerHTML=DAYS.map(d=>'<button class="day-tab '+(d.id===activeDay?'active':'')+'" data-day="'+d.id+'"><span>'+d.short+'</span><b>'+d.tab+'</b></button>').join('');
+  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{activeDay=b.dataset.day;renderAll()});
+}
+function renderSummary(){
+  const d=day(activeDay),s=buildSchedule(activeDay);
+  $('#daySummary').innerHTML='<div><h3>'+esc(d.title)+'</h3><p>'+esc(d.note)+'</p></div><div class="summary-pills"><span>已排 '+s.count+' 个</span><span>步行约 '+s.totalWalk.toFixed(1)+' km</span><span>日落 '+d.sunset+'</span></div>';
+}
+function renderHead(){
+  const s=buildSchedule(activeDay);
+  if(!s.count){$('#routeHead').innerHTML='<div><h3>这一天还没有地点</h3><p>从下面地点库安排到今天，或者勾好“想去”后点一键生成。</p></div>';return}
+  const route=s.segments.map(x=>'酒店 → '+x.names.map(n=>esc(n)).join(' → ')+(x.points[x.points.length-1].id==='hotel'?' → 酒店':'')).join('<br>');
+  $('#routeHead').innerHTML='<div><h3>'+route+'</h3><p>推荐点按顺路方向排列；临时新增或跨天移动的地点会插入绕路最少的位置。</p></div><div class="route-stats"><span>预计结束 '+s.end+'</span><span>地点 '+s.count+' 个</span><span>步行约 '+s.totalWalk.toFixed(1)+' km</span></div>';
+}
+function renderTimeline(){
+  const s=buildSchedule(activeDay);let current='';
+  $('#timeline').innerHTML=s.items.map(item=>{
+    let head='';if(item.session!==current){current=item.session;head='<div class="session-label">'+esc(current)+'</div>'}
+    if(item.type==='place'){
+      const p=item.place;
+      return head+'<article class="trip-card"><div class="timebox"><b>'+item.arrive+'</b><small>'+item.leave+'</small><div class="route-dot"></div></div><div><div class="card-top"><h3 class="card-title">'+item.number+'. '+esc(p.title)+'</h3><label class="check-wrap"><input type="checkbox" data-done="'+p.id+'">去过了</label></div><p class="card-desc">'+esc(p.desc)+'</p><div class="mini-meta"><span>'+item.leg.mode+'约 '+item.leg.mins+' 分</span><span>停留约 '+p.mins+' 分</span></div><div class="action-row"><a class="action" href="'+amap(p)+'" target="_blank" rel="noopener">高德导航</a><a class="action xhs" href="'+xhs(p)+'" target="_blank" rel="noopener">小红书</a></div></div></article>';
+    }
+    const dot=item.type==='break'?'break':'hotel',meta=item.leg?'<div class="mini-meta"><span>'+item.leg.mode+'约 '+item.leg.mins+' 分</span></div>':'';
+    return head+'<article class="trip-card"><div class="timebox"><b>'+item.arrive+'</b><small>'+item.leave+'</small><div class="route-dot '+dot+'"></div></div><div><h3 class="card-title">'+esc(item.title)+'</h3><p class="card-desc">'+esc(item.desc)+'</p>'+meta+'</div></article>';
+  }).join('')||'<div class="result-box">暂无路线。</div>';
+  document.querySelectorAll('[data-done]').forEach(c=>c.onchange=()=>markDone(c.dataset.done));
+}
+function librarySort(a,b){
+  const av=!!state.completed[a.id],bv=!!state.completed[b.id];if(av!==bv)return av?1:-1;
+  const ar=recommendDay(a,activeDay),br=recommendDay(b,activeDay);if(ar!==br)return ar?-1:1;
+  const aa=state.assignment[a.id]===activeDay,ba=state.assignment[b.id]===activeDay;if(aa!==ba)return aa?-1:1;
+  return dist(HOTEL,a)-dist(HOTEL,b);
+}
+function renderLibrary(){
+  const q=$('#placeSearch').value.trim().toLowerCase(),d=day(activeDay);$('#libraryDay').textContent=d.short;
+  const list=allPlaces().filter(p=>!q||[p.title,p.desc,...(p.aliases||[])].join(' ').toLowerCase().includes(q)).sort(librarySort);
+  $('#choiceGrid').innerHTML=list.map(p=>{
+    const wished=state.wish.includes(p.id),assigned=state.assignment[p.id],visited=!!state.completed[p.id],rec=recommendDay(p,activeDay);
+    const badges=[];if(rec)badges.push('<span class="badge rec">本日顺路推荐</span>');if(visited)badges.push('<span class="badge done">已去过</span>');else if(assigned===activeDay)badges.push('<span class="badge day">已排到今天'+(state.pinned[p.id]?' · 已固定':'')+'</span>');else if(assigned)badges.push('<span class="badge other">已排 '+day(assigned).short+'</span>');else if(wished)badges.push('<span class="badge wait">想去 · 待规划</span>');if(p.custom)badges.push('<span class="badge custom">新增地点</span>');
+    const wishText=visited?'重新加入':wished?'取消想去':'加入想去';
+    const assignText=assigned===activeDay?(state.pinned[p.id]?'取消固定':'固定在今天'):'排到今天';
+    return '<article class="choice-card '+(rec?'recommended ':'')+(visited?'visited':'')+'"><div class="badge-row">'+badges.join('')+'</div><h3>'+esc(p.title)+'</h3><p>'+esc(p.desc)+'</p><div class="choice-actions"><button class="wish-btn '+(wished&&!visited?'on':'')+'" data-wish="'+p.id+'">'+wishText+'</button><button class="assign-btn '+(assigned===activeDay?'today':'')+'" data-assign="'+p.id+'">'+assignText+'</button><a href="'+amap(p)+'" target="_blank" rel="noopener">高德</a><a href="'+xhs(p)+'" target="_blank" rel="noopener">小红书</a></div></article>';
+  }).join('');
+  document.querySelectorAll('[data-wish]').forEach(b=>b.onclick=()=>toggleWish(b.dataset.wish));
+  document.querySelectorAll('[data-assign]').forEach(b=>b.onclick=()=>assignToday(b.dataset.assign));
+}
+function toggleWish(id){
+  if(state.completed[id]){state.completed[id]=false;if(!state.wish.includes(id))state.wish.push(id);delete state.assignment[id];delete state.pinned[id];show('已重新加入想去清单')}
+  else{const i=state.wish.indexOf(id);if(i>=0){state.wish.splice(i,1);delete state.assignment[id];delete state.pinned[id];show('已从想去清单移除')}else{state.wish.push(id);show('已加入想去清单')}}
+  save();renderAll();
+}
+function assignToday(id){
+  if(state.completed[id]){state.completed[id]=false}
+  if(!state.wish.includes(id))state.wish.push(id);
+  if(state.assignment[id]===activeDay&&state.pinned[id]){delete state.pinned[id];show('已取消固定，自动规划时可以移动')}
+  else{state.assignment[id]=activeDay;state.pinned[id]=true;show('已固定到 '+day(activeDay).short)}
+  save();renderAll();
+}
+function markDone(id){
+  state.completed[id]=true;delete state.pinned[id];save();renderAll();show('已标记去过，不再参与规划');
+}
+function planTrip(){
+  const valid=new Set(allPlaces().map(p=>p.id)),next={};
+  Object.entries(state.assignment).forEach(([id,did])=>{if(state.pinned[id]&&state.wish.includes(id)&&!state.completed[id]&&valid.has(id))next[id]=did});
+  const used=Object.fromEntries(DAYS.map(d=>[d.id,0]));Object.entries(next).forEach(([id,did])=>{const p=place(id);if(p)used[did]+=p.mins});
+  const queue=state.wish.map(place).filter(p=>p&&!state.completed[p.id]&&!next[p.id]).sort((a,b)=>(a.recDays||[]).length-(b.recDays||[]).length||b.mins-a.mins);
+  queue.forEach(p=>{
+    let best='0811',bestScore=Infinity;
+    DAYS.forEach(d=>{
+      let score=dist(p,d.anchor)*14+(recommendDay(p,d.id)?-60:22)+(used[d.id]/d.capacity)*48;
+      const over=Math.max(0,used[d.id]+p.mins-d.capacity);score+=over?100+over*.45:0;
+      const hotelKm=dist(HOTEL,p);if(d.id==='0810'&&hotelKm>2.5)score+=90;if(d.id==='0814')score+=85;if(d.id==='0814'&&hotelKm>1.6)score+=230;if(d.id==='0814'&&p.mins>70)score+=80;
+      if(score<bestScore){bestScore=score;best=d.id}
+    });
+    next[p.id]=best;used[best]+=p.mins;
+  });
+  state.assignment=next;save();renderAll();show('已按片区和每天容量重新规划');
+}
+function releasePins(){state.pinned={};save();renderAll();show('所有地点都可由一键规划重新分配')}
+function inferKind(s){if(/商场|咖啡|甜品|餐厅|饭店|店|室内|书店|买手店/.test(s))return'indoor';if(/夜景|酒吧|灯光/.test(s))return'night';if(/海|岛|沙滩|浴场|码头|广场/.test(s))return'coast';return'shade'}
+function nearestRecDays(c){return DAYS.filter(d=>d.id!=='0814').map(d=>({id:d.id,v:dist(c,d.anchor)})).sort((a,b)=>a.v-b.v).slice(0,1).map(x=>x.id)}
+function extractUrl(s){const m=String(s).match(/https?:\/\/[^\s，。；]+/i);return m?m[0]:''}
+function bestLocalMatch(text){
+  const raw=String(text),hits=[];allPlaces().forEach(p=>[p.title,...(p.aliases||[])].forEach(a=>{if(a&&raw.includes(a))hits.push({p,len:a.length})}));hits.sort((a,b)=>b.len-a.len);return hits[0]&&hits[0].len>=2?hits[0].p:null;
+}
+async function requestCandidates(text){
+  const res=await fetch('/api/recognize-place',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({text})});
+  if(!res.ok)throw new Error('识别服务暂时不可用');const data=await res.json();return data.candidates||[];
+}
+function cleanQuery(text){return String(text).replace(/https?:\/\/\S+/g,' ').replace(/[#【】\[\]<>]/g,' ').replace(/复制|打开小红书|查看笔记|分享|青岛攻略/g,' ').replace(/\s+/g,' ').trim().slice(0,60)}
+async function browserGeocode(text){
+  const q=cleanQuery(text);if(!q)return[];
+  try{
+    const arc=new URL('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates');arc.searchParams.set('f','json');arc.searchParams.set('maxLocations','8');arc.searchParams.set('outFields','Match_addr,PlaceName,Type');arc.searchParams.set('countryCode','CHN');arc.searchParams.set('location','120.32,36.06');arc.searchParams.set('distance','60000');arc.searchParams.set('SingleLine',q.replace(/山东省|青岛市|青岛/g,' ').trim()||q);
+    const ar=await fetch(arc),data=await ar.json(),found=(data.candidates||[]).map(x=>({name:x.attributes?.PlaceName||x.address,address:x.attributes?.Match_addr||x.address,lat:Number(x.location?.y),lon:Number(x.location?.x),type:String(x.attributes?.Type||'')})).filter(x=>x.lat>=35.72&&x.lat<=36.48&&x.lon>=119.75&&x.lon<=120.82&&!/^(青岛|青岛市|山东省)$/.test(x.name)&&!/^(City|State|Country)$/.test(x.type)).map(({type,...x})=>x);if(found.length)return found;
+  }catch{}
+  const url='https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&countrycodes=cn&accept-language=zh-CN&viewbox=120.0,36.35,120.65,35.75&bounded=1&q='+encodeURIComponent(q.includes('青岛')?q:'青岛 '+q);
+  const r=await fetch(url);if(!r.ok)throw new Error('地图搜索失败');const rows=await r.json();return rows.map(x=>({name:x.name||String(x.display_name).split(',')[0],address:x.display_name,lat:Number(x.lat),lon:Number(x.lon)}));
+}
+function renderCandidates(message=''){
+  const box=$('#recognizeResult');if(message){box.className='result-box success';box.textContent=message}
+  $('#candidateList').innerHTML=candidates.map((c,i)=>'<div class="candidate"><b>'+esc(c.name)+'</b><small>'+esc(c.address||'青岛')+'</small><button data-candidate="'+i+'">新增这个地点</button></div>').join('');
+  document.querySelectorAll('[data-candidate]').forEach(b=>b.onclick=()=>addCandidate(candidates[Number(b.dataset.candidate)]));
+}
+async function recognize(manual=false){
+  const text=(manual?$('#manualName').value:$('#shareInput').value).trim(),box=$('#recognizeResult');if(!text){box.className='result-box warn';box.textContent='先输入地点名或粘贴分享内容。';return}
+  pendingSource=$('#shareInput').value.trim()||text;
+  if(!manual){const existing=bestLocalMatch(text);if(existing){const url=extractUrl(text);if(url){state.links[existing.id]=state.links[existing.id]||[];if(!state.links[existing.id].includes(url))state.links[existing.id].push(url)}if(!state.wish.includes(existing.id))state.wish.push(existing.id);save();renderAll();box.className='result-box success';box.textContent='识别到已有地点“'+existing.title+'”，已保存帖子并加入想去清单。';return}}
+  box.className='result-box';box.textContent='正在识别名称和位置…';$('#candidateList').innerHTML='';
+  try{candidates=await requestCandidates(text);if(!candidates.length)candidates=await browserGeocode(text)}catch{try{candidates=await browserGeocode(text)}catch{candidates=[]}}
+  if(candidates.length){renderCandidates('找到 '+candidates.length+' 个位置，请选正确的一个。')}
+  else{box.className='result-box warn';box.textContent='没有找到准确位置。可换成更完整的店名搜索，或点“地图上选”。'}
+}
+function addCandidate(c){
+  const name=String(c.name||$('#manualName').value||cleanQuery(pendingSource)||'新增地点').trim(),id='custom_'+Date.now().toString(36);
+  const p={id,title:name,desc:c.address||'从小红书新增的地点',mins:60,lat:Number(c.lat),lon:Number(c.lon),kind:inferKind(name+' '+(c.address||'')+' '+pendingSource),recDays:nearestRecDays(c),sessions:{},route:{},aliases:[name],xhs:'青岛 '+name,amap:name+' 青岛',custom:true};
+  state.custom.push(p);state.wish.push(id);const url=extractUrl(pendingSource);if(url)state.links[id]=[url];save();candidates=[];$('#candidateList').innerHTML='';$('#recognizeResult').className='result-box success';$('#recognizeResult').textContent='已新增“'+name+'”，现在可在任意日期选择或一键规划。';$('#manualName').value='';renderAll();show('新地点已加入地点库');
+}
+function startMapPick(){
+  const name=$('#manualName').value.trim()||cleanQuery($('#shareInput').value);if(!name){$('#recognizeResult').className='result-box warn';$('#recognizeResult').textContent='先输入要保存的地点名称。';return}if(!map){$('#recognizeResult').className='result-box warn';$('#recognizeResult').textContent='地图还没加载完成。';return}
+  pendingSource=$('#shareInput').value.trim()||name;pickMode=true;$('#recognizeResult').className='result-box';$('#recognizeResult').textContent='请在上方地图点击准确位置。';document.querySelector('#plan .map-panel').scrollIntoView({behavior:'smooth',block:'center'});show('在地图上点一下地点位置');
+}
+function icon(n,kind='place'){return L.divIcon({className:'',html:'<div class="map-pin '+kind+'"><span>'+n+'</span></div>',iconSize:[31,31],iconAnchor:[15,29]})}
+function initMap(){
+  if(!window.L)return;
+  try{
+    map=L.map('map',{zoomControl:true}).setView(mapPoint(HOTEL),13);L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}',{subdomains:'1234',maxZoom:19,attribution:'© 高德地图'}).addTo(map);routeLayer=L.layerGroup().addTo(map);pickLayer=L.layerGroup().addTo(map);
+    map.on('click',e=>{if(!pickMode)return;pickMode=false;pickLayer.clearLayers();L.marker(e.latlng,{icon:icon('＋','pick')}).addTo(pickLayer);const name=$('#manualName').value.trim()||cleanQuery($('#shareInput').value)||'新增地点',wgs=gcjToWgs(e.latlng.lat,e.latlng.lng);candidates=[{name,address:'地图手动选定位置',lat:wgs.lat,lon:wgs.lon}];renderCandidates('位置已选好，确认后加入地点库。')});
+    renderMap();
+  }catch{map=null}
+}
+function renderMap(){
+  if(!map)return;routeLayer.clearLayers();const s=buildSchedule(activeDay),hotelMap=mapPoint(HOTEL),coords=[hotelMap];L.marker(hotelMap,{icon:icon('⌂','hotel')}).bindPopup('<b>酒店</b><br>莱阳路19号东楼').addTo(routeLayer);
+  let n=0;const seen=new Set();s.segments.forEach((seg,i)=>{const points=seg.points.map(mapPoint);points.forEach(x=>coords.push(x));seg.points.forEach(p=>{if(p.id==='hotel'||seen.has(p.id))return;seen.add(p.id);n++;L.marker(mapPoint(p),{icon:icon(n)}).bindPopup('<b>'+esc(p.title)+'</b>').addTo(routeLayer)});if(points.length>1)L.polyline(points,{color:['#0c9293','#ff806d','#5f78c9'][i%3],weight:4,opacity:.82,dashArray:'8 9'}).addTo(routeLayer)});
+  const bounds=L.latLngBounds(coords);if(bounds.isValid())map.fitBounds(bounds.pad(.18),{maxZoom:14});setTimeout(()=>map.invalidateSize(),50);$('#mapNote').textContent='高德底图：橙色是酒店，蓝色编号是当天地点；坐标已转换，避免定位偏移。';
+}
+function calcDepart(){
+  const [h,m]=($('#departureTime').value||'14:00').split(':').map(Number),type=$('#transportType').value,cfg={flight:{name:'胶东机场',lead:180,road:90},qingdao:{name:'青岛站',lead:60,road:20},north:{name:'青岛北站',lead:75,road:60}}[type];let leave=h*60+m-cfg.lead-cfg.road;if(leave<0)leave+=1440;$('#departureResult').innerHTML='建议最晚 <b style="font-size:19px;color:#08777a">'+fmt(leave)+'</b> 从酒店出发去 '+cfg.name+'。遇到大雨或明显拥堵，再提前 20–30 分钟。';
+}
+function show(s){const t=$('#toast');t.textContent=s;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800)}
+function renderAll(){renderTabs();renderSummary();renderHead();renderTimeline();renderLibrary();updateProgress();if(map)renderMap()}
+$('#generateBtn').onclick=planTrip;$('#releasePinsBtn').onclick=releasePins;$('#placeSearch').oninput=renderLibrary;$('#recognizeBtn').onclick=()=>recognize(false);$('#searchNameBtn').onclick=()=>recognize(true);$('#pickMapBtn').onclick=startMapPick;$('#clearRecognizeBtn').onclick=()=>{$('#shareInput').value='';$('#manualName').value='';candidates=[];$('#candidateList').innerHTML='';$('#recognizeResult').className='result-box';$('#recognizeResult').textContent='已清空。'};$('#transportType').onchange=calcDepart;$('#departureTime').oninput=calcDepart;
+renderAll();calcDepart();setTimeout(initMap,180);
+</script>
+</body>
+</html>
